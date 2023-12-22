@@ -16,24 +16,35 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 public class User {
-
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    @Column(nullable=false)
+    @Column(nullable = false)
     private String name;
 
-    @Column(nullable=false, unique=true)
+    @Column(nullable = false, unique = true)
     private String username;
 
-    @Column(nullable=false, unique=true)
+    @Column(columnDefinition = "TEXT")
+    private String bio;
+
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String avatar = "https://www.svgrepo.com/show/452030/avatar-default.svg";
+
+    @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable=false)
+    @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false)
+    private Long followers = 0L;
+
+    @Column(nullable = false)
+    private Long followed = 0L;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(

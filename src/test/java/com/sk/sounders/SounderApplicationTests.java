@@ -1,10 +1,10 @@
-package com.sounders.sounders;
+package com.sk.sounders;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SoundersApplicationTests {
+class SounderApplicationTests {
 
 	@Test
 	void contextLoads() {
