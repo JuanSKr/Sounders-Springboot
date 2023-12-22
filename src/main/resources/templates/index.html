@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Sounders</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body class="bg-dark text-white d-flex justify-content-center align-items-center">
+<div class="container mt-5"> <!-- Agrega la clase mt-5 -->
+    <div class="row justify-content-center align-items-center">
+        <div class="col-lg-6 text-center">
+            <img src="https://i.imgur.com/6kYv0Uh.png" alt="Logo" class="img-fluid logo">
+        </div>
+        <div class="col-lg-6 text-center">
+            <h1 class="display-4">Bienvenido a Sounders</h1>
+            <p class="lead">Únete hoy</p>
+            <a class="btn btn-primary btn-lg custom-btn" role="button" th:href="@{/register}">Crear cuenta</a>
+            <p class="mt-4">¿Ya tienes una cuenta?</p>
+            <a class="btn btn-link text-white custom-btn-link" th:href="@{/login}">Iniciar sesión</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

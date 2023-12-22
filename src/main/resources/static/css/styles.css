@@ -1,0 +1,51 @@
+body {
+    background-color: #000;
+    color: #fff;
+    height: 100vh;
+    font-size: 22px;
+}
+
+.logo {
+    width: 90%;
+    max-width: 700px;
+    margin-top: 10%; /* Aumenta el margen superior */
+}
+
+.btn-primary {
+    background-color: #1da1f2;
+    border-color: #1da1f2;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0c85d0;
+    border-color: #0c85d0;
+}
+
+.btn-link {
+    color: #1da1f2;
+}
+
+.btn-link:hover {
+    color: #0c85d0;
+}
+
+.custom-btn, .custom-btn-link {
+    padding: 20px 35px;
+    font-size: 20px;
+}
+
+.custom-btn-link {
+    border: 2px solid #1da1f2;
+    transition: all 0.3s ease;
+}
+
+.custom-btn-link:hover {
+    background-color: #1da1f2;
+    color: #fff;
+}
+
+.mt-5 {
+    margin-top: 35% !important;
+}
