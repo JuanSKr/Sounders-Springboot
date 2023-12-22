@@ -1,4 +1,4 @@
-package com.sounders.sounders;
+package com.sk.sounders;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
