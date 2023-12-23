@@ -28,7 +28,7 @@ public class PostCrud {
     public String viewPosts(Model model) {
         model.addAttribute("post", new Post());
         try {
-            model.addAttribute("posts", postService.findAll());
+            model.addAttribute("posts", postService.findAllDesc());
         } catch (NullPointerException e) {
             System.out.println("No hay posts");
         }

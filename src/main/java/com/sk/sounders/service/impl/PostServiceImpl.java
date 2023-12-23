@@ -33,5 +33,9 @@ public class PostServiceImpl {
         postRepository.deleteById(id);
     }
 
+    public ArrayList<Post> findAllDesc() {
+        return postRepository.findAllDesc();
+    }
+
 
 }
