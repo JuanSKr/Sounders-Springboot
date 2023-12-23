@@ -22,6 +22,19 @@ public class PostCrud {
     @GetMapping("/home")
     public String viewPosts(Model model) {
         model.addAttribute("post", new Post());
+
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        UserDetails userDetails = null;
+        if (principal instanceof UserDetails) {
+            userDetails = (UserDetails) principal;
+        }
+        if (userDetails == null) {
+            return "error";
+        }
+        String currentUsername = userDetails.getUsername();
+        User user = userService.findByEmail(currentUsername);
+        model.addAttribute("user", user);
+
         try {
             model.addAttribute("posts", postService.findAllDesc());
         } catch (NullPointerException e) {

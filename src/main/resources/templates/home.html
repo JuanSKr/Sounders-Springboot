@@ -287,6 +287,10 @@
         margin-right: 10px;
     }
 
+    .rounded-circle:hover {
+        box-shadow: 0 0 10px 3px rgba(0, 140, 186, 0.8);
+    }
+
     .card-img-top {
         border-radius: 20px;
     }
@@ -320,10 +324,11 @@
                         <i class="fas fa-search pe-2"></i> <!-- Icono de lupa para "Explorar" -->
                         Explorar
                     </a>
-                    <a href="#" class="sidebar-link">
+                    <a th:href="'/profile/' + ${user.username}" class="sidebar-link">
                         <i class="fas fa-user pe-2"></i> <!-- Icono de usuario para "Tu perfil" -->
                         Tu perfil
                     </a>
+
                 </li>
             </ul>
         </div>
@@ -344,7 +349,7 @@
                     <a href="#">Inicio</a>
                     <a href="#">Notificaciones</a>
                     <a href="#">Explorar</a>
-                    <a href="#">Tu perfil</a>
+                    <a th:href="'/profile/' + ${user.username}" style="text-decoration: none; color: inherit;">Tu perfil</a>
                 </div>
                 <a href="#" class="publish">Postear</a>
             </div>
@@ -379,15 +384,16 @@
                     <div class="container">
                         <div class="d-flex flex-column align-items-center">
                             <div class="col-md-4 mb-3" th:each="post:${posts}">
-                                <a th:href="@{/post/view/{title}(title=${post.title})}"
-                                   style="text-decoration: none; color: inherit;">
+                                <a th:href="'/post/view/' + ${post.title}" style="text-decoration: none; color: inherit;">
                                     <div class="card h-100 shadow">
                                         <div class="card-body d-flex flex-column">
                                             <h5 class="card-title" th:text="${post.title}"></h5>
                                             <p class="card-text" th:text="${post.genre}"></p>
                                             <img th:src="${post.image}" alt="Image" class="card-img-top">
                                             <div class="d-flex align-items-center mt-3">
-                                                <img th:src="${post.author.avatar}" alt="Avatar" class="rounded-circle" width="50" height="50">
+                                                <a th:href="'/profile/' + ${post.author.username}">
+                                                    <img th:src="${post.author.avatar}" alt="Avatar" class="rounded-circle" width="50" height="50">
+                                                </a>
                                                 <p class="card-text ml-2" th:text="'@' + ${post.author.username}"></p>
                                             </div>
                                         </div>
