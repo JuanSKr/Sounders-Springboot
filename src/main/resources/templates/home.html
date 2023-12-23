@@ -152,7 +152,7 @@
     }
 
     .navbar-items a {
-        padding: 5px 15px; /* Ajusta estos valores según tus necesidades */
+        padding: 5px 15px;
         color: #e9ecef;
         font-size: 1rem;
         font-weight: 600;
@@ -205,56 +205,56 @@
         transform: translateX(-50%);
     }
 
-    .animated-button {
-        background-color: #008CBA; /* Color inicial */
-        border: none;
-        color: white;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-        animation: color-change 1s infinite;
-    }
+    /*.animated-button {*/
+    /*    background-color: #008CBA; !* Color inicial *!*/
+    /*    border: none;*/
+    /*    color: white;*/
+    /*    padding: 15px 32px;*/
+    /*    text-align: center;*/
+    /*    text-decoration: none;*/
+    /*    display: inline-block;*/
+    /*    font-size: 16px;*/
+    /*    margin: 4px 2px;*/
+    /*    cursor: pointer;*/
+    /*    animation: color-change 1s infinite;*/
+    /*}*/
 
-
-    @keyframes color-change {
-        0% {
-            background-color: #008CBA;
-        }
-        10% {
-            background-color: #4CAF50;
-        }
-        20% {
-            background-color: #008CBA;
-        }
-        30% {
-            background-color: #4CAF50;
-        }
-        40% {
-            background-color: #008CBA;
-        }
-        50% {
-            background-color: #4CAF50;
-        }
-        60% {
-            background-color: #008CBA;
-        }
-        70% {
-            background-color: #4CAF50;
-        }
-        80% {
-            background-color: #008CBA;
-        }
-        90% {
-            background-color: #4CAF50;
-        }
-        100% {
-            background-color: #008CBA;
-        }
-    }
+    /*Pruebas con keyframes*/
+    /*@keyframes color-change {*/
+    /*    0% {*/
+    /*        background-color: #008CBA;*/
+    /*    }*/
+    /*    10% {*/
+    /*        background-color: #4CAF50;*/
+    /*    }*/
+    /*    20% {*/
+    /*        background-color: #008CBA;*/
+    /*    }*/
+    /*    30% {*/
+    /*        background-color: #4CAF50;*/
+    /*    }*/
+    /*    40% {*/
+    /*        background-color: #008CBA;*/
+    /*    }*/
+    /*    50% {*/
+    /*        background-color: #4CAF50;*/
+    /*    }*/
+    /*    60% {*/
+    /*        background-color: #008CBA;*/
+    /*    }*/
+    /*    70% {*/
+    /*        background-color: #4CAF50;*/
+    /*    }*/
+    /*    80% {*/
+    /*        background-color: #008CBA;*/
+    /*    }*/
+    /*    90% {*/
+    /*        background-color: #4CAF50;*/
+    /*    }*/
+    /*    100% {*/
+    /*        background-color: #008CBA;*/
+    /*    }*/
+    /*}*/
 
     .modal.fade .modal-dialog {
         transition: transform 0.3s ease-out;
@@ -274,7 +274,7 @@
 
 <div class="wrapper">
     <!-- Sidebar -->
-    <aside id="sidebar">
+    <aside id="sidebar" class="collapsed">
         <div class="h-100">
             <div class="sidebar-logo">
                 <a href="#">Postear</a>
@@ -329,7 +329,6 @@
                     <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel"
                          aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
-                            <!-- Agrega la clase modal-dialog-centered aquí -->
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="postModalLabel">Nuevo Post</h5>
@@ -372,9 +371,6 @@
                     </div>
                 </div>
             </div>
-            <div id="postAlert" class="alert alert-primary" role="alert" style="display: none;">
-                Post guardado correctamente.
-            </div>
         </main>
     </div>
 </div>
@@ -383,17 +379,28 @@
     const brand = document.querySelector(".navbar-brand-collapsed");
     const navbarItems = document.querySelector(".navbar-items");
     const soundersNavbarCenter = document.querySelector("#sounders-navbar-center");
+
+    if (sidebar.classList.contains("collapsed")) {
+        brand.style.display = "inline";
+        navbarItems.style.display = "flex";
+        soundersNavbarCenter.style.display = "none";
+    } else {
+        brand.style.display = "none";
+        navbarItems.style.display = "none";
+        soundersNavbarCenter.style.display = "inline";
+    }
+
     toggler.addEventListener("click", function () {
         const sidebar = document.querySelector("#sidebar");
         sidebar.classList.toggle("collapsed");
         if (sidebar.classList.contains("collapsed")) {
             brand.style.display = "inline";
             navbarItems.style.display = "flex";
-            soundersNavbarCenter.style.display = "none"; // Oculta el elemento cuando la sidebar se colapse
+            soundersNavbarCenter.style.display = "none";
         } else {
             brand.style.display = "none";
             navbarItems.style.display = "none";
-            soundersNavbarCenter.style.display = "inline"; // Muestra el elemento cuando la sidebar no está colapsada
+            soundersNavbarCenter.style.display = "inline";
         }
     });
 </script>
@@ -403,14 +410,6 @@
         var postModal = new bootstrap.Modal(document.getElementById('postModal'));
         postModal.show();
     });
-</script>
-<script>
-    document.getElementById('savePostButton').addEventListener('click', function () {
-        document.getElementById('postAlert').style.display = 'block';
-        setTimeout(function () {
-            document.getElementById('postAlert').style.display = 'none';
-        }, 3000);
-    })
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
