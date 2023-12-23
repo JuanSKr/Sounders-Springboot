@@ -43,6 +43,7 @@ public class PostCrud {
         return "home";
     }
 
+
     @PostMapping("/post/save")
     public String savePost(@ModelAttribute("post") Post post) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();

@@ -63,6 +63,13 @@
         background-color: #0099d7;
     }
 
+    .sidebar-content {
+        position: fixed;
+        top: 0;
+        height: 100%;
+        overflow: auto;
+    }
+
     /* Sidebar collapse */
 
     #sidebar.collapsed {
@@ -162,7 +169,7 @@
         color: #e9ecef;
         font-size: 1rem;
         font-weight: 600;
-        margin-right: 1.5rem;
+        margin-right: 0.25rem;
     }
 
     .navbar-items {
@@ -177,17 +184,21 @@
     .navbar-group {
         display: flex;
         justify-content: center;
-        gap: 0.5rem; /* Separación mínima entre los elementos del grupo */
+        gap: 0.25rem; /* Separación mínima entre los elementos del grupo */
         flex-grow: 1;
     }
 
     .navbar-group a:hover {
-        transform: scale(1.15);
+        transform: scale(1.07);
         transition: transform .2s;
     }
 
+    .navbar-items .publish {
+        font-size: 1.25rem;
+    }
+
     .publish:hover {
-        transform: scale(1.15);
+        transform: scale(1.07);
         transition: transform .2s;
     }
 
@@ -198,7 +209,7 @@
     }
 
     .navbar-brand-collapsed:hover {
-        transform: scale(1.15);
+        transform: scale(1.07);
         transition: transform .2s;
     }
 
@@ -208,7 +219,7 @@
     }
 
     .card:hover {
-        transform: scale(1.05);
+        transform: scale(1.025);
         transition: transform .2s;
     }
 
@@ -305,9 +316,12 @@
 <div class="wrapper">
     <!-- Sidebar -->
     <aside id="sidebar" class="collapsed">
-        <div class="h-100">
+        <div class="h-100 sidebar-content">
             <div class="sidebar-logo">
-                <a href="#" class="publish-sidebar">Postear</a>
+                <a href="#" class="publish-sidebar">
+                    <i class="fas fa-plus pe-2"></i> <!-- Icono de más para "Postear" -->
+                    Postear
+                </a>
             </div>
             <!-- Sidebar Navigation -->
             <ul class="sidebar-nav">
@@ -346,12 +360,27 @@
                id="sounders-navbar-center">Sounders</a>
             <div class="navbar-items" style="display: none;">
                 <div class="navbar-group">
-                    <a href="#">Inicio</a>
-                    <a href="#">Notificaciones</a>
-                    <a href="#">Explorar</a>
-                    <a th:href="'/profile/' + ${user.username}" style="text-decoration: none; color: inherit;">Tu perfil</a>
+                    <a href="#">
+                        <i class="fas fa-home pe-2"></i> <!-- Icono de casa para "Inicio" -->
+                        Inicio
+                    </a>
+                    <a href="#">
+                        <i class="fas fa-bell pe-2"></i> <!-- Icono de campana para "Notificaciones" -->
+                        Notificaciones
+                    </a>
+                    <a href="#">
+                        <i class="fas fa-search pe-2"></i> <!-- Icono de lupa para "Explorar" -->
+                        Explorar
+                    </a>
+                    <a th:href="'/profile/' + ${user.username}" style="text-decoration: none; color: inherit;">
+                        <i class="fas fa-user pe-2"></i> <!-- Icono de usuario para "Tu perfil" -->
+                        Tu perfil
+                    </a>
                 </div>
-                <a href="#" class="publish">Postear</a>
+                <a href="#" class="publish">
+                    <i class="fas fa-plus pe-2"></i> <!-- Icono de más para "Postear" -->
+                    Postear
+                </a>
             </div>
         </nav>
         <main class="content px-3 py-2 bg-white">

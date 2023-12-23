@@ -4,260 +4,275 @@
     <meta charset="UTF-8">
     <title th:text="${post.title + ' - ' + post.author.username}"></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-
-        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-
-        *,
-        ::after,
-        ::before {
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            background-color: #00a9e1;
-        }
-
-        .main {
-            margin-top: 50px;
-        }
-
-        h3 {
-            font-size: 1.2375rem;
-            color: #FFF;
-        }
-
-        a {
-            cursor: pointer;
-            text-decoration: none;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        li {
-            list-style: none;
-        }
-
-        /* Layout skeleton */
-
-        .wrapper {
-            align-items: stretch;
-            display: flex;
-            width: 100%;
-        }
-
-        #sidebar {
-            max-width: 264px;
-            min-width: 264px;
-            transition: all 0.35s ease-in-out;
-            box-shadow: 0 0 35px 0 rgba(49, 57, 66, 0.5);
-            z-index: 1111;
-            background-color: #0099d7;
-        }
-
-        /* Sidebar collapse */
-
-        #sidebar.collapsed {
-            margin-left: -264px;
-        }
-
-        .main {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            width: 100%;
-            overflow: hidden;
-            transition: all 0.35s ease-in-out;
-        }
-
-        .sidebar-logo {
-            padding: 1.15rem 1.5rem;
-        }
-
-        .sidebar-logo:hover {
-            transform: scale(1.05);
-            transition: transform .2s;
-        }
-
-        .sidebar-logo a {
-            color: #e9ecef;
-            font-size: 1.25rem;
-            font-weight: 600;
-        }
-
-        .sidebar-nav {
-            padding: 0;
-        }
-
-        .sidebar-nav .sidebar-link:hover {
-            transform: scale(1.05);
-            transition: transform .2s;
-        }
-
-        .sidebar-header {
-            color: #e9ecef;
-            font-size: .75rem;
-            padding: 1.5rem 1.5rem .375rem;
-        }
-
-        a.sidebar-link {
-            padding: .625rem 1.625rem;
-            color: #e9ecef;
-            position: relative;
-            display: block;
-            font-size: 1rem;
-        }
-
-        .sidebar-link[data-bs-toggle="collapse"]::after {
-            border: solid;
-            border-width: 0 .075rem .075rem 0;
-            content: "";
-            display: inline-block;
-            padding: 2px;
-            position: absolute;
-            right: 1.5rem;
-            top: 1.4rem;
-            transform: rotate(-135deg);
-            transition: all .2s ease-out;
-        }
-
-        .sidebar-link[data-bs-toggle="collapse"].collapsed::after {
-            transform: rotate(45deg);
-            transition: all .2s ease-out;
-        }
-
-        .content {
-            flex: 1;
-            max-width: 100vw;
-            width: 100vw;
-        }
-
-        /* Responsive */
-
-        @media (min-width: 768px) {
-            .content {
-                width: auto;
-            }
-        }
-
-        #navbar {
-            position: fixed;
-            top: 0px;
-            width: 100%;
-            z-index: 9999;
-            background-color: #13b2ec;
-        }
-
-        .navbar-items a {
-            padding: 5px 15px;
-            color: #e9ecef;
-            font-size: 1rem;
-            font-weight: 600;
-            margin-right: 1.5rem;
-        }
-
-        .navbar-items {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%; /* Los elementos se distribuyan a lo largo de toda la barra de navegación */
-
-        }
-
-        .navbar-group {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem; /* Separación mínima entre los elementos del grupo */
-            flex-grow: 1;
-        }
-
-        .navbar-group a:hover {
-            transform: scale(1.15);
-            transition: transform .2s;
-        }
-
-        .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-        }
-
-        .publish:hover {
-            transform: scale(1.15);
-            transition: transform .2s;
-        }
-
-        .navbar-brand-collapsed {
-            color: #e9ecef;
-            font-size: 1.25rem;
-            font-weight: 600;
-        }
-
-        .navbar-brand-collapsed:hover {
-            transform: scale(1.15);
-            transition: transform .2s;
-        }
-
-        .card {
-            margin-top: 50px;
-            margin-bottom: -30px;
-        }
-
-        .card:hover {
-            transform: scale(1.05);
-            transition: transform .2s;
-        }
-
-        .navbar-center {
-            position: absolute;
-            left: 40%;
-        }
-
-        .modal.fade .modal-dialog {
-            transition: transform 0.3s ease-out;
-            transform: translateY(-100%);
-        }
-
-        .modal.show .modal-dialog {
-            transform: translateY(0);
-        }
-
-
-        .rounded-circle {
-            width: 30px;
-            height: 30px;
-            margin-right: 10px;
-        }
-
-
-        .card-img-top {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 50%;
-            margin-right: 20px;
-        }
-
-
-        .card-body {
-            display: flex;
-            align-items: center;
-        }
-
-
-    </style>
+    <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script>
 </head>
+<style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+    *,
+    ::after,
+    ::before {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        background-color: #00a9e1;
+    }
+
+    .main {
+        margin-top: 50px;
+    }
+
+    h3 {
+        font-size: 1.2375rem;
+        color: #FFF;
+    }
+
+    a {
+        cursor: pointer;
+        text-decoration: none;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    /* Layout skeleton */
+
+    .wrapper {
+        align-items: stretch;
+        display: flex;
+        width: 100%;
+    }
+
+    #sidebar {
+        max-width: 264px;
+        min-width: 264px;
+        transition: all 0.35s ease-in-out;
+        box-shadow: 0 0 35px 0 rgba(49, 57, 66, 0.5);
+        z-index: 1111;
+        background-color: #0099d7;
+    }
+
+    .sidebar-content {
+        position: fixed;
+        top: 0;
+        height: 100%;
+        overflow: auto;
+    }
+
+    /* Sidebar collapse */
+
+    #sidebar.collapsed {
+        margin-left: -264px;
+    }
+
+    .main {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        width: 100%;
+        overflow: hidden;
+        transition: all 0.35s ease-in-out;
+    }
+
+    .sidebar-logo {
+        padding: 1.15rem 1.5rem;
+    }
+
+    .sidebar-logo:hover {
+        transform: scale(1.05);
+        transition: transform .2s;
+    }
+
+    .sidebar-logo a {
+        color: #e9ecef;
+        font-size: 1.25rem;
+        font-weight: 600;
+    }
+
+    .sidebar-nav {
+        padding: 0;
+    }
+
+    .sidebar-nav .sidebar-link:hover {
+        transform: scale(1.05);
+        transition: transform .2s;
+    }
+
+    .sidebar-header {
+        color: #e9ecef;
+        font-size: .75rem;
+        padding: 1.5rem 1.5rem .375rem;
+    }
+
+    a.sidebar-link {
+        padding: .625rem 1.625rem;
+        color: #e9ecef;
+        position: relative;
+        display: block;
+        font-size: 1rem;
+    }
+
+    .sidebar-link[data-bs-toggle="collapse"]::after {
+        border: solid;
+        border-width: 0 .075rem .075rem 0;
+        content: "";
+        display: inline-block;
+        padding: 2px;
+        position: absolute;
+        right: 1.5rem;
+        top: 1.4rem;
+        transform: rotate(-135deg);
+        transition: all .2s ease-out;
+    }
+
+    .sidebar-link[data-bs-toggle="collapse"].collapsed::after {
+        transform: rotate(45deg);
+        transition: all .2s ease-out;
+    }
+
+    .content {
+        flex: 1;
+        max-width: 100vw;
+        width: 100vw;
+    }
+
+    /* Responsive */
+
+    @media (min-width: 768px) {
+        .content {
+            width: auto;
+        }
+    }
+
+    #navbar {
+        position: fixed;
+        top: 0px;
+        width: 100%;
+        z-index: 9999;
+        background-color: #13b2ec;
+    }
+
+    .navbar-items a {
+        padding: 5px 15px;
+        color: #e9ecef;
+        font-size: 1rem;
+        font-weight: 600;
+        margin-right: 0.25rem;
+    }
+
+    .navbar-items {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%; /* Los elementos se distribuyan a lo largo de toda la barra de navegación */
+
+    }
+
+    .navbar-group {
+        display: flex;
+        justify-content: center;
+        gap: 0.25rem; /* Separación mínima entre los elementos del grupo */
+        flex-grow: 1;
+    }
+
+    .navbar-group a:hover {
+        transform: scale(1.07);
+        transition: transform .2s;
+    }
+
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+
+    .navbar-items .publish {
+        font-size: 1.25rem;
+    }
+
+    .publish:hover {
+        transform: scale(1.15);
+        transition: transform .2s;
+    }
+
+    .navbar-brand-collapsed {
+        color: #e9ecef;
+        font-size: 1.25rem;
+        font-weight: 600;
+    }
+
+    .navbar-brand-collapsed:hover {
+        transform: scale(1.07);
+        transition: transform .2s;
+    }
+
+    .card {
+        margin-top: 50px;
+        margin-bottom: -30px;
+    }
+
+    .card:hover {
+        transform: scale(1.025);
+        transition: transform .2s;
+    }
+
+    .navbar-center {
+        position: absolute;
+        left: 40%;
+    }
+
+    .modal.fade .modal-dialog {
+        transition: transform 0.3s ease-out;
+        transform: translateY(-100%);
+    }
+
+    .modal.show .modal-dialog {
+        transform: translateY(0);
+    }
+
+
+    .rounded-circle {
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+    }
+
+
+    .card-img-top {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-right: 20px;
+    }
+
+
+    .card-body {
+        display: flex;
+        align-items: center;
+    }
+
+
+</style>
 <body>
 <!-- Barra de navegación y la barra lateral -->
 <div class="wrapper">
     <aside id="sidebar" class="collapsed">
-        <div class="h-100">
+        <div class="h-100 sidebar-content">
             <div class="sidebar-logo">
-                <a href="#" class="publish-sidebar">Postear</a>
+                <a href="#" class="publish-sidebar">
+                    <i class="fas fa-plus pe-2"></i> <!-- Icono de más para "Postear" -->
+                    Postear
+                </a>
             </div>
             <!-- Sidebar Navigation -->
             <ul class="sidebar-nav">
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
+                    <a href="/home" class="sidebar-link">
                         <i class="fas fa-home pe-2"></i> <!-- Icono de casa para "Inicio" -->
                         Inicio
                     </a>
@@ -269,7 +284,7 @@
                         <i class="fas fa-search pe-2"></i> <!-- Icono de lupa para "Explorar" -->
                         Explorar
                     </a>
-                    <a href="#" class="sidebar-link">
+                    <a th:href="'/profile/' + ${user.username}" class="sidebar-link">
                         <i class="fas fa-user pe-2"></i> <!-- Icono de usuario para "Tu perfil" -->
                         Tu perfil
                     </a>
@@ -277,10 +292,11 @@
             </ul>
         </div>
     </aside>
+    <!-- Main Component -->
     <div class="main">
         <nav class="navbar navbar-expand px-3 border-bottom" id="navbar">
             <!-- Botón para ocultar la sidebar -->
-            <button class="btn" type="button">
+            <button class="btn" type="button" data-bs-theme="dark">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <!-- Text and items to show when sidebar is collapsed -->
@@ -289,12 +305,27 @@
                id="sounders-navbar-center">Sounders</a>
             <div class="navbar-items" style="display: none;">
                 <div class="navbar-group">
-                    <a href="/home">Inicio</a>
-                    <a href="#">Notificaciones</a>
-                    <a href="#">Explorar</a>
-                    <a href="#">Tu perfil</a>
+                    <a href="#">
+                        <i class="fas fa-home pe-2"></i> <!-- Icono de casa para "Inicio" -->
+                        Inicio
+                    </a>
+                    <a href="#">
+                        <i class="fas fa-bell pe-2"></i> <!-- Icono de campana para "Notificaciones" -->
+                        Notificaciones
+                    </a>
+                    <a href="#">
+                        <i class="fas fa-search pe-2"></i> <!-- Icono de lupa para "Explorar" -->
+                        Explorar
+                    </a>
+                    <a th:href="'/profile/' + ${user.username}">
+                        <i class="fas fa-user pe-2"></i> <!-- Icono de usuario para "Tu perfil" -->
+                        Tu perfil
+                    </a>
                 </div>
-                <a href="#" class="publish">Postear</a>
+                <a href="#" class="publish">
+                    <i class="fas fa-plus pe-2"></i> <!-- Icono de más para "Postear" -->
+                    Postear
+                </a>
             </div>
         </nav>
         <!-- Contenido de la página -->
@@ -307,7 +338,8 @@
                         <div>
                             <h5 class="card-title" th:text="${post.title}"></h5>
                             <p class="card-text" th:text="${post.text}"></p>
-                            <p class="card-text"><small class="text-muted" th:text="${post.author.username}"></small></p>
+                            <p class="card-text"><small class="text-muted" th:text="${post.author.username}"></small>
+                            </p>
                         </div>
                     </div>
                 </div>
