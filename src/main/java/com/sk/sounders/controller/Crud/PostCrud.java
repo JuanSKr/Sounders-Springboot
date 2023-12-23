@@ -4,15 +4,11 @@ import com.sk.sounders.entity.Post;
 import com.sk.sounders.entity.User;
 import com.sk.sounders.service.impl.PostServiceImpl;
 import com.sk.sounders.service.impl.UserServiceImpl;
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -24,6 +20,7 @@ public class PostCrud {
 
     @Autowired
     UserServiceImpl userService;
+
     @GetMapping("/home")
     public String viewPosts(Model model) {
         model.addAttribute("post", new Post());
@@ -48,7 +45,7 @@ public class PostCrud {
             post.setAuthor(user);
             postService.save(post);
         } else {
-            System.out.println("No se ha encontrado el usuario");
+            System.err.println("No se ha encontrado el usuario");
         }
 
         System.out.println("Post guardado");
