@@ -16,6 +16,8 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
     public Post findById(long id);
 
+    public Post findByTitle(String title);
+
     public Post save(Post post);
 
 }

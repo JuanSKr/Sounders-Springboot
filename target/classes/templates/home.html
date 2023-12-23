@@ -83,6 +83,11 @@
         padding: 1.15rem 1.5rem;
     }
 
+    .sidebar-logo:hover {
+        transform: scale(1.05);
+        transition: transform .2s;
+    }
+
     .sidebar-logo a {
         color: #e9ecef;
         font-size: 1.25rem;
@@ -94,7 +99,8 @@
     }
 
     .sidebar-nav .sidebar-link:hover {
-        text-shadow: 1px 1px 2px #13b2ec;
+        transform: scale(1.05);
+        transition: transform .2s;
     }
 
     .sidebar-header {
@@ -176,11 +182,13 @@
     }
 
     .navbar-group a:hover {
-        text-shadow: 1px 1px 2px #13b2ec;
+        transform: scale(1.15);
+        transition: transform .2s;
     }
 
     .publish:hover {
-        text-shadow: 1px 1px 2px #13b2ec;
+        transform: scale(1.15);
+        transition: transform .2s;
     }
 
     .navbar-brand-collapsed {
@@ -189,8 +197,13 @@
         font-weight: 600;
     }
 
+    .navbar-brand-collapsed:hover {
+        transform: scale(1.15);
+        transition: transform .2s;
+    }
+
     .card {
-        margin-top: 37px;
+        margin-top: 50px;
         margin-bottom: -30px;
     }
 
@@ -201,8 +214,7 @@
 
     .navbar-center {
         position: absolute;
-        left: 45%;
-        transform: translateX(-50%);
+        left: 40%;
     }
 
     /*.animated-button {*/
@@ -269,6 +281,20 @@
         color: black;
     }
 
+    .rounded-circle {
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+    }
+
+    .card-img-top {
+        border-radius: 20px;
+    }
+
+    .navbar-toggler-icon {
+        color: white;
+    }
+
 </style>
 
 
@@ -277,12 +303,12 @@
     <aside id="sidebar" class="collapsed">
         <div class="h-100">
             <div class="sidebar-logo">
-                <a href="#">Postear</a>
+                <a href="#" class="publish-sidebar">Postear</a>
             </div>
             <!-- Sidebar Navigation -->
             <ul class="sidebar-nav">
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
+                    <a href="/home" class="sidebar-link">
                         <i class="fas fa-home pe-2"></i> <!-- Icono de casa para "Inicio" -->
                         Inicio
                     </a>
@@ -353,16 +379,17 @@
                     <div class="container">
                         <div class="d-flex flex-column align-items-center">
                             <div class="col-md-4 mb-3" th:each="post:${posts}">
-                                <a th:href="@{/song/view/{id}(id=${post.id})}"
+                                <a th:href="@{/post/view/{title}(title=${post.title})}"
                                    style="text-decoration: none; color: inherit;">
                                     <div class="card h-100 shadow">
                                         <div class="card-body d-flex flex-column">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <h5 class="card-title" th:text="${post.author.username}"></h5>
-                                                <img th:src="${post.author.avatar}" alt="Avatar" class="rounded-circle"
-                                                     width="50" height="50">
+                                            <h5 class="card-title" th:text="${post.title}"></h5>
+                                            <p class="card-text" th:text="${post.genre}"></p>
+                                            <img th:src="${post.image}" alt="Image" class="card-img-top">
+                                            <div class="d-flex align-items-center mt-3">
+                                                <img th:src="${post.author.avatar}" alt="Avatar" class="rounded-circle" width="50" height="50">
+                                                <p class="card-text ml-2" th:text="'@' + ${post.author.username}"></p>
                                             </div>
-                                            <p class="card-text" th:text="${post.text}"></p>
                                         </div>
                                     </div>
                                 </a>
@@ -407,6 +434,12 @@
 
 <script>
     document.querySelector('.publish').addEventListener('click', function () {
+        var postModal = new bootstrap.Modal(document.getElementById('postModal'));
+        postModal.show();
+    });
+</script>
+<script>
+    document.querySelector('.publish-sidebar').addEventListener('click', function () {
         var postModal = new bootstrap.Modal(document.getElementById('postModal'));
         postModal.show();
     });

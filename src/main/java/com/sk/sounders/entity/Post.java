@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -26,15 +29,17 @@ public class Post {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String text;
 
+    @Column(nullable = false)
     private String spotify;
+
+    @Column(nullable = false)
+    private String genre;
 
     @Column(nullable = false)
     private String image;
 
     @Column(nullable = false)
     private Long likes = 0L;
-
-
 
     @ManyToOne
     @JoinColumn(name = "author_id", nullable = false)

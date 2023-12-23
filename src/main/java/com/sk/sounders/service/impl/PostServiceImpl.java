@@ -21,6 +21,10 @@ public class PostServiceImpl {
         return postRepository.findById(id);
     }
 
+    public Post findByTitle(String title) {
+        return postRepository.findByTitle(title);
+    }
+
     public Post save(Post post) {
         return postRepository.save(post);
     }
