@@ -22,8 +22,12 @@ public class UserDto {
     private String username;
 
     @NotEmpty(message = "Debes escribir una dirección de email.")
-    @Email
+    @Email(message = "Por favor, introduce un formato de correo electrónico válido")
     private String email;
+
     @NotEmpty(message = "Debes escribir una contraseña.")
     private String password;
+
+    @NotEmpty(message = "Debes confirmar tu contraseña.")
+    private String confirmPassword;
 }

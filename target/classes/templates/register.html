@@ -27,6 +27,9 @@
             <div th:if="${param.success}">
                 <div class="alert alert-info">Te has registrado correctamente. ¡Bienvenido a Sounders!</div>
             </div>
+            <div id="redirectAlert" class="alert alert-success fade show" role="alert" style="display: none;">
+                Estás siendo redirigido a la página de inicio de sesión...
+            </div>
         </div>
         <div class="card-header">
             <h2 class="text-center">Registrate en Sounders</h2>
@@ -87,6 +90,18 @@
                        th:if="${#fields.hasErrors('password')}">
                     </p>
                 </div>
+                <div class="form-group mb-3">
+                    <label class="form-label">Confirmar Contraseña</label>
+                    <input class="form-control"
+                           id="confirmPassword"
+                           name="confirmPassword"
+                           placeholder="Confirma tu contraseña"
+                           type="password"
+                    />
+                    <p th:errors="*{confirmPassword}" class="text-danger"
+                       th:if="${#fields.hasErrors('confirmPassword')}">
+                    </p>
+                </div>
 
                 <div class="form-group mb-3">
                     <button class="btn btn-primary" type="submit">Crear cuenta</button>
@@ -97,5 +112,13 @@
     </div>
 </div>
 </div>
+<script>
+    if (document.querySelector('.alert-info')) {
+        document.getElementById('redirectAlert').style.display = 'block';
+        setTimeout(function () {
+            window.location.href = '/login';
+        }, 3000);
+    }
+</script>
 </body>
 </html>

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 public class AuthController {
@@ -46,9 +47,20 @@ public class AuthController {
                                BindingResult result,
                                Model model) {
         User existing = userService.findByEmail(user.getEmail());
+        User existingUsername = userService.findByUsername(user.getUsername());
         if (existing != null) {
             result.rejectValue("email", null, "Esta cuenta ya está registrada.");
         }
+        if (existingUsername != null) {
+            result.rejectValue("username", null, "Este nombre de usuario ya está registrado.");
+        }
+
+        if(!Objects.equals(user.getPassword(), user.getConfirmPassword())){
+            result.rejectValue("confirmPassword", null, "Las contraseñas no coinciden.");
+        }
+
+
+
         if (result.hasErrors()) {
             model.addAttribute("user", user);
             return "register";
@@ -56,6 +68,5 @@ public class AuthController {
         userService.saveUser(user);
         return "redirect:/register?success";
     }
-
 
 }

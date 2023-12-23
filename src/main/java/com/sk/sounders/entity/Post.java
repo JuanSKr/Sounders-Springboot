@@ -20,13 +20,21 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
+    private String title;
+
     @Column(nullable = false, columnDefinition = "TEXT")
     private String text;
 
+    private String spotify;
+
+    @Column(nullable = false)
     private String image;
 
     @Column(nullable = false)
     private Long likes = 0L;
+
+
 
     @ManyToOne
     @JoinColumn(name = "author_id", nullable = false)
