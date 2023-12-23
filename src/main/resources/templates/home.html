@@ -187,17 +187,39 @@
     }
 
     @keyframes color-change {
-        0% {background-color: #008CBA;}
-        10% {background-color: #4CAF50;}
-        20% {background-color: #008CBA;}
-        30% {background-color: #4CAF50;}
-        40% {background-color: #008CBA;}
-        50% {background-color: #4CAF50;}
-        60% {background-color: #008CBA;}
-        70% {background-color: #4CAF50;}
-        80% {background-color: #008CBA;}
-        90% {background-color: #4CAF50;}
-        100% {background-color: #008CBA;}
+        0% {
+            background-color: #008CBA;
+        }
+        10% {
+            background-color: #4CAF50;
+        }
+        20% {
+            background-color: #008CBA;
+        }
+        30% {
+            background-color: #4CAF50;
+        }
+        40% {
+            background-color: #008CBA;
+        }
+        50% {
+            background-color: #4CAF50;
+        }
+        60% {
+            background-color: #008CBA;
+        }
+        70% {
+            background-color: #4CAF50;
+        }
+        80% {
+            background-color: #008CBA;
+        }
+        90% {
+            background-color: #4CAF50;
+        }
+        100% {
+            background-color: #008CBA;
+        }
     }
 
     .modal.fade .modal-dialog {
@@ -268,26 +290,38 @@
         <main class="content px-3 py-2 bg-white">
             <div class="container-fluid">
                 <div class="mb-3">
-                    <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel"
+                         aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="postModalLabel">Nuevo Post</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <form id="postForm" th:action="@{/post/save}" th:object="${post}" method="post">
                                         <div class="mb-3">
                                             <label for="postContent" class="form-label">Contenido</label>
-                                            <textarea class="form-control" id="postContent" th:field="*{text}" rows="3" required></textarea>
+                                            <textarea class="form-control" id="postContent" th:field="*{text}" rows="3"
+                                                      required></textarea>
                                         </div>
-                                        <button type="submit" class="btn btn-primary" id="savePostButton">Guardar</button>
+                                        <button type="submit" class="btn btn-primary" id="savePostButton">Guardar
+                                        </button>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <button class="animated-button">Click me</button>
+                    <!--<button class="animated-button">Click me</button>-->
+                    <div class="col-md-4 mb-3" th:each="post:${posts}">
+                        <div class="card h-100">
+                            <div class="2card-body d-flex flex-column">
+                                <h5 class="card-title" th:text="${post.author.username}"></h5>
+                                <p class="card-text" th:text="${post.text}"></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -310,7 +344,7 @@
     });
 </script>
 <script>
-    document.querySelector('.publish').addEventListener('click', function() {
+    document.querySelector('.publish').addEventListener('click', function () {
         var postModal = new bootstrap.Modal(document.getElementById('postModal'));
         postModal.show();
     });
