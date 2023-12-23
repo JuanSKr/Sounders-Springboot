@@ -24,7 +24,11 @@
     body {
         font-family: 'Poppins', sans-serif;
         margin: 0;
-        background-color: #343a40;
+        background-color: #00a9e1;
+    }
+
+    .main {
+        margin-top: 50px;
     }
 
     h3 {
@@ -56,6 +60,7 @@
         transition: all 0.35s ease-in-out;
         box-shadow: 0 0 35px 0 rgba(49, 57, 66, 0.5);
         z-index: 1111;
+        background-color: #0099d7;
     }
 
     /* Sidebar collapse */
@@ -72,6 +77,7 @@
         overflow: hidden;
         transition: all 0.35s ease-in-out;
     }
+
 
     .sidebar-logo {
         padding: 1.15rem 1.5rem;
@@ -137,7 +143,16 @@
         }
     }
 
+    #navbar {
+        position: fixed;
+        top: 0px;
+        width: 100%;
+        z-index: 9999;
+        background-color: #13b2ec;
+    }
+
     .navbar-items a {
+        padding: 5px 15px; /* Ajusta estos valores según tus necesidades */
         color: #e9ecef;
         font-size: 1rem;
         font-weight: 600;
@@ -149,7 +164,9 @@
         align-items: center;
         justify-content: space-between;
         width: 100%; /* Los elementos se distribuyan a lo largo de toda la barra de navegación */
+
     }
+
 
     .navbar-group {
         display: flex;
@@ -172,6 +189,22 @@
         font-weight: 600;
     }
 
+    .card {
+        margin-top: 37px;
+        margin-bottom: -30px;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        transition: transform .2s;
+    }
+
+    .navbar-center {
+        position: absolute;
+        left: 45%;
+        transform: translateX(-50%);
+    }
+
     .animated-button {
         background-color: #008CBA; /* Color inicial */
         border: none;
@@ -185,6 +218,7 @@
         cursor: pointer;
         animation: color-change 1s infinite;
     }
+
 
     @keyframes color-change {
         0% {
@@ -243,7 +277,7 @@
     <aside id="sidebar">
         <div class="h-100">
             <div class="sidebar-logo">
-                <a href="#">Sounders</a>
+                <a href="#">Postear</a>
             </div>
             <!-- Sidebar Navigation -->
             <ul class="sidebar-nav">
@@ -271,12 +305,14 @@
     <!-- Main Component -->
     <div class="main">
         <nav class="navbar navbar-expand px-3 border-bottom" id="navbar">
-            <!-- Button for sidebar toggle -->
+            <!-- Botón para ocultar la sidebar -->
             <button class="btn" type="button" data-bs-theme="dark">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <!-- Text and items to show when sidebar is collapsed -->
             <a class="navbar-brand-collapsed sidebar-logo" style="display: none;">Sounders</a>
+            <a class="navbar-brand-collapsed sidebar-logo collapsed navbar-center" style="display: inline;"
+               id="sounders-navbar-center">Sounders</a>
             <div class="navbar-items" style="display: none;">
                 <div class="navbar-group">
                     <a href="#">Inicio</a>
@@ -284,7 +320,7 @@
                     <a href="#">Explorar</a>
                     <a href="#">Tu perfil</a>
                 </div>
-                <a href="#" class="publish">Publicar</a>
+                <a href="#" class="publish">Postear</a>
             </div>
         </nav>
         <main class="content px-3 py-2 bg-white">
@@ -292,7 +328,8 @@
                 <div class="mb-3">
                     <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel"
                          aria-hidden="true">
-                        <div class="modal-dialog">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <!-- Agrega la clase modal-dialog-centered aquí -->
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="postModalLabel">Nuevo Post</h5>
@@ -317,20 +354,26 @@
                     <div class="container">
                         <div class="d-flex flex-column align-items-center">
                             <div class="col-md-4 mb-3" th:each="post:${posts}">
-                                <div class="card h-100 shadow">
-                                    <div class="card-body d-flex flex-column">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <h5 class="card-title" th:text="${post.author.username}"></h5>
-                                            <img th:src="${post.author.avatar}" alt="Avatar" class="rounded-circle" width="50" height="50">
+                                <a th:href="@{/song/view/{id}(id=${post.id})}"
+                                   style="text-decoration: none; color: inherit;">
+                                    <div class="card h-100 shadow">
+                                        <div class="card-body d-flex flex-column">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <h5 class="card-title" th:text="${post.author.username}"></h5>
+                                                <img th:src="${post.author.avatar}" alt="Avatar" class="rounded-circle"
+                                                     width="50" height="50">
+                                            </div>
+                                            <p class="card-text" th:text="${post.text}"></p>
                                         </div>
-                                        <p class="card-text" th:text="${post.text}"></p>
-                                        <a href="#" class="btn btn-primary mt-auto">Ver canción</a>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div id="postAlert" class="alert alert-primary" role="alert" style="display: none;">
+                Post guardado correctamente.
             </div>
         </main>
     </div>
@@ -339,23 +382,35 @@
     const toggler = document.querySelector(".btn");
     const brand = document.querySelector(".navbar-brand-collapsed");
     const navbarItems = document.querySelector(".navbar-items");
+    const soundersNavbarCenter = document.querySelector("#sounders-navbar-center");
     toggler.addEventListener("click", function () {
         const sidebar = document.querySelector("#sidebar");
         sidebar.classList.toggle("collapsed");
         if (sidebar.classList.contains("collapsed")) {
             brand.style.display = "inline";
             navbarItems.style.display = "flex";
+            soundersNavbarCenter.style.display = "none"; // Oculta el elemento cuando la sidebar se colapse
         } else {
             brand.style.display = "none";
             navbarItems.style.display = "none";
+            soundersNavbarCenter.style.display = "inline"; // Muestra el elemento cuando la sidebar no está colapsada
         }
     });
 </script>
+
 <script>
     document.querySelector('.publish').addEventListener('click', function () {
         var postModal = new bootstrap.Modal(document.getElementById('postModal'));
         postModal.show();
     });
+</script>
+<script>
+    document.getElementById('savePostButton').addEventListener('click', function () {
+        document.getElementById('postAlert').style.display = 'block';
+        setTimeout(function () {
+            document.getElementById('postAlert').style.display = 'none';
+        }, 3000);
+    })
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
