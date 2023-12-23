@@ -16,7 +16,7 @@ public class HomeController {
         if (auth != null && auth.isAuthenticated()) {
             return "index";
         } else {
-            return "feed";
+            return "home";
         }
 
     }

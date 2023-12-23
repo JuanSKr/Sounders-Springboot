@@ -69,11 +69,11 @@ public class UserServiceImpl implements UserService {
         return roleRepository.save(role);
     }
 
-    private User findById(long id) {
+    public User findById(long id) {
         return userRepository.findById(id);
     }
 
-    private User findByUsername(String username) {
+    public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
 }

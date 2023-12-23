@@ -147,8 +147,8 @@
     .navbar-items {
         display: flex;
         align-items: center;
-        justify-content: space-between; /* Modifica esta línea */
-        width: 100%; /* Añade esta línea para que los elementos se distribuyan a lo largo de toda la barra de navegación */
+        justify-content: space-between;
+        width: 100%; /* Los elementos se distribuyan a lo largo de toda la barra de navegación */
     }
 
     .navbar-group {
@@ -170,6 +170,47 @@
         color: #e9ecef;
         font-size: 1.25rem;
         font-weight: 600;
+    }
+
+    .animated-button {
+        background-color: #008CBA; /* Color inicial */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        animation: color-change 1s infinite;
+    }
+
+    @keyframes color-change {
+        0% {background-color: #008CBA;}
+        10% {background-color: #4CAF50;}
+        20% {background-color: #008CBA;}
+        30% {background-color: #4CAF50;}
+        40% {background-color: #008CBA;}
+        50% {background-color: #4CAF50;}
+        60% {background-color: #008CBA;}
+        70% {background-color: #4CAF50;}
+        80% {background-color: #008CBA;}
+        90% {background-color: #4CAF50;}
+        100% {background-color: #008CBA;}
+    }
+
+    .modal.fade .modal-dialog {
+        transition: transform 0.3s ease-out;
+        transform: translateY(-100%);
+    }
+
+    .modal.show .modal-dialog {
+        transform: translateY(0);
+    }
+
+    .modal-content {
+        color: black;
     }
 
 </style>
@@ -227,7 +268,26 @@
         <main class="content px-3 py-2 bg-white">
             <div class="container-fluid">
                 <div class="mb-3">
-                    <h3>Sounders</h3>
+                    <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="postModalLabel">Nuevo Post</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="postForm" th:action="@{/post/save}" th:object="${post}" method="post">
+                                        <div class="mb-3">
+                                            <label for="postContent" class="form-label">Contenido</label>
+                                            <textarea class="form-control" id="postContent" th:field="*{text}" rows="3" required></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary" id="savePostButton">Guardar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="animated-button">Click me</button>
                 </div>
             </div>
         </main>
@@ -247,6 +307,12 @@
             brand.style.display = "none";
             navbarItems.style.display = "none";
         }
+    });
+</script>
+<script>
+    document.querySelector('.publish').addEventListener('click', function() {
+        var postModal = new bootstrap.Modal(document.getElementById('postModal'));
+        postModal.show();
     });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
