@@ -398,9 +398,15 @@
                                 <div class="modal-body">
                                     <form id="postForm" th:action="@{/post/save}" th:object="${post}" method="post">
                                         <div class="mb-3">
+                                            <label for="postTitle" class="form-label">Título</label>
+                                            <input type="text" class="form-control" id="postTitle" th:field="*{title}"
+                                                   required>
                                             <label for="postContent" class="form-label">Contenido</label>
                                             <textarea class="form-control" id="postContent" th:field="*{text}" rows="3"
                                                       required></textarea>
+                                            <label for="postGenre" class="form-label">Género</label>
+                                            <input type="text" class="form-control" id="postGenre" th:field="*{genre}"
+                                                   required>
                                         </div>
                                         <button type="submit" class="btn btn-primary" id="savePostButton">Guardar
                                         </button>
