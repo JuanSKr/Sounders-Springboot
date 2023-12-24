@@ -1,6 +1,7 @@
 package com.sk.sounders.repository;
 
 import com.sk.sounders.entity.Post;
+import com.sk.sounders.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -17,6 +18,8 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     public Post findById(long id);
 
     public Post findByTitle(String title);
+
+    public Post findByTitleAndAuthorAndId(String title, User author, long id);
 
     public Post save(Post post);
 

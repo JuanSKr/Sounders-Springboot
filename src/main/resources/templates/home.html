@@ -432,7 +432,7 @@
                     <div class="container">
                         <div class="d-flex flex-column align-items-center">
                             <div class="col-md-4 mb-3" th:each="post:${posts}">
-                                <a th:href="'/post/view/' + ${post.title}"
+                                <a th:href="'/post/' + ${post.id} + '/' + ${post.author.username} + '/' + ${post.title}"
                                    style="text-decoration: none; color: inherit;">
                                     <div class="card h-100 shadow">
                                         <div class="card-body d-flex flex-column">

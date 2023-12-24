@@ -1,6 +1,7 @@
 package com.sk.sounders.service.impl;
 
 import com.sk.sounders.entity.Post;
+import com.sk.sounders.entity.User;
 import com.sk.sounders.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,10 @@ public class PostServiceImpl {
 
     public Post findByTitle(String title) {
         return postRepository.findByTitle(title);
+    }
+
+    public Post findByTitleAndAuthorAndId(String title, User author, long id) {
+        return postRepository.findByTitleAndAuthorAndId(title, author, id);
     }
 
     public Post save(Post post) {

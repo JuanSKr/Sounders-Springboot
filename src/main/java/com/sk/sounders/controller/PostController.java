@@ -21,9 +21,9 @@ public class PostController {
     UserServiceImpl userService;
 
 
-    @GetMapping("/post/view/{title}")
-    public String viewPost(@PathVariable String title, Model model) {
-        model.addAttribute("post", postService.findByTitle(title));
+    @GetMapping("/post/{id}/{username}/{title}")
+    public String viewPost(@PathVariable String title, @PathVariable long id, @PathVariable String username, Model model) {
+        model.addAttribute("post", postService.findByTitleAndAuthorAndId(title, userService.findByUsername(username), id));
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         UserDetails userDetails = null;
         if (principal instanceof UserDetails) {
