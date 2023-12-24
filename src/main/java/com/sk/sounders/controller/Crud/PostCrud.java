@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.thymeleaf.exceptions.TemplateProcessingException;
 
 @Controller
 public class PostCrud {
@@ -23,17 +24,21 @@ public class PostCrud {
     public String viewPosts(Model model) {
         model.addAttribute("post", new Post());
 
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        UserDetails userDetails = null;
-        if (principal instanceof UserDetails) {
-            userDetails = (UserDetails) principal;
+        try {
+            Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            UserDetails userDetails = null;
+            if (principal instanceof UserDetails) {
+                userDetails = (UserDetails) principal;
+            }
+            if (userDetails == null) {
+                return "error";
+            }
+            String currentUsername = userDetails.getUsername();
+            User user = userService.findByEmail(currentUsername);
+            model.addAttribute("user", user);
+        } catch (NullPointerException | TemplateProcessingException e) {
+            System.out.println("No hay posts");
         }
-        if (userDetails == null) {
-            return "error";
-        }
-        String currentUsername = userDetails.getUsername();
-        User user = userService.findByEmail(currentUsername);
-        model.addAttribute("user", user);
 
         try {
             model.addAttribute("posts", postService.findAllDesc());
