@@ -310,6 +310,10 @@
         color: white;
     }
 
+    .sidebar-logo {
+        font-size: 1.5rem;
+    }
+
 </style>
 
 
@@ -342,7 +346,10 @@
                         <i class="fas fa-user pe-2"></i> <!-- Icono de usuario para "Tu perfil" -->
                         Tu perfil
                     </a>
-
+                <li class="sidebar-item">
+                    <a th:href="@{/logout}" class="sidebar-link">
+                        <i class="fas fa-sign-out-alt pe-2"></i> <!-- Icono de salida para "Cerrar sesión" -->
+                        Cerrar sesión</a>
                 </li>
             </ul>
         </div>
@@ -391,9 +398,11 @@
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="postModalLabel">Nuevo Post</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
+                                    <h5 class="modal-title" id="postModalLabel">
+                                        <img th:src="${user.avatar}" alt="avatar" style="height: 30px; width: 30px; border-radius: 50%; float: left; margin-right: 10px;">
+                                        Nuevo Post
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <form id="postForm" th:action="@{/post/save}" th:object="${post}" method="post">
@@ -407,6 +416,10 @@
                                             <label for="postGenre" class="form-label">Género</label>
                                             <input type="text" class="form-control" id="postGenre" th:field="*{genre}"
                                                    required>
+
+                                            <label for="postImage" class="form-label">Imagen</label>
+                                            <input type="text" class="form-control" id="postImage" th:field="*{image}"
+                                                   required>
                                         </div>
                                         <button type="submit" class="btn btn-primary" id="savePostButton">Guardar
                                         </button>
@@ -419,7 +432,8 @@
                     <div class="container">
                         <div class="d-flex flex-column align-items-center">
                             <div class="col-md-4 mb-3" th:each="post:${posts}">
-                                <a th:href="'/post/view/' + ${post.title}" style="text-decoration: none; color: inherit;">
+                                <a th:href="'/post/view/' + ${post.title}"
+                                   style="text-decoration: none; color: inherit;">
                                     <div class="card h-100 shadow">
                                         <div class="card-body d-flex flex-column">
                                             <h5 class="card-title" th:text="${post.title}"></h5>
@@ -427,7 +441,8 @@
                                             <img th:src="${post.image}" alt="Image" class="card-img-top">
                                             <div class="d-flex align-items-center mt-3">
                                                 <a th:href="'/profile/' + ${post.author.username}">
-                                                    <img th:src="${post.author.avatar}" alt="Avatar" class="rounded-circle" width="50" height="50">
+                                                    <img th:src="${post.author.avatar}" alt="Avatar"
+                                                         class="rounded-circle" width="50" height="50">
                                                 </a>
                                                 <p class="card-text ml-2" th:text="'@' + ${post.author.username}"></p>
                                             </div>

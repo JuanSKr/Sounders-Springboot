@@ -40,9 +40,7 @@ public class ProfileController {
         if (username.equals(userFromMail.getUsername())) {
             return "myprofile";
         } else {
-            System.out.println("Nombre que se coge por ruta: "+username + " \n " + "Nombre que se coge del contexto: " + currentUsername);
             return "profile";
-
         }
     }
 

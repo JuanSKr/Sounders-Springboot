@@ -256,11 +256,15 @@
         align-items: center;
     }
 
+    .sidebar-logo {
+        font-size: 1.5rem;
+    }
 
 </style>
 <body>
 <!-- Barra de navegación y la barra lateral -->
 <div class="wrapper">
+    <!-- Sidebar -->
     <aside id="sidebar" class="collapsed">
         <div class="h-100 sidebar-content">
             <div class="sidebar-logo">
@@ -288,6 +292,10 @@
                         <i class="fas fa-user pe-2"></i> <!-- Icono de usuario para "Tu perfil" -->
                         Tu perfil
                     </a>
+                <li class="sidebar-item">
+                        <a th:href="@{/logout}" class="sidebar-link">
+                            <i class="fas fa-sign-out-alt pe-2"></i> <!-- Icono de salida para "Cerrar sesión" -->
+                        Cerrar sesión</a>
                 </li>
             </ul>
         </div>

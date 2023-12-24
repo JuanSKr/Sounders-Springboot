@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,13 +32,11 @@ public class Post {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String text;
 
-    @Column(nullable = false)
     private String spotify;
 
     @Column(nullable = false)
     private String genre;
 
-    @Column(nullable = false)
     private String image;
 
     @Column(nullable = false)
@@ -43,6 +44,7 @@ public class Post {
 
     @ManyToOne
     @JoinColumn(name = "author_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private User author;
 
 
