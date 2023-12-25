@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class PostServiceImpl {
@@ -46,7 +47,7 @@ public class PostServiceImpl {
         return postRepository.findAllDesc();
     }
 
-    public Post findByAuthor(User author) {
+    public List<Post> findByAuthor(User author) {
         return postRepository.findByAuthor(author);
     }
 

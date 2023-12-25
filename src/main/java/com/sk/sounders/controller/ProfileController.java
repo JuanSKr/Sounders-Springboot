@@ -42,7 +42,7 @@ public class ProfileController {
         }
         model.addAttribute("user", user);
         model.addAttribute("userFromMail", userFromMail);
-        model.addAttribute("post", postService.findByAuthor(user));
+        model.addAttribute("posts", postService.findByAuthor(user));
         if (username.equals(userFromMail.getUsername())) {
             return "myprofile";
         } else {

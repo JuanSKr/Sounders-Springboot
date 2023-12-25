@@ -28,6 +28,7 @@
     }
 
     .main {
+        height: auto;
         margin-top: 50px;
     }
 
@@ -228,56 +229,6 @@
         left: 40%;
     }
 
-    /*.animated-button {*/
-    /*    background-color: #008CBA; !* Color inicial *!*/
-    /*    border: none;*/
-    /*    color: white;*/
-    /*    padding: 15px 32px;*/
-    /*    text-align: center;*/
-    /*    text-decoration: none;*/
-    /*    display: inline-block;*/
-    /*    font-size: 16px;*/
-    /*    margin: 4px 2px;*/
-    /*    cursor: pointer;*/
-    /*    animation: color-change 1s infinite;*/
-    /*}*/
-
-    /*Pruebas con keyframes*/
-    /*@keyframes color-change {*/
-    /*    0% {*/
-    /*        background-color: #008CBA;*/
-    /*    }*/
-    /*    10% {*/
-    /*        background-color: #4CAF50;*/
-    /*    }*/
-    /*    20% {*/
-    /*        background-color: #008CBA;*/
-    /*    }*/
-    /*    30% {*/
-    /*        background-color: #4CAF50;*/
-    /*    }*/
-    /*    40% {*/
-    /*        background-color: #008CBA;*/
-    /*    }*/
-    /*    50% {*/
-    /*        background-color: #4CAF50;*/
-    /*    }*/
-    /*    60% {*/
-    /*        background-color: #008CBA;*/
-    /*    }*/
-    /*    70% {*/
-    /*        background-color: #4CAF50;*/
-    /*    }*/
-    /*    80% {*/
-    /*        background-color: #008CBA;*/
-    /*    }*/
-    /*    90% {*/
-    /*        background-color: #4CAF50;*/
-    /*    }*/
-    /*    100% {*/
-    /*        background-color: #008CBA;*/
-    /*    }*/
-    /*}*/
 
     .modal.fade .modal-dialog {
         transition: transform 0.3s ease-out;
@@ -368,6 +319,14 @@
         margin-left: 10px;
     }
 
+    hr {
+        margin: 20px auto 0;
+        width: 95%;
+        border: none;
+        border-top: 1px solid #3d3d3d;
+        border-radius: 50px;
+    }
+
 </style>
 
 
@@ -454,6 +413,24 @@
                     <h2 class="name" th:text="${user.name}">Nombre del usuario</h2>
                     <p class="username" th:text="'@' + ${user.username}">@username</p>
                     <p class="bio" th:text="${user.bio}">Biografía del usuario</p>
+                </div>
+            </div>
+            <hr>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-4" th:each="post : ${posts}">
+                        <div class="card h-100 shadow">
+                            <img th:src="${post.image}" class="card-img-top" alt="Post image">
+                            <div class="card-body">
+                                <h5 class="card-title" th:text="${post.title}"></h5>
+                                <p class="card-text" th:text="${post.text}"></p>
+                            </div>
+                            <div class="card-footer d-flex align-items-center">
+                                <img th:src="${post.author.avatar}" alt="Author Avatar" class="rounded-circle" width="50" height="50">
+                                <p class="card-text ml-2" th:text="'@' + ${post.author.username}"></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
