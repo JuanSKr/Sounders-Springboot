@@ -314,6 +314,60 @@
         font-size: 1.5rem;
     }
 
+    /* Profile styles */
+
+    .banner {
+        width: 100%;
+        height: 300px; /* Ajusta este valor según tus necesidades */
+        background-size: cover;
+        background-position: center;
+        position: relative; /* Establece un contexto de posicionamiento para los elementos hijos */
+    }
+
+    .profile-container {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-top: 20px; /* Ajusta este valor según tus necesidades */
+        margin-left: 40px; /* Ajusta este valor según tus necesidades */
+        position: relative; /* Establece un contexto de posicionamiento para los elementos hijos */
+    }
+
+    .profile-image {
+        position: absolute; /* Posiciona absolutamente la imagen del perfil */
+        z-index: 1; /* Asegura que la imagen del perfil se superponga al banner */
+        bottom: 50%; /* Posiciona la imagen del perfil a la mitad del contenedor del perfil */
+    }
+
+    .profile-image img {
+        border-radius: 50%;
+        width: 180px;
+        height: 180px;
+    }
+
+    .profile-info {
+        margin-left: 180px; /* Espacio adicional en la izquierda para el avatar */
+    }
+
+    .profile-info .name {
+        font-size: 1.8em;
+        font-weight: bold;
+        margin-bottom: 5px;
+        margin-left: 10px;
+    }
+
+    .profile-info .username {
+        color: grey;
+        margin-bottom: 15px;
+        margin-left: 10px;
+    }
+
+    .profile-info .bio {
+        color: grey;
+        font-size: 1.08em;
+        margin-left: 10px;
+    }
+
 </style>
 
 
@@ -390,6 +444,19 @@
                 </a>
             </div>
         </nav>
+        <main>
+            <div class="banner" th:style="'background-image: url(' + ${user.banner} + ');'"></div>
+            <div class="profile-container">
+                <div class="profile-image">
+                    <img th:src="${user.avatar}" alt="Foto de perfil">
+                </div>
+                <div class="profile-info">
+                    <h2 class="name" th:text="${user.name}">Nombre del usuario</h2>
+                    <p class="username" th:text="'@' + ${user.username}">@username</p>
+                    <p class="bio" th:text="${user.bio}">Biografía del usuario</p>
+                </div>
+            </div>
+        </main>
     </div>
 </div>
 <script>

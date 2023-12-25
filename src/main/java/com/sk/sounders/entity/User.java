@@ -34,6 +34,9 @@ public class User {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String avatar = "https://www.svgrepo.com/show/452030/avatar-default.svg";
 
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String banner = "https://i.pinimg.com/originals/10/25/9f/10259fd1101b894aa0167510c052ae5a.jpg";
+
     @Column(nullable = false, unique = true)
     private String email;
 

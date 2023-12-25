@@ -2,6 +2,7 @@ package com.sk.sounders.controller;
 
 import com.sk.sounders.entity.Post;
 import com.sk.sounders.entity.User;
+import com.sk.sounders.service.impl.PostServiceImpl;
 import com.sk.sounders.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,6 +19,9 @@ public class ProfileController {
 
     @Autowired
     UserServiceImpl userService;
+
+    @Autowired
+    PostServiceImpl postService;
 
 
     @GetMapping("/profile/{username}")
@@ -38,6 +42,7 @@ public class ProfileController {
         }
         model.addAttribute("user", user);
         model.addAttribute("userFromMail", userFromMail);
+        model.addAttribute("post", postService.findByAuthor(user));
         if (username.equals(userFromMail.getUsername())) {
             return "myprofile";
         } else {
