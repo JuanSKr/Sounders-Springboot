@@ -367,7 +367,7 @@
                id="sounders-navbar-center">Sounders</a>
             <div class="navbar-items" style="display: none;">
                 <div class="navbar-group">
-                    <a href="#">
+                    <a href="/home">
                         <i class="fas fa-home pe-2"></i> <!-- Icono de casa para "Inicio" -->
                         Inicio
                     </a>
@@ -379,7 +379,7 @@
                         <i class="fas fa-search pe-2"></i> <!-- Icono de lupa para "Explorar" -->
                         Explorar
                     </a>
-                    <a th:href="'/profile/' + ${user.username}" style="text-decoration: none; color: inherit;">
+                    <a th:href="'/profile/' + ${user.username}">
                         <i class="fas fa-user pe-2"></i> <!-- Icono de usuario para "Tu perfil" -->
                         Tu perfil
                     </a>

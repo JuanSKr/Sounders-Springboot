@@ -37,6 +37,7 @@ public class ProfileController {
             return "error";
         }
         model.addAttribute("user", user);
+        model.addAttribute("userFromMail", userFromMail);
         if (username.equals(userFromMail.getUsername())) {
             return "myprofile";
         } else {

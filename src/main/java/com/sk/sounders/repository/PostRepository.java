@@ -21,6 +21,8 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
     public Post findByTitleAndAuthorAndId(String title, User author, long id);
 
+    public Post findByAuthor(User author);
+
     public Post save(Post post);
 
 }

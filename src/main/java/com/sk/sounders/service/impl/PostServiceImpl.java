@@ -46,5 +46,8 @@ public class PostServiceImpl {
         return postRepository.findAllDesc();
     }
 
+    public Post findByAuthor(User author) {
+        return postRepository.findByAuthor(author);
+    }
 
 }
