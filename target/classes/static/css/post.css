@@ -70,7 +70,6 @@ li {
     transition: all 0.35s ease-in-out;
 }
 
-
 .sidebar-logo {
     padding: 1.15rem 1.5rem;
 }
@@ -165,7 +164,6 @@ a.sidebar-link {
 
 }
 
-
 .navbar-group {
     display: flex;
     justify-content: center;
@@ -178,12 +176,16 @@ a.sidebar-link {
     transition: transform .2s;
 }
 
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
 .navbar-items .publish {
     font-size: 1.25rem;
 }
 
 .publish:hover {
-    transform: scale(1.07);
+    transform: scale(1.15);
     transition: transform .2s;
 }
 
@@ -213,57 +215,6 @@ a.sidebar-link {
     left: 40%;
 }
 
-/*.animated-button {*/
-/*    background-color: #008CBA; !* Color inicial *!*/
-/*    border: none;*/
-/*    color: white;*/
-/*    padding: 15px 32px;*/
-/*    text-align: center;*/
-/*    text-decoration: none;*/
-/*    display: inline-block;*/
-/*    font-size: 16px;*/
-/*    margin: 4px 2px;*/
-/*    cursor: pointer;*/
-/*    animation: color-change 1s infinite;*/
-/*}*/
-
-/*Pruebas con keyframes*/
-/*@keyframes color-change {*/
-/*    0% {*/
-/*        background-color: #008CBA;*/
-/*    }*/
-/*    10% {*/
-/*        background-color: #4CAF50;*/
-/*    }*/
-/*    20% {*/
-/*        background-color: #008CBA;*/
-/*    }*/
-/*    30% {*/
-/*        background-color: #4CAF50;*/
-/*    }*/
-/*    40% {*/
-/*        background-color: #008CBA;*/
-/*    }*/
-/*    50% {*/
-/*        background-color: #4CAF50;*/
-/*    }*/
-/*    60% {*/
-/*        background-color: #008CBA;*/
-/*    }*/
-/*    70% {*/
-/*        background-color: #4CAF50;*/
-/*    }*/
-/*    80% {*/
-/*        background-color: #008CBA;*/
-/*    }*/
-/*    90% {*/
-/*        background-color: #4CAF50;*/
-/*    }*/
-/*    100% {*/
-/*        background-color: #008CBA;*/
-/*    }*/
-/*}*/
-
 .modal.fade .modal-dialog {
     transition: transform 0.3s ease-out;
     transform: translateY(-100%);
@@ -273,9 +224,6 @@ a.sidebar-link {
     transform: translateY(0);
 }
 
-.modal-content {
-    color: black;
-}
 
 .rounded-circle {
     width: 30px;
@@ -283,30 +231,21 @@ a.sidebar-link {
     margin-right: 10px;
 }
 
-.rounded-circle:hover {
-    box-shadow: 0 0 10px 3px rgba(0, 140, 186, 0.8);
-}
 
 .card-img-top {
-    border-radius: 20px;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 20px;
 }
 
-.navbar-toggler-icon {
-    color: white;
+
+.card-body {
+    display: flex;
+    align-items: center;
 }
 
 .sidebar-logo {
     font-size: 1.5rem;
-}
-
-h2.card-text {
-    font-size: 1.2em;
-    color: black;
-}
-
-p.card-text.username {
-    font-size: 0.8em;
-    color: grey;
-    margin-top: -10px;
-    margin-left: 5px;
 }

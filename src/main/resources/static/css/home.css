@@ -161,7 +161,7 @@ a.sidebar-link {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%; /* Los elementos se distribuyan a lo largo de toda la barra de navegación */
+    width: 100%;
 
 }
 
@@ -169,7 +169,7 @@ a.sidebar-link {
 .navbar-group {
     display: flex;
     justify-content: center;
-    gap: 0.25rem; /* Separación mínima entre los elementos del grupo */
+    gap: 0.25rem;
     flex-grow: 1;
 }
 

@@ -26,13 +26,3 @@ toggler.addEventListener("click", function () {
         soundersNavbarCenter.style.display = "inline";
     }
 });
-
-document.querySelector('.publish').addEventListener('click', function () {
-    var postModal = new bootstrap.Modal(document.getElementById('postModal'));
-    postModal.show();
-});
-
-document.querySelector('.publish-sidebar').addEventListener('click', function () {
-    var postModal = new bootstrap.Modal(document.getElementById('postModal'));
-    postModal.show();
-});

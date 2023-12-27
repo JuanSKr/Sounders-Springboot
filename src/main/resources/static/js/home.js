@@ -36,14 +36,3 @@ document.querySelector('.publish-sidebar').addEventListener('click', function ()
     var postModal = new bootstrap.Modal(document.getElementById('postModal'));
     postModal.show();
 });
-
-document.querySelectorAll('.like-button').forEach(button => {
-    button.addEventListener('click', function () {
-        const img = this.querySelector('img');
-        if (img.src.endsWith('/img/like.png')) {
-            img.src = '/img/like_hover.png';
-        } else {
-            img.src = '/img/like.png';
-        }
-    });
-});
