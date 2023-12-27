@@ -23,12 +23,8 @@ public class PostServiceImpl {
         return postRepository.findById(id);
     }
 
-    public Post findByTitle(String title) {
-        return postRepository.findByTitle(title);
-    }
-
-    public Post findByTitleAndAuthorAndId(String title, User author, long id) {
-        return postRepository.findByTitleAndAuthorAndId(title, author, id);
+    public Post findByAuthorAndId(User author, long id) {
+        return postRepository.findByAuthorAndId(author, id);
     }
 
     public Post save(Post post) {

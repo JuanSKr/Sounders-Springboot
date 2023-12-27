@@ -26,16 +26,9 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String title;
 
     @Column(nullable = false, columnDefinition = "TEXT")
     private String text;
-
-    private String spotify;
-
-    @Column(nullable = false)
-    private String genre;
 
     private String image;
 

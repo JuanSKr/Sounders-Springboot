@@ -18,11 +18,11 @@ public class UserDto {
     private String firstName;
 
     @NotEmpty
-    @Pattern(regexp = "^[^\\s]*$", message = "El nombre de usuario no puede contener espacios.")
+    @Pattern(regexp = "^[a-zA-Z0-9_]*$", message = "El nombre de usuario solo puede contener letras, números y '_'.")
     private String username;
 
     @NotEmpty(message = "Debes escribir una dirección de email.")
-    @Email(message = "Por favor, introduce un formato de correo electrónico válido")
+    @Email(message = "Por favor, introduce un formato de correo electrónico válido", regexp="^.+@.+\\.com$")
     private String email;
 
     @NotEmpty(message = "Debes escribir una contraseña.")

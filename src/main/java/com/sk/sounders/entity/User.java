@@ -32,7 +32,7 @@ public class User {
     private String bio;
 
     @Column(nullable = false, columnDefinition = "TEXT")
-    private String avatar = "https://www.svgrepo.com/show/452030/avatar-default.svg";
+    private String avatar = "https://i.imgur.com/2KdrQWR.png";
 
     @Column(nullable = false, columnDefinition = "TEXT")
     private String banner = "https://i.pinimg.com/originals/10/25/9f/10259fd1101b894aa0167510c052ae5a.jpg";

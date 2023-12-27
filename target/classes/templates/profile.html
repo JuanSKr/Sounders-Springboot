@@ -215,13 +215,31 @@
     }
 
     .card {
-        margin-top: 50px;
-        margin-bottom: -30px;
+        border: none;
+        border-radius: 15px;
+        transition: all .2s ease-in-out;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     }
 
     .card:hover {
-        transform: scale(1.025);
-        transition: transform .2s;
+        transform: scale(1.05);
+    }
+
+    .card-title {
+        font-size: 1.2em;
+        font-weight: bold;
+    }
+
+    .card-text {
+        color: grey;
+    }
+
+    .posts-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
     }
 
     .navbar-center {
@@ -253,8 +271,8 @@
         box-shadow: 0 0 10px 3px rgba(0, 140, 186, 0.8);
     }
 
-    .card-img-top {
-        border-radius: 20px;
+    .card .col-md-4 img {
+        border-radius: 15px;
     }
 
     .navbar-toggler-icon {
@@ -375,8 +393,8 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <!-- Text and items to show when sidebar is collapsed -->
-            <a class="navbar-brand-collapsed sidebar-logo" style="display: none;">Sounders</a>
-            <a class="navbar-brand-collapsed sidebar-logo collapsed navbar-center" style="display: inline;"
+            <a href="/home" class="navbar-brand-collapsed sidebar-logo" style="display: none;">Sounders</a>
+            <a href="/home" class="navbar-brand-collapsed sidebar-logo collapsed navbar-center" style="display: inline;"
                id="sounders-navbar-center">Sounders</a>
             <div class="navbar-items" style="display: none;">
                 <div class="navbar-group">
@@ -416,21 +434,24 @@
                 </div>
             </div>
             <hr>
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-md-6 col-lg-4" th:each="post : ${posts}">
+            <div class="posts-container">
+                <div class="col-md-4 mb-3" th:each="post:${posts}">
+                    <a th:href="'/post/' + ${post.author.username} + '/' + ${post.id}"
+                       style="text-decoration: none; color: inherit;">
                         <div class="card h-100 shadow">
-                            <img th:src="${post.image}" class="card-img-top" alt="Post image">
-                            <div class="card-body">
-                                <h5 class="card-title" th:text="${post.title}"></h5>
-                                <p class="card-text" th:text="${post.text}"></p>
-                            </div>
-                            <div class="card-footer d-flex align-items-center">
-                                <img th:src="${post.author.avatar}" alt="Author Avatar" class="rounded-circle" width="50" height="50">
-                                <p class="card-text ml-2" th:text="'@' + ${post.author.username}"></p>
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img th:src="${post.image}" alt="Image" class="img-fluid">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body d-flex flex-column">
+                                        <p class="card-text" th:text="${post.text}"></p>
+                                        <p class="card-text" th:text="'@' + ${post.author.username}"></p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </main>
