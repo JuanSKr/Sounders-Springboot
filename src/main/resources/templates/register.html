@@ -44,8 +44,7 @@
                            name="firstName"
                            placeholder="Introduce tu nombre"
                            th:field="*{firstName}"
-                           type="text"
-                    />
+                           type="text"/>
                     <p th:errors="*{firstName}" class="text-danger"
                        th:if="${#fields.hasErrors('firstName')}">
                     </p>
@@ -58,8 +57,7 @@
                            name="username"
                            placeholder="Introduce tu nombre de usuario"
                            th:field="*{username}"
-                           type="text"
-                    />
+                           type="text"/>
                     <p th:errors="*{username}" class="text-danger"
                        th:if="${#fields.hasErrors('username')}">
                     </p>
@@ -71,8 +69,7 @@
                            name="email"
                            placeholder="Introduce tu email"
                            th:field="*{email}"
-                           type="email"
-                    />
+                           type="email"/>
                     <p th:errors="*{email}" class="text-danger"
                        th:if="${#fields.hasErrors('email')}">
                     </p>
@@ -84,8 +81,7 @@
                            name="password"
                            placeholder="Introduce tu contraseña"
                            th:field="*{password}"
-                           type="password"
-                    />
+                           type="password"/>
                     <p th:errors="*{password}" class="text-danger"
                        th:if="${#fields.hasErrors('password')}">
                     </p>
@@ -96,8 +92,7 @@
                            id="confirmPassword"
                            name="confirmPassword"
                            placeholder="Confirma tu contraseña"
-                           type="password"
-                    />
+                           type="password"/>
                     <p th:errors="*{confirmPassword}" class="text-danger"
                        th:if="${#fields.hasErrors('confirmPassword')}">
                     </p>
