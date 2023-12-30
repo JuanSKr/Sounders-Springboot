@@ -162,7 +162,7 @@ a.sidebar-link {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%; /* Los elementos se distribuyan a lo largo de toda la barra de navegación */
+    width: 100%;
 
 }
 
@@ -170,7 +170,7 @@ a.sidebar-link {
 .navbar-group {
     display: flex;
     justify-content: center;
-    gap: 0.25rem; /* Separación mínima entre los elementos del grupo */
+    gap: 0.25rem;
     flex-grow: 1;
 }
 
@@ -199,6 +199,10 @@ a.sidebar-link {
     transition: transform .2s;
 }
 
+.container {
+    margin-top: 10px;
+}
+
 .card {
     border: none;
     border-radius: 15px;
@@ -216,15 +220,35 @@ a.sidebar-link {
 }
 
 .card-text {
+    color: #000000;
+    font-size: 1.12em;
+}
+
+p.card-text.username {
     color: grey;
 }
 
-.posts-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
+h2.card-text {
+    font-size: 1.2em;
+    color: black;
+}
+
+p.card-text.name {
+    color: black;
+    margin-right: 5px;
+    margin-bottom: 0;
+    font-size: 1.05em;
+}
+
+p.card-text.username {
+    color: grey;
+    font-size: 0.8em;
+    margin-bottom: 0;
+    margin-right: 1px;
+}
+
+.d-flex.align-items-center.mt-3 {
+    margin-left: 20px;
 }
 
 .navbar-center {
@@ -250,6 +274,7 @@ a.sidebar-link {
     width: 30px;
     height: 30px;
     margin-right: 10px;
+    object-fit: cover;
 }
 
 .rounded-circle:hover {
@@ -272,25 +297,26 @@ a.sidebar-link {
 
 .banner {
     width: 100%;
-    height: 300px; /* Ajusta este valor según tus necesidades */
+    height: 300px;
     background-size: cover;
     background-position: center;
-    position: relative; /* Establece un contexto de posicionamiento para los elementos hijos */
+    position: relative;
 }
 
 .profile-container {
     display: flex;
     align-items: center;
     gap: 20px;
-    margin-top: 20px; /* Ajusta este valor según tus necesidades */
-    margin-left: 40px; /* Ajusta este valor según tus necesidades */
-    position: relative; /* Establece un contexto de posicionamiento para los elementos hijos */
+    margin-top: 20px;
+    margin-left: 40px;
+    position: relative;
 }
 
 .profile-image {
-    position: absolute; /* Posiciona absolutamente la imagen del perfil */
-    z-index: 1; /* Asegura que la imagen del perfil se superponga al banner */
-    bottom: 50%; /* Posiciona la imagen del perfil a la mitad del contenedor del perfil */
+    position: absolute;
+    z-index: 1;
+    bottom: 50%;
+    object-fit: cover;
 }
 
 .profile-image img {
@@ -300,7 +326,7 @@ a.sidebar-link {
 }
 
 .profile-info {
-    margin-left: 180px; /* Espacio adicional en la izquierda para el avatar */
+    margin-left: 180px;
 }
 
 .profile-info .name {
