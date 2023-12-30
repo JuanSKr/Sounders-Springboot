@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background-image: url("https://wallpapers.com/images/hd/black-and-white-music-1920-x-1080-wallpaper-yr5cc19gf4pyruyf.jpg");
+}
+
+.navbar-custom {
+    background-color: #13B2ECFF;
+}
+
+.navbar-brand-custom {
+    color: #ffffff;
+    text-align: center;
+    font-size: 1.35rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.navbar-brand-custom:hover {
+    color: white;
+    transform: scale(1.12);
+    transition: transform .2s;
+}
+
+button.login {
+    background-color: #13B2ECFF;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button.login:hover {
+    color: white;
+    background-color: #0689ea;
+}
+
+.alert-container {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250%;
+    max-height: 180%;
+}
+
+.alert.alert-success {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.form-container {
+    position: fixed;
+    border: none;
+    border-radius: 15px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container .card {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250%;
+    height: auto;
+    max-height: 180%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.footer-container {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(19, 177, 234, 0.9);
+    color: white;
+    padding: 10px 0;
+}
+
+.footer-container .container p {
+    color: #ffffff;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 200;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: auto 0;
+}
