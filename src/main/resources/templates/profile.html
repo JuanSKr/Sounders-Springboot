@@ -115,8 +115,8 @@
                             <div class="card-body d-flex flex-column">
                                 <a th:href="'/post/' + ${post.author.username} + '/' + ${post.id}" style="text-decoration: none; color: inherit;">
                                     <h2 class="card-text" th:text="${post.text}"></h2>
-                                    <div th:if="${post.image != ''}">
-                                        <img th:src="${post.image}" alt="Image" class="card-img-top mt-2">
+                                    <div th:if="${post.imagePath != ''}">
+                                        <img th:src="${post.imagePath}" alt="Image" class="card-img-top mt-2">
                                     </div>
                                 </a>
                             </div>

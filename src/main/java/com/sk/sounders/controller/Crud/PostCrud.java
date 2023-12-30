@@ -69,7 +69,7 @@ public class PostCrud {
             post.setAuthor(user);
             post.setCreated(LocalDateTime.now());
             if (!file.isEmpty()) {
-                String name = post.getId() + "_" + post.getCreated();
+                String name = post.getId() + "_" + post.getCreated() + ".jpg";
                 String filename = storageService.store(file, name);
                 post.setImagePath("/files/" + filename);
             }

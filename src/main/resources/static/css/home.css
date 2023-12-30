@@ -343,7 +343,7 @@ p.card-text.username {
     text-decoration: none;
     display: inline-block;
     font-size: 1.02rem;
-    margin: 4px 2px;
+    margin: 4px 2px 4px auto;
     border-radius: 5px;
 }
 
@@ -370,4 +370,18 @@ p.card-text.username {
     justify-content: center;
     width: 100%;
     margin: auto 0;
+}
+
+.icon-image {
+    position: absolute;
+    right: 17px;
+    top: 110px;
+    color: #13b2ec;
+    font-size: 24px;
+}
+
+.icon-image:hover {
+    transform: scale(1.05);
+    transition: transform .2s;
+    color: #007ea6;
 }

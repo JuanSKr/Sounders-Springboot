@@ -105,10 +105,13 @@
                                     <form id="postForm" th:action="@{/post/save}" th:object="${post}" method="post" enctype="multipart/form-data">
                                         <div class="mb-3">
                                             <textarea class="form-control" th:field="*{text}" rows="3" required></textarea>
-                                            <label for="postImage" class="form-label">Imagen</label>
-                                            <input type="file" class="form-control" id="postImage" name="file">
+                                            <label for="postImage" class="form-label">
+                                                <i class="fa-solid fa-image icon-image"></i>
+                                            </label>
+                                            <input type="file" class="form-control" id="postImage" name="image" accept="image/*" style="display: none;">
+                                            <img id="imagePreview" src="#" alt="Image Preview" style="display: none; width: 100px; height: 100px;">
                                         </div>
-                                        <button type="submit" class="btn btn-primary" id="savePostButton">Guardar</button>
+                                        <button type="submit" class="btn btn-primary" id="savePostButton">Postear</button>
                                     </form>
                                 </div>
                             </div>

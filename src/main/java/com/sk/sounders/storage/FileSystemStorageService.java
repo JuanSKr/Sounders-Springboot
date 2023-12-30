@@ -27,24 +27,24 @@ public class FileSystemStorageService implements StorageService {
     }
 
     @Override
-    public String store(MultipartFile file, String nombreFichero) {
+    public String store(MultipartFile file, String nameFile) {
         try {
             if (file.isEmpty()) {
                 throw new StorageException("An error has been occurred while uploading this file: " + file.getOriginalFilename());
             }
             //Le he añadido la fecha y hora actual al archivo subido
-            nombreFichero=LocalDateTime.now().toString().replaceAll(":", "_") + file.getOriginalFilename();
+            nameFile=LocalDateTime.now().toString().replaceAll(":", "_");
             // Check if the directory exists, if not, create it
             if (!Files.exists(this.rootLocation)) {
                 Files.createDirectories(this.rootLocation);
             }
-            Files.copy(file.getInputStream(), this.rootLocation.resolve(nombreFichero), StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(file.getInputStream(), this.rootLocation.resolve(nameFile), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
             throw new StorageException("An error has been occurred while uploading this file: " + file.getOriginalFilename(), e);
         }
 
         //voy a añadir que devuelva el nombre que le da al archivo
-        return nombreFichero;
+        return nameFile;
     }
 
     @Override
