@@ -8,6 +8,7 @@ import lombok.Setter;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -31,7 +32,10 @@ public class Post {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String text;
 
-    private String image;
+    @Transient
+    private MultipartFile image;
+
+    private String imagePath;
 
     @Column(nullable = false)
     private Long likes = 0L;

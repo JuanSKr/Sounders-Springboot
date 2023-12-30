@@ -4,12 +4,14 @@ import com.sk.sounders.entity.Post;
 import com.sk.sounders.entity.User;
 import com.sk.sounders.service.impl.PostServiceImpl;
 import com.sk.sounders.service.impl.UserServiceImpl;
+import com.sk.sounders.storage.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.thymeleaf.exceptions.TemplateProcessingException;
 
 import java.time.LocalDateTime;
@@ -21,6 +23,9 @@ public class PostCrud {
 
     @Autowired
     UserServiceImpl userService;
+
+    @Autowired
+    StorageService storageService;
 
     @GetMapping("/home")
     public String viewPosts(Model model) {
@@ -52,7 +57,7 @@ public class PostCrud {
 
 
     @PostMapping("/post/save")
-    public String savePost(@ModelAttribute("post") Post post) {
+    public String savePost(@ModelAttribute("post") Post post, @RequestParam("image") MultipartFile file) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         UserDetails userDetails = null;
         if (principal instanceof UserDetails) {
@@ -63,6 +68,11 @@ public class PostCrud {
         if (user != null) {
             post.setAuthor(user);
             post.setCreated(LocalDateTime.now());
+            if (!file.isEmpty()) {
+                String name = post.getId() + "_" + post.getCreated();
+                String filename = storageService.store(file, name);
+                post.setImagePath("/files/" + filename);
+            }
             postService.save(post);
         } else {
             System.err.println("No se ha encontrado el usuario");

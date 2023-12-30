@@ -49,11 +49,11 @@ public class FileUploadController {
     @PostMapping("/uploadfile")
     public String handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
 
-        storageService.store(file, file.getName());
+        String filename = storageService.store(file, file.getName());
         redirectAttributes.addFlashAttribute("message",
                 "You successfully uploaded " + file.getOriginalFilename() + "!");
 
-        return "redirect:/uploadfile";
+        return "redirect:/files/" + filename;
     }
 
     @ExceptionHandler(StorageFileNotFoundException.class)

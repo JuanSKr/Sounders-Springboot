@@ -24,12 +24,12 @@
 <div class="container form-container">
     <div class="row">
         <div class="col-md-6 offset-md-3">
-            <div th:if="${param.error}">
-                <div class="alert alert-danger">Correo electrónico o contraseña incorrectos.</div>
-            </div>
             <div class="alert-container">
+                <div th:if="${param.error}">
+                    <div class="alert alert-danger text-center">Correo electrónico o contraseña incorrectos.</div>
+                </div>
                 <div th:if="${param.logout}">
-                    <div class="alert alert-success">Has cerrado tu sesión.</div>
+                    <div class="alert alert-success text-center">Has cerrado tu sesión.</div>
                 </div>
             </div>
             <div class="card">
