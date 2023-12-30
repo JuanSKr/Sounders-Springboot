@@ -2,4 +2,4 @@
 *.exe
 *.class
 *.class
-*.class
+/upload-dir/*

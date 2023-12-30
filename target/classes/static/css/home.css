@@ -343,8 +343,7 @@ p.card-text.username {
     text-decoration: none;
     display: inline-block;
     font-size: 1.02rem;
-    margin: 4px 2px;
-    margin-left: auto;
+    margin: 4px 2px 4px auto;
     border-radius: 5px;
 }
 
