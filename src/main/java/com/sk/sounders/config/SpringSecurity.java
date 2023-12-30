@@ -34,6 +34,9 @@ public class SpringSecurity {
                                 .requestMatchers("/post/**").hasRole("USER")
                                 .requestMatchers("/profile/**").hasRole("USER")
                                 .requestMatchers("/css/**", "/js/**", "/img/**", "**/favicon.ico").permitAll()
+                                .requestMatchers("/upload-dir/avatar/**").hasRole("USER")
+                                .requestMatchers("/upload-dir/banner/**").hasRole("USER")
+                                .requestMatchers("/upload-dir/img/**").hasRole("USER")
                                 .requestMatchers("/").permitAll()
                 ).formLogin(
                         form -> form

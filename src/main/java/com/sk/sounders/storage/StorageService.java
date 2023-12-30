@@ -1,6 +1,6 @@
 package com.sk.sounders.storage;
 
-import jakarta.annotation.Resource;
+import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.nio.file.Path;
@@ -10,7 +10,7 @@ public interface StorageService {
 
     void init();
 
-    String store(MultipartFile file, String fileName);
+    String store(MultipartFile file, String nombreFichero);
 
     Stream<Path> loadAll();
 
@@ -19,4 +19,5 @@ public interface StorageService {
     Resource loadAsResource(String filename);
 
     void deleteAll();
+
 }
