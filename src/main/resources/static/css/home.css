@@ -9,7 +9,7 @@
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
-    background-color: #00a9e1;
+    background-image: url("../img/background-home.jpg");
 }
 
 .main {
@@ -349,4 +349,25 @@ p.card-text.username {
 
 #savePostButton:hover {
     background-color: #0083e1;
+}
+
+.footer-container {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(19, 177, 234, 0.9);
+    color: white;
+    padding: 10px 0;
+}
+
+.footer-container .container p {
+    color: #ffffff;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 200;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: auto 0;
 }

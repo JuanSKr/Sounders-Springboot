@@ -3,7 +3,7 @@
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
-    background-image: url("https://wallpapers.com/images/hd/black-and-white-music-1920-x-1080-wallpaper-yr5cc19gf4pyruyf.jpg");
+    background-image: url("../img/background.jpg");
 }
 
 .navbar-custom {

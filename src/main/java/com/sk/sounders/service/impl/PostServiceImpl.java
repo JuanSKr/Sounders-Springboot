@@ -43,8 +43,8 @@ public class PostServiceImpl {
         return postRepository.findAllDesc();
     }
 
-    public List<Post> findByAuthor(User author) {
-        return postRepository.findByAuthor(author);
+    public List<Post> findByAuthorOrderByIdDesc(User author) {
+        return postRepository.findByAuthorOrderByIdDesc(author);
     }
 
 }

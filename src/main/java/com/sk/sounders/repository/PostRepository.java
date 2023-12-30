@@ -19,7 +19,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
     public Post findByAuthorAndId(User author, long id);
 
-    public List<Post> findByAuthor(User author);
+    List<Post> findByAuthorOrderByIdDesc(User author);
 
     public Post save(Post post);
 

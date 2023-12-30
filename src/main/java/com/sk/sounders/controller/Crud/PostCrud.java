@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.exceptions.TemplateProcessingException;
 
+import java.time.LocalDateTime;
+
 @Controller
 public class PostCrud {
     @Autowired
@@ -60,6 +62,7 @@ public class PostCrud {
         User user = userService.findByEmail(email);
         if (user != null) {
             post.setAuthor(user);
+            post.setCreated(LocalDateTime.now());
             postService.save(post);
         } else {
             System.err.println("No se ha encontrado el usuario");

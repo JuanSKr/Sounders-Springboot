@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" href="/css/home.css">
 </head>
-<body class="bg-dark text-white">
+<body>
 <div class="wrapper">
     <!--/* Sidebar */-->
     <aside id="sidebar" class="collapsed">
@@ -86,7 +86,7 @@
                 </a>
             </div>
         </nav>
-        <main class="content px-3 py-2 bg-white">
+        <main class="content px-3 py-2">
             <div class="container-fluid">
                 <div class="mb-3">
                     <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel"
@@ -105,8 +105,7 @@
                                     <form id="postForm" th:action="@{/post/save}" th:object="${post}" method="post">
                                         <div class="mb-3">
                                             <label for="postContent" class="form-label">Contenido</label>
-                                            <textarea class="form-control" id="postContent" th:field="*{text}" rows="3"
-                                                      required></textarea>
+                                            <textarea class="form-control" id="postContent" th:field="*{text}" rows="3" required></textarea>
                                             <label for="postImage" class="form-label">Imagen</label>
                                             <input type="text" class="form-control" id="postImage" th:field="*{image}">
                                         </div>

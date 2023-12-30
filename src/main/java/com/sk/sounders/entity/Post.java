@@ -9,6 +9,7 @@ import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +35,9 @@ public class Post {
 
     @Column(nullable = false)
     private Long likes = 0L;
+
+    @Column(nullable = false)
+    private LocalDateTime created;
 
     @ManyToOne
     @JoinColumn(name = "author_id", nullable = false)
