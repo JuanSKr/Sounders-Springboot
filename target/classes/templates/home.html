@@ -127,7 +127,7 @@
                                 <div class="card h-100 shadow">
                                     <div class="d-flex align-items-center mt-3">
                                         <a th:href="'/profile/' + ${post.author.username}">
-                                            <img th:src="@{${post.author.avatar}}" alt="Avatar" class="rounded-circle">
+                                            <img th:src="${post.author.avatar}" alt="Avatar" class="rounded-circle">
                                         </a>
                                         <p class="card-text ml-2 name" th:text="${post.author.name}"></p>
                                         <p class="card-text ml-2 username" th:text="'@' + ${post.author.username}"></p>

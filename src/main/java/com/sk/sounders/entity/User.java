@@ -32,10 +32,10 @@ public class User {
     private String bio;
 
     @Column(nullable = false, columnDefinition = "TEXT")
-    private String avatar = "/img/default-avatar.png";
+    private String avatar = "/img/default_avatar.png";
 
     @Column(nullable = false, columnDefinition = "TEXT")
-    private String banner = "/img/default-banner.png";
+    private String banner = "/img/default_banner.png";
 
     @Column(nullable = false, unique = true)
     private String email;
