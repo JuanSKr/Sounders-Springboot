@@ -53,6 +53,18 @@ document.getElementById('postImage').addEventListener('change', function (e) {
     }
 });
 
-document.getElementById('postTextarea').addEventListener('input', function() {
+document.getElementById('postTextarea').addEventListener('input', function () {
     document.getElementById('characterCount').textContent = this.value.length;
+});
+
+var likeIcon = document.querySelector('.like-icon');
+
+likeIcon.style.backgroundImage = 'url("../img/like.png")';
+
+likeIcon.addEventListener('click', function () {
+    if (likeIcon.style.backgroundImage.includes('like.png')) {
+        likeIcon.style.backgroundImage = 'url("../img/liked.png")';
+    } else {
+        likeIcon.style.backgroundImage = 'url("../img/like.png")';
+    }
 });

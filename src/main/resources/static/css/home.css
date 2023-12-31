@@ -419,3 +419,19 @@ p.card-text.username {
     height: 100%;
     border-radius: 15px;
 }
+
+.like-icon {
+    background: url("../img/like.png") no-repeat center;
+    background-size: contain;
+    position: absolute;
+    top: 25px;
+    right: 15px;
+    width: 20px;
+    height: 20px;
+}
+
+.like-icon:hover {
+    transform: scale(1.15);
+    transition: transform .2s;
+    cursor: pointer;
+}

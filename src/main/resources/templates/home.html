@@ -131,6 +131,7 @@
                                         </a>
                                         <p class="card-text ml-2 name" th:text="${post.author.name}"></p>
                                         <p class="card-text ml-2 username" th:text="'@' + ${post.author.username}"></p>
+                                        <div class="like-icon"></div>
                                     </div>
                                     <div class="card-body d-flex flex-column">
                                         <a th:href="'/post/' + ${post.author.username} + '/' + ${post.id}" style="text-decoration: none; color: inherit;">
