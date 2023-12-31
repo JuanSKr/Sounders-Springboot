@@ -335,6 +335,7 @@ p.card-text.username {
 }
 
 #savePostButton {
+    position: relative;
     background-color: #13b2ec;
     border: none;
     color: white;
@@ -345,6 +346,7 @@ p.card-text.username {
     font-size: 1.02rem;
     margin: 4px 2px 4px auto;
     border-radius: 5px;
+    left: 380px;
 }
 
 #savePostButton:hover {
@@ -373,9 +375,9 @@ p.card-text.username {
 }
 
 .icon-image {
-    position: absolute;
-    right: 17px;
-    top: 110px;
+    position: relative;
+    left: 1px;
+    top: -20px;
     color: #13b2ec;
     font-size: 24px;
 }
@@ -384,4 +386,36 @@ p.card-text.username {
     transform: scale(1.05);
     transition: transform .2s;
     color: #007ea6;
+    cursor: pointer;
+}
+
+#characterCountContainer {
+    text-align: right;
+    margin-top: 5px;
+}
+
+.post-textarea {
+    height: 190px;
+}
+
+.post-textarea::-webkit-scrollbar {
+    width: 10px;
+}
+
+.post-textarea::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.post-textarea::-webkit-scrollbar-thumb {
+    background: #13b2ec;
+}
+
+.post-textarea::-webkit-scrollbar-thumb:hover {
+    background: #069fce;
+}
+
+#imagePreview {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
 }

@@ -37,11 +37,11 @@ document.querySelector('.publish-sidebar').addEventListener('click', function ()
     postModal.show();
 });
 
-document.getElementById('postImage').addEventListener('change', function(e) {
+document.getElementById('postImage').addEventListener('change', function (e) {
     var file = e.target.files[0];
     var reader = new FileReader();
 
-    reader.onloadend = function() {
+    reader.onloadend = function () {
         document.getElementById('imagePreview').src = reader.result;
         document.getElementById('imagePreview').style.display = 'block';
     }
@@ -51,4 +51,8 @@ document.getElementById('postImage').addEventListener('change', function(e) {
     } else {
         document.getElementById('imagePreview').src = "";
     }
+});
+
+document.getElementById('postTextarea').addEventListener('input', function() {
+    document.getElementById('characterCount').textContent = this.value.length;
 });

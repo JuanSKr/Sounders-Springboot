@@ -33,7 +33,7 @@ public class FileSystemStorageService implements StorageService {
                 throw new StorageException("An error has been occurred while uploading this file: " + file.getOriginalFilename());
             }
             //Le he añadido la fecha y hora actual al archivo subido
-            nameFile=LocalDateTime.now().toString().replaceAll(":", "_");
+            nameFile=LocalDateTime.now().toString().replaceAll(":", "_") + ".png";
             // Check if the directory exists, if not, create it
             if (!Files.exists(this.rootLocation)) {
                 Files.createDirectories(this.rootLocation);

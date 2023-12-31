@@ -104,7 +104,10 @@
                                 <div class="modal-body">
                                     <form id="postForm" th:action="@{/post/save}" th:object="${post}" method="post" enctype="multipart/form-data">
                                         <div class="mb-3">
-                                            <textarea class="form-control" th:field="*{text}" rows="3" required></textarea>
+                                            <textarea class="form-control post-textarea" th:field="*{text}" rows="3" maxlength="355" id="postTextarea" required></textarea>
+                                            <div id="characterCountContainer">
+                                                <span id="characterCount">0</span>/355
+                                            </div>
                                             <label for="postImage" class="form-label">
                                                 <i class="fa-solid fa-image icon-image"></i>
                                             </label>
