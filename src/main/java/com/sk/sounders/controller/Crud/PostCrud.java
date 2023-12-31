@@ -6,6 +6,8 @@ import com.sk.sounders.service.impl.PostServiceImpl;
 import com.sk.sounders.service.impl.UserServiceImpl;
 import com.sk.sounders.storage.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -86,5 +88,24 @@ public class PostCrud {
     public String deletePost(@PathVariable("id") long id) {
         postService.deleteById(id);
         return "redirect:/home";
+    }
+
+    @PostMapping("/post/like/{id}")
+    public ResponseEntity<String> likePost(@PathVariable("id") long id, @RequestParam("action") String action) {
+        Post post = postService.findById(id);
+        if (post == null) {
+            return new ResponseEntity<>("Post not found", HttpStatus.NOT_FOUND);
+        }
+
+        if (action.equals("add")) {
+            post.setLikes(post.getLikes() + 1);
+        } else if (action.equals("subtract")) {
+            post.setLikes(post.getLikes() - 1);
+        } else {
+            return new ResponseEntity<>("Invalid action", HttpStatus.BAD_REQUEST);
+        }
+
+        postService.save(post);
+        return new ResponseEntity<>("Success", HttpStatus.OK);
     }
 }

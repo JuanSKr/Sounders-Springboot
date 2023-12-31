@@ -61,10 +61,24 @@ var likeIcon = document.querySelector('.like-icon');
 
 likeIcon.style.backgroundImage = 'url("../img/like.png")';
 
+var likeCount = document.querySelector('#likeCount');
+
 likeIcon.addEventListener('click', function () {
+    var action;
     if (likeIcon.style.backgroundImage.includes('like.png')) {
         likeIcon.style.backgroundImage = 'url("../img/liked.png")';
+        action = 'add';
+        likeCount.textContent = parseInt(likeCount.textContent) + 1;
     } else {
         likeIcon.style.backgroundImage = 'url("../img/like.png")';
+        action = 'subtract';
+        likeCount.textContent = parseInt(likeCount.textContent) - 1;
     }
+
+    // Get ID
+    var postId = likeIcon.getAttribute('data-post-id');
+    // Update using AJAX
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/post/like/' + postId + '?action=' + action, true);
+    xhr.send();
 });

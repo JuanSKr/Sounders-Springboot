@@ -420,12 +420,17 @@ p.card-text.username {
     border-radius: 15px;
 }
 
-.like-icon {
-    background: url("../img/like.png") no-repeat center;
-    background-size: contain;
+.like-container {
+    display: flex;
+    align-items: center;
     position: absolute;
     top: 25px;
     right: 15px;
+}
+
+.like-icon {
+    background: url("../img/like.png") no-repeat center;
+    background-size: contain;
     width: 20px;
     height: 20px;
 }
@@ -436,7 +441,13 @@ p.card-text.username {
     cursor: pointer;
 }
 
-.like-icon:active {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0.9, 1, 0, 0, 0, 0, 1);
-    transition: transform 0.1s;
+#likeCount {
+    margin-right: 5px;
+    height: 20px;
+    white-space: nowrap;
+    text-align: right;
+    font-size: 1.1rem;
+    position: absolute;
+    top: -2px;
+    right: 20px;
 }

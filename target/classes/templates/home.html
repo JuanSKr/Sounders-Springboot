@@ -127,16 +127,19 @@
                                 <div class="card h-100 shadow">
                                     <div class="d-flex align-items-center mt-3">
                                         <a th:href="'/profile/' + ${post.author.username}">
-                                            <img th:src="${post.author.avatar}" alt="Avatar" class="rounded-circle">
+                                            <img th:src="@{${post.author.avatar}}" alt="Avatar" class="rounded-circle">
                                         </a>
                                         <p class="card-text ml-2 name" th:text="${post.author.name}"></p>
                                         <p class="card-text ml-2 username" th:text="'@' + ${post.author.username}"></p>
-                                        <div class="like-icon"></div>
+                                        <div class="like-container">
+                                            <span id="likeCount" th:text="${post.likes}"></span>
+                                            <div class="like-icon" th:data-post-id="${post.id}"></div>
+                                        </div>
                                     </div>
                                     <div class="card-body d-flex flex-column">
                                         <a th:href="'/post/' + ${post.author.username} + '/' + ${post.id}" style="text-decoration: none; color: inherit;">
                                             <h2 class="card-text" th:text="${post.text}"></h2>
-                                            <div th:if="${post.imagePath != ''}">
+                                            <div th:if="${post.imagePath != null}">
                                                 <img th:src="${post.imagePath}" alt="Image" class="card-img-top mt-2">
                                             </div>
                                         </a>
