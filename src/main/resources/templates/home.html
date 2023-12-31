@@ -102,19 +102,24 @@
                                             aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form id="postForm" th:action="@{/post/save}" th:object="${post}" method="post" enctype="multipart/form-data">
+                                    <form id="postForm" th:action="@{/post/save}" th:object="${post}" method="post"
+                                          enctype="multipart/form-data">
                                         <div class="mb-3">
-                                            <textarea class="form-control post-textarea" th:field="*{text}" rows="3" maxlength="355" id="postTextarea" required></textarea>
+                                            <textarea class="form-control post-textarea" th:field="*{text}" rows="3"
+                                                      maxlength="355" id="postTextarea" required></textarea>
                                             <div id="characterCountContainer">
                                                 <span id="characterCount">0</span>/355
                                             </div>
                                             <label for="postImage" class="form-label">
                                                 <i class="fa-solid fa-image icon-image"></i>
                                             </label>
-                                            <input type="file" class="form-control" id="postImage" name="image" accept="image/*" style="display: none;">
-                                            <img id="imagePreview" src="#" alt="Image Preview" style="display: none; width: 100px; height: 100px;">
+                                            <input type="file" class="form-control" id="postImage" name="image"
+                                                   accept="image/*" style="display: none;">
+                                            <img id="imagePreview" src="#" alt="Image Preview"
+                                                 style="display: none; width: 100px; height: 100px;">
                                         </div>
-                                        <button type="submit" class="btn btn-primary" id="savePostButton">Postear</button>
+                                        <button type="submit" class="btn btn-primary" id="savePostButton">Postear
+                                        </button>
                                     </form>
                                 </div>
                             </div>
@@ -137,17 +142,19 @@
                                         </div>
                                     </div>
                                     <div class="card-body d-flex flex-column">
-                                        <a th:href="'/post/' + ${post.author.username} + '/' + ${post.id}" style="text-decoration: none; color: inherit;">
+                                        <a th:href="'/post/' + ${post.author.username} + '/' + ${post.id}"
+                                           style="text-decoration: none; color: inherit;">
                                             <h2 class="card-text" th:text="${post.text}"></h2>
                                             <div th:if="${post.imagePath != null}">
                                                 <img th:src="${post.imagePath}" alt="Image" class="card-img-top mt-2">
                                             </div>
+                                            <p class="post-date" th:text="${post.date} + ' | ' + ${post.hour}"></p>
                                         </a>
-                                        <p class="post-date" th:text="${post.date} + ' | ' + ${post.hour}"></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>

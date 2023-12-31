@@ -53,32 +53,42 @@ document.getElementById('postImage').addEventListener('change', function (e) {
     }
 });
 
-document.getElementById('postTextarea').addEventListener('input', function () {
-    document.getElementById('characterCount').textContent = this.value.length;
-});
+// Select all like buttons and like counts
+var likeIcons = document.querySelectorAll('.like-icon');
+var likeCounts = document.querySelectorAll('#likeCount');
 
-var likeIcon = document.querySelector('.like-icon');
+// Add event listener to each like button
+likeIcons.forEach((likeIcon, index) => {
+    var likeCount = likeCounts[index];
 
-likeIcon.style.backgroundImage = 'url("../img/like.png")';
-
-var likeCount = document.querySelector('#likeCount');
-
-likeIcon.addEventListener('click', function () {
-    var action;
-    if (likeIcon.style.backgroundImage.includes('like.png')) {
+    // Load the like status from local storage
+    var postId = likeIcon.getAttribute('data-post-id');
+    var hasLiked = localStorage.getItem('likeStatus' + postId);
+    if (hasLiked === 'true') {
         likeIcon.style.backgroundImage = 'url("../img/liked.png")';
-        action = 'add';
-        likeCount.textContent = parseInt(likeCount.textContent) + 1;
     } else {
         likeIcon.style.backgroundImage = 'url("../img/like.png")';
-        action = 'subtract';
-        likeCount.textContent = parseInt(likeCount.textContent) - 1;
     }
 
-    // Get ID
-    var postId = likeIcon.getAttribute('data-post-id');
-    // Update using AJAX
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/post/like/' + postId + '?action=' + action, true);
-    xhr.send();
+    likeIcon.addEventListener('click', function () {
+        var action;
+        if (likeIcon.style.backgroundImage.includes('like.png')) {
+            likeIcon.style.backgroundImage = 'url("../img/liked.png")';
+            action = 'add';
+            likeCount.textContent = parseInt(likeCount.textContent) + 1;
+            // Save the like status to local storage
+            localStorage.setItem('likeStatus' + postId, 'true');
+        } else {
+            likeIcon.style.backgroundImage = 'url("../img/like.png")';
+            action = 'subtract';
+            likeCount.textContent = parseInt(likeCount.textContent) - 1;
+            // Save the like status to local storage
+            localStorage.setItem('likeStatus' + postId, 'false');
+        }
+
+        // Update using AJAX
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/post/like/' + postId + '?action=' + action, true);
+        xhr.send();
+    });
 });

@@ -88,7 +88,7 @@
             <div class="container mt-4">
                 <div class="card mb-3">
                     <div class="card-body">
-                        <img th:src="${post.image}" class="card-img-top" alt="Song image">
+                        <img th:src="${post.imagePath}" class="card-img-top" alt="Song image">
                         <div>
                             <p class="card-text" th:text="${post.text}"></p>
                             <p class="card-text"><small class="text-muted" th:text="${post.author.username}"></small>
