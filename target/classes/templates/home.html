@@ -143,6 +143,7 @@
                                                 <img th:src="${post.imagePath}" alt="Image" class="card-img-top mt-2">
                                             </div>
                                         </a>
+                                        <p class="post-date" th:text="${post.date} + ' | ' + ${post.hour}"></p>
                                     </div>
                                 </div>
                             </div>

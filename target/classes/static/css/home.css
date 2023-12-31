@@ -451,3 +451,10 @@ p.card-text.username {
     top: -2px;
     right: 20px;
 }
+
+.post-date {
+    font-size: 0.8em;
+    color: gray;
+    text-align: right;
+    margin-top: 20px;
+}

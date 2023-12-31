@@ -5,14 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Getter
 @Setter
@@ -35,13 +33,17 @@ public class Post {
     @Transient
     private MultipartFile image;
 
+    @Column(columnDefinition = "TEXT")
     private String imagePath;
 
     @Column(nullable = false)
     private Long likes = 0L;
 
     @Column(nullable = false)
-    private LocalDateTime created;
+    private LocalDate date;
+
+    @Column(nullable = false)
+    private LocalTime hour;
 
     @ManyToOne
     @JoinColumn(name = "author_id", nullable = false)

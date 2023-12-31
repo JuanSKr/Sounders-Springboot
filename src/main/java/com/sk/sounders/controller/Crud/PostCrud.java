@@ -16,7 +16,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.thymeleaf.exceptions.TemplateProcessingException;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 @Controller
 public class PostCrud {
@@ -69,9 +72,12 @@ public class PostCrud {
         User user = userService.findByEmail(email);
         if (user != null) {
             post.setAuthor(user);
-            post.setCreated(LocalDateTime.now());
+            post.setDate(LocalDate.now());
+            LocalTime hour = LocalTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+            post.setHour(LocalTime.parse(hour.format(formatter)));
             if (!file.isEmpty()) {
-                String name = post.getId() + "_" + post.getCreated() + ".jpg";
+                String name = post.getId() + "_" + post.getDate() + post.getHour() + ".jpg";
                 String filename = storageService.store(file, name);
                 post.setImagePath("/files/" + filename);
             }
