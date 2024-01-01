@@ -92,3 +92,7 @@ likeIcons.forEach((likeIcon, index) => {
         xhr.send();
     });
 });
+
+document.getElementById('postTextarea').addEventListener('input', function () {
+    document.getElementById('characterCount').textContent = this.value.length;
+});

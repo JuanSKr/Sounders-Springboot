@@ -355,3 +355,42 @@ hr {
     border-top: 1px solid #3d3d3d;
     border-radius: 50px;
 }
+
+.like-container {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 25px;
+    right: 15px;
+}
+
+.like-icon {
+    background: url("../img/like.png") no-repeat center;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+}
+
+.like-icon:hover {
+    transform: scale(1.15);
+    transition: transform .2s;
+    cursor: pointer;
+}
+
+#likeCount {
+    margin-right: 5px;
+    height: 20px;
+    white-space: nowrap;
+    text-align: right;
+    font-size: 1.1rem;
+    position: absolute;
+    top: -2px;
+    right: 20px;
+}
+
+.post-date {
+    font-size: 0.8em;
+    color: gray;
+    text-align: right;
+    margin-top: 10px;
+}
