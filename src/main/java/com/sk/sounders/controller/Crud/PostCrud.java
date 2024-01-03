@@ -106,7 +106,12 @@ public class PostCrud {
         if (action.equals("add")) {
             post.setLikes(post.getLikes() + 1);
         } else if (action.equals("subtract")) {
-            post.setLikes(post.getLikes() - 1);
+            if(post.getLikes() > 0) {
+                post.setLikes(post.getLikes() - 1);
+            } else {
+                post.setLikes(0L);
+                return new ResponseEntity<>("Invalid action", HttpStatus.BAD_REQUEST);
+            }
         } else {
             return new ResponseEntity<>("Invalid action", HttpStatus.BAD_REQUEST);
         }
