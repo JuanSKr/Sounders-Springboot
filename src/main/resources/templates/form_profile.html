@@ -9,10 +9,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <title>Sounders</title>
-    <link rel="stylesheet" href="/css/myprofile.css">
+    <link rel="stylesheet" href="/css/form_profile.css">
 </head>
 <body>
-
 
 <div class="wrapper">
     <!-- Sidebar -->
@@ -59,8 +58,8 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <!-- Text and items to show when sidebar is collapsed -->
-            <a href="/home" class="navbar-brand-collapsed sidebar-logo" style="display: none;">Sounders</a>
-            <a href="/home" class="navbar-brand-collapsed sidebar-logo collapsed navbar-center" style="display: inline;"
+            <a class="navbar-brand-collapsed sidebar-logo" style="display: none;">Sounders</a>
+            <a class="navbar-brand-collapsed sidebar-logo collapsed navbar-center" style="display: inline;"
                id="sounders-navbar-center">Sounders</a>
             <div class="navbar-items" style="display: none;">
                 <div class="navbar-group">
@@ -87,57 +86,47 @@
                 </a>
             </div>
         </nav>
-        <main>
-            <div class="banner" th:style="'background-image: url(' + ${user.banner} + ');'"></div>
-            <div class="profile-container">
-                <div class="profile-image">
-                    <img th:src="${user.avatar}" alt="Foto de perfil">
-                </div>
-                <div class="profile-info">
-                    <h2 class="name" th:text="${user.name}">Nombre del usuario</h2>
-                    <p class="username" th:text="'@' + ${user.username}">@username</p>
-                    <p class="bio" th:text="${user.bio}">Biografía del usuario</p>
-                </div>
-                <a class="edit-profile-btn" th:href="'/profile/update/' + ${user.username}">
-                    <i class="fas fa-pencil-alt"></i> Editar perfil
-                </a>
-            </div>
-            <hr>
-            <!--/* Cards */-->
-            <div class="container">
-                <div class="d-flex flex-column align-items-center">
-                    <div class="col-md-4 mb-3" th:each="post:${posts}">
-                        <div class="card h-100 shadow">
-                            <div class="d-flex align-items-center mt-3">
-                                <a th:href="'/profile/' + ${post.author.username}">
-                                    <img th:src="${post.author.avatar}" alt="Avatar" class="rounded-circle">
-                                </a>
-                                <p class="card-text ml-2 name" th:text="${post.author.name}"></p>
-                                <p class="card-text ml-2 username" th:text="'@' + ${post.author.username}"></p>
-                                <div class="like-container">
-                                    <span id="likeCount" th:text="${post.likes}"></span>
-                                    <div class="like-icon" th:data-post-id="${post.id}"></div>
+        <!-- Form -->
+        <div class="card form-profile">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="display-5 text-center">Editar perfil</h2>
+                    <hr>
+                    <form th:action="@{/profile/modify}"
+                          method="post" enctype="multipart/form-data" th:object="${formUser}">
+                        <div class="container">
+                            <div class="row">
+                                <input type="hidden" class="form-control" th:field="*{id}">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="name">Nombre de usuario</label>
+                                        <input type="text" class="form-control" name="name" id="name" th:field="*{name}"
+                                               required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="bio">Biografía</label>
+                                        <input type="text" class="form-control" name="bio" id="bio" th:field="*{bio}"
+                                               required>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="card-body d-flex flex-column">
-                                <a th:href="'/post/' + ${post.author.username} + '/' + ${post.id}"
-                                   style="text-decoration: none; color: inherit;">
-                                    <h2 class="card-text" th:text="${post.text}"></h2>
-                                    <div th:if="${post.imagePath != null}">
-                                        <img th:src="${post.imagePath}" alt="Image" class="card-img-top mt-2">
-                                    </div>
-                                    <p class="post-date" th:text="${post.date} + ' | ' + ${post.hour}"></p>
-                                </a>
+                            <div class="row mt-3">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                    <a th:href="'/profile/' + ${user.username}" class="btn btn-primary">Volver
+                                        atrás</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
-        </main>
+        </div>
     </div>
 </div>
-<!-- Scripts -->
-<script src="/js/myprofile.js"></script>
+<script src="/js/form_profile.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>

@@ -33,6 +33,7 @@ public class SpringSecurity {
                                 .requestMatchers("/home").hasRole("USER")
                                 .requestMatchers("/post/**").hasRole("USER")
                                 .requestMatchers("/profile/**").hasRole("USER")
+                                .requestMatchers("/profile/modify/**").hasRole("USER")
                                 .requestMatchers("/css/**", "/js/**", "/img/**", "**/favicon.ico").permitAll()
                                 .requestMatchers("/upload-dir/**").hasRole("USER")
                                 .requestMatchers("/uploadfile").hasRole("USER")
