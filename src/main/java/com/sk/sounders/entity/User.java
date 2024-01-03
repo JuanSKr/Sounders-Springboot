@@ -29,7 +29,7 @@ public class User {
     private String username;
 
     @Column(columnDefinition = "TEXT")
-    private String bio;
+    private String bio = "¡Soy nuevo en Sounders!";
 
     @Column(nullable = false, columnDefinition = "TEXT")
     private String avatar = "/img/default_avatar.png";
