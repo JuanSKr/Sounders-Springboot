@@ -76,8 +76,7 @@ public class ProfileController {
 
 
     @PostMapping("/profile/modify")
-    public String modifyProfile(@ModelAttribute("formUser") User user,
-                                @RequestParam("image") MultipartFile avatar) {
+    public String modifyProfile(@ModelAttribute("formUser") User user) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         UserDetails userDetails = null;
         if (principal instanceof UserDetails) {
@@ -85,12 +84,6 @@ public class ProfileController {
         }
         String email = userDetails.getUsername();
         User currentUser = userService.findByEmail(email);
-
-        if (!avatar.isEmpty()) {
-            String name = currentUser.getId() + "_avatar" + ".jpg";
-            String filename = storageService.store(avatar, name);
-            user.setAvatarPath("/files/" + filename);
-        }
 
         if (user.getBio() == null) {
             currentUser.setBio("¡Soy nuevo en Sounders!");
