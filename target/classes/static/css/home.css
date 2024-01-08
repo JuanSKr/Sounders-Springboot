@@ -440,6 +440,8 @@ p.card-text.username {
     margin-top: 10px;
 }
 
+/* Align navbar */
+
 .align-msg {
     position: relative;
     top: -2px;
@@ -459,4 +461,26 @@ p.card-text.username {
 .align-msg-combo {
     position: relative;
     top: 1px;
+}
+
+/* Align sidebar */
+
+.align-inicio-sidebar {
+    position: relative;
+    margin-left: 8px;
+}
+
+.align-perfil-sidebar {
+    position: relative;
+    margin-left: 2px;
+}
+
+.align-mensajes-sidebar {
+    position: relative;
+    margin-left: 8px;
+}
+
+.align-logout-sidebar {
+    position: relative;
+    margin-left: 6px;
 }

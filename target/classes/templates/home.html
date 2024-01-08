@@ -29,20 +29,21 @@
                 <li class="sidebar-item">
                     <a href="/home" class="sidebar-link">
                         <i class="fa-solid fa-house"></i>
-                        Inicio
+                        <span class="align-inicio-sidebar">Inicio</span>
                     </a>
                     <a href="#" class="sidebar-link">
                         <i class="fa-solid fa-message"></i>
-                        Mensajes
+                        <span class="align-mensajes-sidebar">Mensajes</span>
                     </a>
                     <a th:href="'/profile/' + ${user.username}" class="sidebar-link">
                         <i class="fas fa-user pe-2"></i>
-                        Tu perfil
+                        <span class="align-perfil-sidebar">Tu perfil</span>
                     </a>
                 <li class="sidebar-item">
                     <a th:href="@{/logout}" class="sidebar-link">
                         <i class="fa-solid fa-right-from-bracket"></i>
-                        Cerrar sesión</a>
+                        <span class="align-logout-sidebar">Cerrar sesión</span>
+                    </a>
                 </li>
             </ul>
         </div>
