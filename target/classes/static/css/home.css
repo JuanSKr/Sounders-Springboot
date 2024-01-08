@@ -425,7 +425,7 @@ p.card-text.username {
     align-items: center;
     position: absolute;
     top: 25px;
-    right: 15px;
+    left: 355px;
 }
 
 .like-icon {

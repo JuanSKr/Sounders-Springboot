@@ -8,6 +8,8 @@ import com.sk.sounders.service.impl.PostServiceImpl;
 import com.sk.sounders.service.impl.UserServiceImpl;
 import com.sk.sounders.storage.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,7 @@ import org.thymeleaf.exceptions.TemplateProcessingException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @Controller
 public class HomeController {
@@ -34,31 +37,56 @@ public class HomeController {
     @Autowired
     StorageService storageService;
 
+//    @GetMapping("/home")
+//    public String viewPosts(Model model) {
+//        model.addAttribute("post", new Post());
+//
+//        try {
+//            Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//            UserDetails userDetails = null;
+//            if (principal instanceof UserDetails) {
+//                userDetails = (UserDetails) principal;
+//            }
+//            if (userDetails == null) {
+//                return "error";
+//            }
+//            String currentUsername = userDetails.getUsername();
+//            User user = userService.findByEmail(currentUsername);
+//            model.addAttribute("user", user);
+//        } catch (NullPointerException | TemplateProcessingException e) {
+//            System.out.println("No hay posts");
+//        }
+//
+//        try {
+//            model.addAttribute("posts", postService.findAllDesc());
+//        } catch (NullPointerException e) {
+//            System.out.println("No hay posts");
+//        }
+//
+//        return "home";
+//    }
+
     @GetMapping("/home")
-    public String viewPosts(Model model) {
+    public String home(Model model) {
+        for (Post post : postService.findAllDesc()) {
+            System.out.println(post.toString());
+        }
+        List<Post> postList = postService.findAllDesc();
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            String currentUserName = authentication.getName();
+
+            User autor = userService.findByEmail(currentUserName);
+            model.addAttribute("user", autor);
+            for (Post post : postList) {
+                post.setLikeState(likeService.activePostAndUser(post, autor));
+            }
+        }
+        model.addAttribute("postList", postList);
         model.addAttribute("post", new Post());
 
-        try {
-            Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            UserDetails userDetails = null;
-            if (principal instanceof UserDetails) {
-                userDetails = (UserDetails) principal;
-            }
-            if (userDetails == null) {
-                return "error";
-            }
-            String currentUsername = userDetails.getUsername();
-            User user = userService.findByEmail(currentUsername);
-            model.addAttribute("user", user);
-        } catch (NullPointerException | TemplateProcessingException e) {
-            System.out.println("No hay posts");
-        }
 
-        try {
-            model.addAttribute("posts", postService.findAllDesc());
-        } catch (NullPointerException e) {
-            System.out.println("No hay posts");
-        }
         return "home";
     }
 

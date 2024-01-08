@@ -50,10 +50,10 @@ public class Post {
     private long numLikes;
 
     @Transient
-    private boolean actualLike;
+    private boolean likeState;
 
     public Post() {
-        actualLike = false;
+        likeState = false;
     }
 
     public Post(String text, User author, LocalDate date, LocalTime hour) {

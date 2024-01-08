@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -128,7 +129,7 @@
                     <!--/* Cards */-->
                     <div class="container">
                         <div class="d-flex flex-column align-items-center">
-                            <div class="col-md-4 mb-3" th:each="post:${posts}">
+                            <div class="col-md-4 mb-3" th:each="post:${postList}">
                                 <div class="card h-100 shadow">
                                     <div class="d-flex align-items-center mt-3">
                                         <a th:href="'/profile/' + ${post.author.username}">
@@ -138,7 +139,7 @@
                                         <p class="card-text ml-2 username" th:text="'@' + ${post.author.username}"></p>
                                         <div class="row">
                                             <div class="col align-self-end">
-                                                <a th:href="@{'/like/' + ${post.id}}" class="btn border-0 pull-right" style="float:right"><span th:text="${post.numLikes}"></span> <span th:text="${post.actualLike} ? @{&#10084;&#65039;} : @{&#x1F90D;}"></span></a>
+                                                <a th:href="@{'/like/' + ${post.id}}" class="btn border-0 pull-right" style="float:right"><span th:text="${post.numLikes}"></span> <span th:text="${post.likeState} ? @{&#10084;&#65039;} : @{&#x1F90D;}"></span></a>
                                             </div>
                                         </div>
                                     </div>

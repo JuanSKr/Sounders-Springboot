@@ -30,7 +30,7 @@ public class LikeService {
         return likeRepository.existsByPostAndUser(post, user);
     }
 
-    public boolean activoPostAndUser(Post post, User user){
+    public boolean activePostAndUser(Post post, User user){
         PostLike like=this.findByPostAndUser(post, user);
         return like!=null && like.isState();
     }
