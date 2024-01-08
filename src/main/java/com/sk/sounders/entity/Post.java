@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Formula;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.web.multipart.MultipartFile;
@@ -14,7 +15,6 @@ import java.time.LocalTime;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "posts")
@@ -37,18 +37,30 @@ public class Post {
     private String imagePath;
 
     @Column(nullable = false)
-    private Long likes = 0L;
-
-    @Column(nullable = false)
     private LocalDate date;
 
     @Column(nullable = false)
     private LocalTime hour;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
     private User author;
 
+    @Formula(value = "(SELECT COUNT(*) FROM post_like m WHERE m.post_id=id AND m.state=true)")
+    private long numLikes;
+
+    @Transient
+    private boolean actualLike;
+
+    public Post() {
+        actualLike = false;
+    }
+
+    public Post(String text, User author, LocalDate date, LocalTime hour) {
+        this.text = text;
+        this.author = author;
+        this.date = date;
+        this.hour = hour;
+    }
 
 }

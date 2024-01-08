@@ -136,9 +136,10 @@
                                         </a>
                                         <p class="card-text ml-2 name" th:text="${post.author.name}"></p>
                                         <p class="card-text ml-2 username" th:text="'@' + ${post.author.username}"></p>
-                                        <div class="like-container">
-                                            <span id="likeCount" th:text="${post.likes}"></span>
-                                            <div class="like-icon" th:data-post-id="${post.id}"></div>
+                                        <div class="row">
+                                            <div class="col align-self-end">
+                                                <a th:href="@{'/like/' + ${post.id}}" class="btn border-0 pull-right" style="float:right"><span th:text="${post.numLikes}"></span> <span th:text="${post.actualLike} ? @{&#10084;&#65039;} : @{&#x1F90D;}"></span></a>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="card-body d-flex flex-column">

@@ -38,6 +38,7 @@ public class SpringSecurity {
                                 .requestMatchers("/upload-dir/**").hasRole("USER")
                                 .requestMatchers("/uploadfile").hasRole("USER")
                                 .requestMatchers("/files/**").hasRole("USER")
+                                .requestMatchers("/like/**").hasRole("USER")
                                 .requestMatchers("/").permitAll()
                 ).formLogin(
                         form -> form
