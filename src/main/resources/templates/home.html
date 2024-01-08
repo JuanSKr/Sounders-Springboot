@@ -20,7 +20,7 @@
         <div class="h-100 sidebar-content">
             <div class="sidebar-logo">
                 <a class="publish-sidebar">
-                    <i class="fas fa-plus pe-2"></i> <!--/* Icono de más para "Postear" */-->
+                    <i class="fas fa-plus pe-2"></i>
                     Postear
                 </a>
             </div>
@@ -28,24 +28,20 @@
             <ul class="sidebar-nav">
                 <li class="sidebar-item">
                     <a href="/home" class="sidebar-link">
-                        <i class="fas fa-home pe-2"></i> <!--/* Icono de casa para "Inicio" */-->
+                        <i class="fa-solid fa-house"></i>
                         Inicio
                     </a>
                     <a href="#" class="sidebar-link">
-                        <i class="fas fa-bell pe-2"></i> <!--/* Icono de campana para "Notificaciones" */-->
-                        Notificaciones
-                    </a>
-                    <a href="#" class="sidebar-link">
-                        <i class="fas fa-search pe-2"></i> <!--/* Icono de lupa para "Explorar" */-->
-                        Explorar
+                        <i class="fa-solid fa-message"></i>
+                        Mensajes
                     </a>
                     <a th:href="'/profile/' + ${user.username}" class="sidebar-link">
-                        <i class="fas fa-user pe-2"></i> <!--/* Icono de usuario para "Tu perfil" */-->
+                        <i class="fas fa-user pe-2"></i>
                         Tu perfil
                     </a>
                 <li class="sidebar-item">
                     <a th:href="@{/logout}" class="sidebar-link">
-                        <i class="fas fa-sign-out-alt pe-2"></i> <!--/* Icono de salida para "Cerrar sesión" */-->
+                        <i class="fa-solid fa-right-from-bracket"></i>
                         Cerrar sesión</a>
                 </li>
             </ul>
@@ -54,7 +50,7 @@
     <!--/* Main Component */-->
     <div class="main">
         <nav class="navbar navbar-expand px-3 border-bottom" id="navbar">
-            <!--/* Botón para ocultar la sidebar */-->
+            <!--/* Collapse sidebar */-->
             <button class="btn" type="button" data-bs-theme="dark">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -65,24 +61,20 @@
             <div class="navbar-items" style="display: none;">
                 <div class="navbar-group">
                     <a href="/home">
-                        <i class="fas fa-home pe-2"></i> <!--/* Icono de casa para "Inicio" */-->
+                        <i class="fa-solid fa-house"></i>
                         Inicio
                     </a>
                     <a href="#">
-                        <i class="fas fa-bell pe-2"></i> <!--/* Icono de campana para "Notificaciones" */-->
-                        Notificaciones
-                    </a>
-                    <a href="#">
-                        <i class="fas fa-search pe-2"></i> <!--/* Icono de lupa para "Explorar" */-->
-                        Explorar
+                        <i class="fa-solid fa-message"></i>
+                        Mensajes
                     </a>
                     <a th:href="'/profile/' + ${user.username}">
-                        <i class="fas fa-user pe-2"></i> <!--/* Icono de usuario para "Tu perfil" */-->
+                        <i class="fa-solid fa-user"></i>
                         Tu perfil
                     </a>
                 </div>
                 <a class="publish">
-                    <i class="fas fa-plus pe-2"></i> <!--/* Icono de más para "Postear" */-->
+                    <i class="fas fa-plus pe-2"></i>
                     Postear
                 </a>
             </div>

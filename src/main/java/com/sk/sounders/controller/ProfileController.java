@@ -59,6 +59,7 @@ public class ProfileController {
         }
 
         model.addAttribute("postList", postList);
+        model.addAttribute("post", new Post());
 
         if (username.equals(userFromMail.getUsername())) {
             return "myprofile";
