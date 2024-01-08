@@ -439,3 +439,24 @@ p.card-text.username {
     text-align: right;
     margin-top: 10px;
 }
+
+.align-msg {
+    position: relative;
+    top: -2px;
+    margin-left: 3px;
+}
+
+.align-inicio {
+    position: relative;
+    margin-left: 3px;
+}
+
+.align-perfil {
+    position: relative;
+    margin-left: 3px;
+}
+
+.align-msg-combo {
+    position: relative;
+    top: 1px;
+}

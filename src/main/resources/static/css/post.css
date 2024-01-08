@@ -249,3 +249,24 @@ a.sidebar-link {
 .sidebar-logo {
     font-size: 1.5rem;
 }
+
+.align-msg {
+    position: relative;
+    top: -2px;
+    margin-left: 3px;
+}
+
+.align-inicio {
+    position: relative;
+    margin-left: 3px;
+}
+
+.align-perfil {
+    position: relative;
+    margin-left: 3px;
+}
+
+.align-msg-combo {
+    position: relative;
+    top: 1px;
+}

@@ -57,15 +57,15 @@
                 <div class="navbar-group">
                     <a href="/home">
                         <i class="fa-solid fa-house"></i>
-                        Inicio
+                        <span class="align-inicio">Inicio</span>
                     </a>
-                    <a href="#">
+                    <a href="#" class="align-msg-combo">
                         <i class="fa-solid fa-message"></i>
-                        Mensajes
+                        <span class="align-msg">Mensajes</span>
                     </a>
                     <a th:href="'/profile/' + ${user.username}">
                         <i class="fa-solid fa-user"></i>
-                        Tu perfil
+                        <span class="align-perfil">Tu perfil</span>
                     </a>
                 </div>
                 <a class="publish">

@@ -243,3 +243,24 @@ a.sidebar-link {
     background-color: #007bff;
     color: #ffffff;
 }
+
+.align-msg {
+    position: relative;
+    top: -2px;
+    margin-left: 3px;
+}
+
+.align-inicio {
+    position: relative;
+    margin-left: 3px;
+}
+
+.align-perfil {
+    position: relative;
+    margin-left: 3px;
+}
+
+.align-msg-combo {
+    position: relative;
+    top: 1px;
+}
