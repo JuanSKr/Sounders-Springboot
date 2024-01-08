@@ -103,7 +103,7 @@
             <!--/* Cards */-->
             <div class="container">
                 <div class="d-flex flex-column align-items-center">
-                    <div class="col-md-4 mb-3" th:each="post:${posts}">
+                    <div class="col-md-4 mb-3" th:each="post:${postList}">
                         <div class="card h-100 shadow">
                             <div class="d-flex align-items-center mt-3">
                                 <a th:href="'/profile/' + ${post.author.username}">
@@ -111,9 +111,10 @@
                                 </a>
                                 <p class="card-text ml-2 name" th:text="${post.author.name}"></p>
                                 <p class="card-text ml-2 username" th:text="'@' + ${post.author.username}"></p>
-                                <div class="like-container">
-                                    <span id="likeCount" th:text="${post.likes}"></span>
-                                    <div class="like-icon" th:data-post-id="${post.id}"></div>
+                                <div class="row">
+                                    <div class="like-container">
+                                        <a th:href="@{'/like/' + ${post.id}}" class="btn border-0 pull-right like-button" style="float:right"><span th:text="${post.numLikes}"></span> <span th:text="${post.likeState} ? @{&#10084;&#65039;} : @{&#x1F90D;}"></span></a>
+                                    </div>
                                 </div>
                             </div>
                             <div class="card-body d-flex flex-column">

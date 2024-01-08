@@ -1,3 +1,5 @@
+// Sidebar
+
 const toggler = document.querySelector(".btn");
 const brand = document.querySelector(".navbar-brand-collapsed");
 const navbarItems = document.querySelector(".navbar-items");
@@ -26,6 +28,8 @@ toggler.addEventListener("click", function () {
         soundersNavbarCenter.style.display = "inline";
     }
 });
+
+//Post Modal
 
 document.querySelector('.publish').addEventListener('click', function () {
     var postModal = new bootstrap.Modal(document.getElementById('postModal'));

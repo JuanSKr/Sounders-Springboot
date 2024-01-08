@@ -90,6 +90,7 @@
         <main class="content px-3 py-2">
             <div class="container-fluid">
                 <div class="mb-3">
+                    <!--/* Post Modal */-->
                     <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel"
                          aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
@@ -138,8 +139,8 @@
                                         <p class="card-text ml-2 name" th:text="${post.author.name}"></p>
                                         <p class="card-text ml-2 username" th:text="'@' + ${post.author.username}"></p>
                                         <div class="row">
-                                            <div class="col align-self-end">
-                                                <a th:href="@{'/like/' + ${post.id}}" class="btn border-0 pull-right" style="float:right"><span th:text="${post.numLikes}"></span> <span th:text="${post.likeState} ? @{&#10084;&#65039;} : @{&#x1F90D;}"></span></a>
+                                            <div class="like-container">
+                                                <a th:href="@{'/like/' + ${post.id}}" class="btn border-0 pull-right like-button" style="float:right"><span th:text="${post.numLikes}"></span> <span th:text="${post.likeState} ? @{&#10084;&#65039;} : @{&#x1F90D;}"></span></a>
                                             </div>
                                         </div>
                                     </div>

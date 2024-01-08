@@ -361,31 +361,12 @@ hr {
     align-items: center;
     position: absolute;
     top: 25px;
-    right: 15px;
+    left: 355px;
 }
 
-.like-icon {
-    background: url("../img/like.png") no-repeat center;
-    background-size: contain;
-    width: 20px;
-    height: 20px;
-}
-
-.like-icon:hover {
-    transform: scale(1.15);
+.like-button:hover {
+    transform: scale(1.10);
     transition: transform .2s;
-    cursor: pointer;
-}
-
-#likeCount {
-    position: absolute;
-    margin-right: 5px;
-    height: 20px;
-    white-space: nowrap;
-    text-align: right;
-    font-size: 1.1rem;
-    top: -2px;
-    right: 20px;
 }
 
 .post-date {

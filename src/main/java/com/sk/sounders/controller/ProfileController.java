@@ -1,7 +1,9 @@
 package com.sk.sounders.controller;
 
 import com.sk.sounders.entity.Post;
+import com.sk.sounders.entity.PostLike;
 import com.sk.sounders.entity.User;
+import com.sk.sounders.service.impl.LikeService;
 import com.sk.sounders.service.impl.PostServiceImpl;
 import com.sk.sounders.service.impl.UserServiceImpl;
 import com.sk.sounders.storage.StorageService;
@@ -12,6 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @Controller
 public class ProfileController {
@@ -24,6 +28,9 @@ public class ProfileController {
 
     @Autowired
     StorageService storageService;
+
+    @Autowired
+    LikeService likeService;
 
 
     @GetMapping("/profile/{username}")
@@ -44,7 +51,15 @@ public class ProfileController {
         }
         model.addAttribute("user", user);
         model.addAttribute("userFromMail", userFromMail);
-        model.addAttribute("posts", postService.findByAuthorOrderByIdDesc(user));
+
+        List<Post> postList = postService.findByAuthorOrderByIdDesc(user);
+
+        for (Post post : postList) {
+            post.setLikeState(likeService.activePostAndUser(post, userFromMail));
+        }
+
+        model.addAttribute("postList", postList);
+
         if (username.equals(userFromMail.getUsername())) {
             return "myprofile";
         } else {
@@ -97,6 +112,5 @@ public class ProfileController {
 
         return "redirect:/profile/" + currentUser.getUsername();
     }
-
 
 }

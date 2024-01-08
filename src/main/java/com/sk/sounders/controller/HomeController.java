@@ -37,35 +37,6 @@ public class HomeController {
     @Autowired
     StorageService storageService;
 
-//    @GetMapping("/home")
-//    public String viewPosts(Model model) {
-//        model.addAttribute("post", new Post());
-//
-//        try {
-//            Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//            UserDetails userDetails = null;
-//            if (principal instanceof UserDetails) {
-//                userDetails = (UserDetails) principal;
-//            }
-//            if (userDetails == null) {
-//                return "error";
-//            }
-//            String currentUsername = userDetails.getUsername();
-//            User user = userService.findByEmail(currentUsername);
-//            model.addAttribute("user", user);
-//        } catch (NullPointerException | TemplateProcessingException e) {
-//            System.out.println("No hay posts");
-//        }
-//
-//        try {
-//            model.addAttribute("posts", postService.findAllDesc());
-//        } catch (NullPointerException e) {
-//            System.out.println("No hay posts");
-//        }
-//
-//        return "home";
-//    }
-
     @GetMapping("/home")
     public String home(Model model) {
         for (Post post : postService.findAllDesc()) {
@@ -85,7 +56,6 @@ public class HomeController {
         }
         model.addAttribute("postList", postList);
         model.addAttribute("post", new Post());
-
 
         return "home";
     }
