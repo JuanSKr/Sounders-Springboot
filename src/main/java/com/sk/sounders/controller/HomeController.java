@@ -109,6 +109,8 @@ public class HomeController {
         Post post = postService.findById(id);
         PostLike like = likeService.findByPostAndUser(post, user);
 
+        User postAutor = post.getAuthor();
+
         if (like == null) {
             like = new PostLike();
             like.setUser(user);
@@ -118,6 +120,6 @@ public class HomeController {
             like.setState(!like.isState());
         }
         likeService.save(like);
-        return "redirect:/" + "#" + id;
+        return "redirect:/post/" + postAutor.getUsername() + "/" + post.getId();
     }
 }
