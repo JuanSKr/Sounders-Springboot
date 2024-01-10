@@ -15,7 +15,10 @@ body {
 }
 
 .main {
-    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 h3 {
@@ -225,20 +228,11 @@ a.sidebar-link {
     font-size: 1.5rem;
 }
 
+
 .form-profile {
-    margin-top: 100px;
-    border-radius: 15px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    background-color: #f8f9fa;
-}
-
-.form-profile .card-body {
-    padding: 2rem;
-}
-
-.form-profile .form-control {
-    border-radius: 5px;
-    border: 1px solid #ced4da;
+    width: 50%;
+    height: 80%;
+    top: 50px;
 }
 
 .form-profile .btn {

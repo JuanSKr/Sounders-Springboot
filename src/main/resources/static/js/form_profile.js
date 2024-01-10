@@ -26,3 +26,13 @@ toggler.addEventListener("click", function () {
         soundersNavbarCenter.style.display = "inline";
     }
 });
+
+// Username and bio counter
+
+document.getElementById('name').addEventListener('input', function () {
+    document.getElementById('nameCount').textContent = this.value.length + "/20";
+});
+
+document.getElementById('bio').addEventListener('input', function () {
+    document.getElementById('bioCount').textContent = this.value.length + "/100";
+});

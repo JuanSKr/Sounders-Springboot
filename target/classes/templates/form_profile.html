@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -94,14 +94,16 @@
                                     <div class="form-group">
                                         <label for="name">Nombre de usuario</label>
                                         <input type="text" class="form-control" name="name" id="name" th:field="*{name}"
-                                               required>
+                                               maxlength="20" required>
+                                        <div id="nameCount">0/20</div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="bio">Biografía</label>
-                                        <input type="text" class="form-control" name="bio" id="bio" th:field="*{bio}"
-                                               required>
+                                        <textarea type="text" class="form-control" name="bio" id="bio" th:field="*{bio}"
+                                               maxlength="100" required></textarea>
+                                        <div id="bioCount">0/100</div>
                                     </div>
                                 </div>
                             </div>
