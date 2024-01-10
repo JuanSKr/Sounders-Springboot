@@ -37,19 +37,3 @@ document.getElementById('bio').addEventListener('input', function () {
     document.getElementById('bioCount').textContent = this.value.length + "/100";
 });
 
-// Profile picture
-
-document.getElementById('avatarImage').addEventListener('change', function (e) {
-    var file = e.target.files[0];
-    var reader = new FileReader();
-
-    reader.onloadend = function () {
-        document.querySelector('.img-account-profile').src = reader.result;
-    }
-
-    if (file) {
-        reader.readAsDataURL(file);
-    } else {
-        document.querySelector('.img-account-profile').src = "";
-    }
-});

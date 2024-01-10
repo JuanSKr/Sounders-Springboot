@@ -137,4 +137,27 @@ public class ProfileController {
         return "redirect:/profile/" + user.getUsername();
     }
 
+    @PostMapping("/profile/banner")
+    public String updateBanner(@RequestParam("banner") MultipartFile file) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        UserDetails userDetails = null;
+        if (principal instanceof UserDetails) {
+            userDetails = (UserDetails) principal;
+        }
+        String email = userDetails.getUsername();
+        User user = userService.findByEmail(email);
+        if (user != null) {
+            if (!file.isEmpty()) {
+                String name = user.getId() + "_banner.jpg";
+                String filename = storageService.store(file, name);
+                user.setBanner("/files/" + filename);
+                userService.save(user);
+            }
+        } else {
+            System.err.println("No se ha encontrado el usuario");
+        }
+
+        return "redirect:/profile";
+    }
+
 }
