@@ -9,7 +9,9 @@
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
-    background-color: #ffffff;
+    background-image: url("../img/background.png");
+    background-size: inherit;
+    background-repeat: revert;
 }
 
 .main {
@@ -172,6 +174,7 @@ a.sidebar-link {
     justify-content: center;
     gap: 0.25rem;
     flex-grow: 1;
+    margin-right: 76.5px;
 }
 
 .navbar-group a:hover {
