@@ -8,11 +8,12 @@
 
 body {
     font-family: 'Poppins', sans-serif;
+    margin: 0;
     background-color: #ffffff;
-    margin-top: 20px;
 }
 
 .main {
+    height: auto;
     margin-top: 50px;
 }
 
@@ -161,7 +162,7 @@ a.sidebar-link {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%; /* Los elementos se distribuyan a lo largo de toda la barra de navegación */
+    width: 100%;
 
 }
 
@@ -169,8 +170,9 @@ a.sidebar-link {
 .navbar-group {
     display: flex;
     justify-content: center;
-    gap: 0.25rem; /* Separación mínima entre los elementos del grupo */
+    gap: 0.25rem;
     flex-grow: 1;
+    margin-right: 76.5px;
 }
 
 .navbar-group a:hover {
@@ -198,6 +200,26 @@ a.sidebar-link {
     transition: transform .2s;
 }
 
+.container {
+    margin-top: 15px;
+}
+
+.card {
+    margin-top: 20px;
+    border: none;
+    transition: all .2s ease-in-out;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+
+.d-flex.align-items-center.mt-3 {
+    margin-left: 20px;
+}
+
 .navbar-center {
     position: absolute;
     left: 40%;
@@ -213,6 +235,9 @@ a.sidebar-link {
     transform: translateY(0);
 }
 
+.modal-content {
+    color: black;
+}
 
 .navbar-toggler-icon {
     color: white;

@@ -18,27 +18,26 @@
         <div class="h-100 sidebar-content">
             <div class="sidebar-logo">
                 <a class="publish-sidebar">
-                    <i class="fas fa-plus pe-2"></i>
-                    Postear
+                    Sounders
                 </a>
             </div>
             <!--/* Sidebar Navigation */-->
             <ul class="sidebar-nav">
                 <li class="sidebar-item">
-                    <a href="/home" class="sidebar-link">
+                    <a href="/home" class="sidebar-link" onclick="return confirm('¿Estás seguro de que quieres salir? Perderás todos los cambios.');">
                         <i class="fa-solid fa-house"></i>
                         <span class="align-inicio-sidebar">Inicio</span>
                     </a>
-                    <a href="#" class="sidebar-link">
+                    <a href="#" class="sidebar-link" onclick="return confirm('¿Estás seguro de que quieres salir? Perderás todos los cambios.');">
                         <i class="fa-solid fa-message"></i>
                         <span class="align-mensajes-sidebar">Mensajes</span>
                     </a>
-                    <a th:href="'/profile/' + ${user.username}" class="sidebar-link">
+                    <a th:href="'/profile/' + ${user.username}" class="sidebar-link" onclick="return confirm('¿Estás seguro de que quieres salir? Perderás todos los cambios.');">
                         <i class="fas fa-user pe-2"></i>
                         <span class="align-perfil-sidebar">Tu perfil</span>
                     </a>
                 <li class="sidebar-item">
-                    <a th:href="@{/logout}" class="sidebar-link">
+                    <a th:href="@{/logout}" class="sidebar-link" onclick="return confirm('¿Estás seguro de que quieres salir? Perderás todos los cambios.');">
                         <i class="fa-solid fa-right-from-bracket"></i>
                         <span class="align-logout-sidebar">Cerrar sesión</span>
                     </a>
@@ -59,23 +58,19 @@
                id="sounders-navbar-center">Sounders</a>
             <div class="navbar-items" style="display: none;">
                 <div class="navbar-group">
-                    <a href="/home">
+                    <a href="/home" onclick="return confirm('¿Estás seguro de que quieres salir? Perderás todos los cambios.');">
                         <i class="fa-solid fa-house"></i>
                         <span class="align-inicio">Inicio</span>
                     </a>
-                    <a href="#" class="align-msg-combo">
+                    <a href="#" class="align-msg-combo" onclick="return confirm('¿Estás seguro de que quieres salir? Perderás todos los cambios.');">
                         <i class="fa-solid fa-message"></i>
                         <span class="align-msg">Mensajes</span>
                     </a>
-                    <a th:href="'/profile/' + ${user.username}">
+                    <a th:href="'/profile/' + ${user.username}" onclick="return confirm('¿Estás seguro de que quieres salir? Perderás todos los cambios.');">
                         <i class="fa-solid fa-user"></i>
                         <span class="align-perfil">Tu perfil</span>
                     </a>
                 </div>
-                <a class="publish">
-                    <i class="fas fa-plus pe-2"></i>
-                    Postear
-                </a>
             </div>
         </nav>
 

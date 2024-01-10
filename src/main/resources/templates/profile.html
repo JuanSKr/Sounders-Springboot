@@ -35,7 +35,7 @@
                         <i class="fa-solid fa-message"></i>
                         Mensajes
                     </a>
-                    <a th:href="'/profile/' + ${user.username}" class="sidebar-link">
+                    <a th:href="'/profile/' + ${currentUser.username}" class="sidebar-link">
                         <i class="fas fa-user pe-2"></i>
                         Tu perfil
                     </a>
@@ -68,7 +68,7 @@
                         <i class="fa-solid fa-message"></i>
                         Mensajes
                     </a>
-                    <a th:href="'/profile/' + ${user.username}">
+                    <a th:href="'/profile/' + ${currentUser.username}">
                         <i class="fa-solid fa-user"></i>
                         Tu perfil
                     </a>

@@ -50,6 +50,7 @@ public class ProfileController {
             return "error";
         }
         model.addAttribute("user", user);
+        model.addAttribute("currentUser", userFromMail);
         model.addAttribute("userFromMail", userFromMail);
 
         List<Post> postList = postService.findByAuthorOrderByIdDesc(user);
