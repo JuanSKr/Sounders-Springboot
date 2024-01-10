@@ -92,8 +92,13 @@
                             <img class="img-account-profile rounded-circle mb-2" th:src="${user.avatar}" alt="">
                             <!-- Profile picture help block-->
                             <div class="small font-italic text-muted mb-4">JPG o PNG de máximo 10 MB</div>
-                            <!-- Profile picture upload button-->
-                            <button class="btn btn-primary" type="button">Actualizar avatar</button>
+                            <!-- Profile picture upload form-->
+                            <form th:action="@{/profile/avatar}" method="post" enctype="multipart/form-data">
+                                <div class="mb-3">
+                                    <input type="file" class="form-control" id="avatarImage" name="avatar" accept="image/*" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Actualizar avatar</button>
+                            </form>
                         </div>
                     </div>
                 </div>

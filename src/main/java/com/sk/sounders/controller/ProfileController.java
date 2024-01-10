@@ -114,4 +114,27 @@ public class ProfileController {
         return "redirect:/profile/" + currentUser.getUsername();
     }
 
+    @PostMapping("/profile/avatar")
+    public String updateAvatar(@RequestParam("avatar") MultipartFile file) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        UserDetails userDetails = null;
+        if (principal instanceof UserDetails) {
+            userDetails = (UserDetails) principal;
+        }
+        String email = userDetails.getUsername();
+        User user = userService.findByEmail(email);
+        if (user != null) {
+            if (!file.isEmpty()) {
+                String name = user.getId() + "_avatar.jpg";
+                String filename = storageService.store(file, name);
+                user.setAvatar("/files/" + filename);
+                userService.save(user);
+            }
+        } else {
+            System.err.println("Error al actualizar el avatar");
+        }
+
+        return "redirect:/profile/" + user.getUsername();
+    }
+
 }
