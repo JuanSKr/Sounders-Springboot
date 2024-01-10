@@ -207,7 +207,6 @@ a.sidebar-link {
 .card {
     margin-top: 20px;
     border: none;
-
     transition: all .2s ease-in-out;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
@@ -304,4 +303,21 @@ a.sidebar-link {
     padding-right: 0;
     margin-left: 1rem;
     margin-right: 1rem;
+}
+
+/* Form profile buttons */
+button.submit {
+    background-color: #13B2ECFF;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button.submit:hover {
+    color: white;
+    background-color: #0689ea;
 }
