@@ -222,7 +222,11 @@ a.sidebar-link {
     font-size: 1.5rem;
 }
 
-/* Profile */
+/* Form */
+
+#inputBio {
+    width: 100%;
+}
 
 .img-account-profile {
     height: 10rem;
