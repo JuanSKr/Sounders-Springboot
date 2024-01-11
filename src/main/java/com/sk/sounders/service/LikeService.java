@@ -1,4 +1,4 @@
-package com.sk.sounders.service.impl;
+package com.sk.sounders.service;
 
 import com.sk.sounders.entity.PostLike;
 import com.sk.sounders.entity.Post;

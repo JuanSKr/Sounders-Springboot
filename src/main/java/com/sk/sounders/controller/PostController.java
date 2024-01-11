@@ -1,7 +1,9 @@
 package com.sk.sounders.controller;
 
+import com.sk.sounders.entity.Comment;
 import com.sk.sounders.entity.Post;
 import com.sk.sounders.entity.User;
+import com.sk.sounders.service.CommentService;
 import com.sk.sounders.service.impl.PostServiceImpl;
 import com.sk.sounders.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +11,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 @Controller
 public class PostController {
@@ -21,11 +26,14 @@ public class PostController {
     @Autowired
     UserServiceImpl userService;
 
+    @Autowired
+    CommentService commentService;
+
 
     @GetMapping("/post/{username}/{id}")
     public String viewPost(@PathVariable String username, @PathVariable long id, Model model) {
         Post post = postService.findByAuthorAndId(userService.findByUsername(username), id);
-        model.addAttribute("post", post);
+
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         UserDetails userDetails = null;
         if (principal instanceof UserDetails) {
@@ -36,8 +44,27 @@ public class PostController {
         }
         String currentUsername = userDetails.getUsername();
         User user = userService.findByEmail(currentUsername);
+        model.addAttribute("post", post);
         model.addAttribute("user", user);
+        model.addAttribute("comments", commentService.findByPost(post));
+        model.addAttribute("newComment", new Comment());
         return "post";
+    }
+
+    @PostMapping("/comment/add")
+    public String saveComment(@ModelAttribute("newComment") Comment comment, @RequestParam long idPost) {
+        Post post = postService.findById(idPost);
+        User postAuthor = post.getAuthor();
+
+        comment.setPost(post);
+        comment.setDate(LocalDate.now());
+        LocalTime hour = LocalTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        comment.setHour(LocalTime.parse(hour.format(formatter)));
+        commentService.save(comment);
+
+        return "redirect:/post/" + postAuthor.getUsername() + "/" + post.getId();
+
     }
 
 }

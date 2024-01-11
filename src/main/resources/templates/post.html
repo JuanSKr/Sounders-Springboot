@@ -75,20 +75,45 @@
                 </a>
             </div>
         </nav>
-        <!-- Contenido de la página -->
-        <main class="content px-3 py-2 bg-white">
-            <!-- Información del post -->
+        <!--/* Main content */-->
+        <main class="flex-shrink-0">
             <div class="container mt-4">
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <img th:src="${post.imagePath}" class="card-img-top" alt="Song image">
-                        <div>
-                            <p class="card-text" th:text="${post.text}"></p>
-                            <p class="card-text"><small class="text-muted" th:text="${post.author.username}"></small>
-                            </p>
+                <h1 class="mb-4 display-3 text-center" th:text="${post.author.username}"></h1>
+                <h2 class="h4 text-center">Contenido</h2>
+                <hr>
+                <p class="lead mb-4 text-center" th:text="${post.text}"></p>
+
+                <!-- Comments -->
+                <div class="card-deck">
+                    <div class="col-12 mb-4">
+                        <h2 class="display-5 text-center">Comentarios</h2>
+                        <hr>
+                    </div>
+                    <div th:each="comment:${comments}" class="col-md-6 col-lg-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <p class="card-text" th:text="${comment.content}"></p>
+                                <h6 class="card-subtitle mb-2 text-muted" th:text="${comment.date}"></h6>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <hr>
+                <!-- Comment form -->
+                <h2 class="display-5 text-center">Escribe un comentario</h2>
+                <hr>
+                <form action="/comment/add" th:object="${newComment}" method="post">
+                    <input type="hidden" name="idPost" th:value="${post.id}">
+                    <div class="mb-3">
+                        <label for="content" class="form-label">Contenido</label>
+                        <textarea class="form-control" id="content" name="content" rows="3" th:field="*{content}"
+                                  placeholder="Escribe aquí tu comentario..."
+                                  required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+                </form>
             </div>
         </main>
     </div>

@@ -1,9 +1,10 @@
 package com.sk.sounders.controller;
 
+import com.sk.sounders.entity.Comment;
 import com.sk.sounders.entity.Post;
-import com.sk.sounders.entity.PostLike;
 import com.sk.sounders.entity.User;
-import com.sk.sounders.service.impl.LikeService;
+import com.sk.sounders.service.CommentService;
+import com.sk.sounders.service.LikeService;
 import com.sk.sounders.service.impl.PostServiceImpl;
 import com.sk.sounders.service.impl.UserServiceImpl;
 import com.sk.sounders.storage.StorageService;
@@ -15,6 +16,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Controller
@@ -31,6 +35,9 @@ public class ProfileController {
 
     @Autowired
     LikeService likeService;
+
+    @Autowired
+    CommentService commentService;
 
 
     @GetMapping("/profile/{username}")

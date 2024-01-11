@@ -3,7 +3,7 @@ package com.sk.sounders.controller;
 import com.sk.sounders.entity.PostLike;
 import com.sk.sounders.entity.Post;
 import com.sk.sounders.entity.User;
-import com.sk.sounders.service.impl.LikeService;
+import com.sk.sounders.service.LikeService;
 import com.sk.sounders.service.impl.PostServiceImpl;
 import com.sk.sounders.service.impl.UserServiceImpl;
 import com.sk.sounders.storage.StorageService;
@@ -16,7 +16,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.thymeleaf.exceptions.TemplateProcessingException;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
