@@ -209,6 +209,7 @@ a.sidebar-link {
     border-radius: 15px;
     transition: all .2s ease-in-out;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background: #f7f7fd;
 }
 
 .card:hover {
