@@ -51,6 +51,12 @@ public class User {
     @Column(nullable = false)
     private Long followed = 0L;
 
+    @OneToMany(mappedBy = "sender")
+    List<Message> sentMessages;
+
+    @OneToMany(mappedBy = "receiver")
+    List<Message> receivedMessages;
+
     @OneToMany(mappedBy = "author")
     private Set<Post> posts;
 

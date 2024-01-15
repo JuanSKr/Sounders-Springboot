@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container" id="container">
+    <h1>Conversaciones entre <span th:text="${actual.email}"></span> y <span th:text="${receiver.email}"></span></h1>
+    <h6 class="border-bottom my-4"><a href="/">[Elegir otro destinatario]</a></h6>
+    <div class="row" style="max-height: 50vh; overflow-y:auto; overflow-x: hidden;" id="messages">
+        <div class="row border m-4" th:each="message:${messagesList}">
+            <div class="col-8">
+                <img class="rounded-circle" style="width: 50px;" th:src="*{message.sender.avatar}"/>
+                <span
+                        th:class="${message.sender.email==actual.email} ? 'text-info' : 'text-danger'"
+                        th:text="${message.sender.email}">
+                    </span>:&nbsp;
+                <span th:text="${message.content}"></span>
+                <span class="text-secondary" style="font-size: 9px;" th:text="${message.date}"></span>
+            </div>
+        </div>
+    </div>
+
+    <form action="" method="post" th:action="@{/send}" th:object="${message}">
+        <div id="idForm" class="row">
+            <input type="hidden" name="sender" th:value="${actual.id}">
+            <input type="hidden" name="receiver" th:value="${receiver.id}" >
+
+            <div class="col-11">
+                <textarea th:field="*{content}" rows="3" placeholder="Escribe tu mensaje aquí y pulsa enviar" style="width:100%;"></textarea>
+            </div>
+            <div class="col-1">
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </div>
+        </div>
+    </form>
+    <button class="btn btn-success" href="#">Refrescar</button>
+
+</div>
+<script>
+    var objDiv = document.getElementById("messages");
+    objDiv.scrollTop = objDiv.scrollHeight;
+</script>
+</body>
+</html>

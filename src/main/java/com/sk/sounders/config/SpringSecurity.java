@@ -40,6 +40,8 @@ public class SpringSecurity {
                                 .requestMatchers("/files/**").hasRole("USER")
                                 .requestMatchers("/like/**").hasRole("USER")
                                 .requestMatchers("/comment/**").hasRole("USER")
+                                .requestMatchers("/chat/**").hasRole("USER")
+                                .requestMatchers("/send").hasRole("USER")
                                 .requestMatchers("/").permitAll()
                 ).formLogin(
                         form -> form
