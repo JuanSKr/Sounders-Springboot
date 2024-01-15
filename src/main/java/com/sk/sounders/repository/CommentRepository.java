@@ -3,9 +3,11 @@ package com.sk.sounders.repository;
 import com.sk.sounders.entity.Comment;
 import com.sk.sounders.entity.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 
+@Repository
 public interface CommentRepository extends JpaRepository<Comment, Long> {
     public ArrayList<Comment> findAll();
 
