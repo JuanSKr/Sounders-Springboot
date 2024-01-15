@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="container">
-    <h1>Mensajería simple</h1>
+    <h1>Mensajes directos</h1>
     <h2 class="text-success">Haz clic en el usuario al que le quieres enviar un mensaje</h2>
 
     <div class="row" >
@@ -17,7 +17,7 @@
                 <a th:href="'/chat/' + ${user.id}"><img class="img-thumbnail rounded-circle" th:src="*{user.avatar}"/></a>
             </div>
             <div class="row text-center">
-                <a th:href="'/chat/' + ${user.id}"><span th:text="${user.email}"></span></a>
+                <a th:href="'/chat/' + ${user.id}"><span th:text="${user.username}"></span></a>
             </div>
         </div>
 
