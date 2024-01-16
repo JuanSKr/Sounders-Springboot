@@ -65,3 +65,5 @@ document.getElementById('postImage').addEventListener('change', function (e) {
 document.getElementById('postTextarea').addEventListener('input', function () {
     document.getElementById('characterCount').textContent = this.value.length;
 });
+
+// Auto reload

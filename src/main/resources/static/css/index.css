@@ -36,3 +36,9 @@ body {
     color: #ffffff;
     box-shadow: 0 0 10px 5px white;
 }
+
+img.logo:hover {
+    filter: drop-shadow(0 0 10px white);
+    transform: scale(1.05);
+    transition: transform .2s;
+}
