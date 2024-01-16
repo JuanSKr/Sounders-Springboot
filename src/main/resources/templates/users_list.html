@@ -26,7 +26,7 @@
                         <i class="fa-solid fa-house"></i>
                         <span class="align-inicio-sidebar">Inicio</span>
                     </a>
-                    <a href="#" class="sidebar-link">
+                    <a href="/chat" class="sidebar-link">
                         <i class="fa-solid fa-message"></i>
                         <span class="align-mensajes-sidebar">Mensajes</span>
                     </a>
@@ -60,7 +60,7 @@
                         <i class="fa-solid fa-house"></i>
                         <span class="align-inicio">Inicio</span>
                     </a>
-                    <a href="#" class="align-msg-combo">
+                    <a href="/chat" class="align-msg-combo">
                         <i class="fa-solid fa-message"></i>
                         <span class="align-msg">Mensajes</span>
                     </a>
@@ -75,6 +75,43 @@
                 </a>
             </div>
         </nav>
+        <!--/* Post modal */-->
+        <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="postModalLabel">
+                            <img th:src="${actual.avatar}" alt="avatar" class="modal-avatar">
+                            Nuevo Post
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="postForm" th:action="@{/post/save}" th:object="${post}" method="post"
+                              enctype="multipart/form-data">
+                            <div class="mb-3">
+                                            <textarea class="form-control post-textarea" th:field="*{text}" rows="3"
+                                                      maxlength="355" id="postTextarea" required></textarea>
+                                <div id="characterCountContainer">
+                                    <span id="characterCount">0</span>/355
+                                </div>
+                                <label for="postImage" class="form-label">
+                                    <i class="fa-solid fa-image icon-image"></i>
+                                </label>
+                                <input type="file" class="form-control" id="postImage" name="image"
+                                       accept="image/*" style="display: none;">
+                                <img id="imagePreview" src="#" alt="Image Preview"
+                                     style="display: none; width: 100px; height: 100px;">
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="savePostButton">Postear
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!--/* Main content */-->
         <div class="container">
             <h1>Mensajes directos</h1>

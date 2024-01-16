@@ -1,6 +1,7 @@
 package com.sk.sounders.controller;
 
 import com.sk.sounders.entity.Message;
+import com.sk.sounders.entity.Post;
 import com.sk.sounders.entity.User;
 import com.sk.sounders.service.MessageService;
 import com.sk.sounders.service.impl.UserServiceImpl;
@@ -33,6 +34,7 @@ public class ChatController {
         User actual = userService.findByEmail(authentication.getName());
         model.addAttribute("actual", actual);
         model.addAttribute("messageList", messageService.findByReceiver(actual));
+        model.addAttribute("post", new Post());
         return "users_list";
     }
 
