@@ -29,11 +29,6 @@ toggler.addEventListener("click", function () {
     }
 });
 
-// Chat
-
-var objDiv = document.getElementById("messages");
-objDiv.scrollTop = objDiv.scrollHeight;
-
 //Post Modal
 
 document.querySelector('.publish').addEventListener('click', function () {

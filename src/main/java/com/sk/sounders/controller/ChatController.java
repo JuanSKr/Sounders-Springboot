@@ -28,9 +28,10 @@ public class ChatController {
     MessageService messageService;
 
     @GetMapping("/chat")
-    public String showUsers(Model model, Authentication authentication){
+    public String showUsers(Model model, Authentication authentication) {
         model.addAttribute("userList", userService.findAll());
-        User actual=userService.findByEmail(authentication.getName());
+        User actual = userService.findByEmail(authentication.getName());
+        model.addAttribute("actual", actual);
         model.addAttribute("messageList", messageService.findByReceiver(actual));
         return "users_list";
     }
