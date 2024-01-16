@@ -36,11 +36,11 @@ public class ChatController {
         return "users_list";
     }
 
-    @GetMapping("/chat/{id}")
-    public String chat(@PathVariable long id, Model model, HttpSession request, Authentication authentication) {
+    @GetMapping("/chat/{username}")
+    public String chat(@PathVariable String username, Model model, HttpSession request, Authentication authentication) {
 
         User actual = userService.findByEmail(authentication.getName());
-        User receiver = userService.findById(id);
+        User receiver = userService.findByUsername(username);
         model.addAttribute("actual", actual);
         model.addAttribute("receiver", receiver);
 
