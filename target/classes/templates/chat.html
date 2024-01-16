@@ -1,48 +1,120 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Chat</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <title th:text="${receiver.username}"></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/chat.css">
 </head>
 <body>
-<div class="container" id="container">
-    <h1>Conversaciones entre <span th:text="${actual.email}"></span> y <span th:text="${receiver.email}"></span></h1>
-    <h6 class="border-bottom my-4"><a href="/">[Elegir otro destinatario]</a></h6>
-    <div class="row" style="max-height: 50vh; overflow-y:auto; overflow-x: hidden;" id="messages">
-        <div class="row border m-4" th:each="message:${messagesList}">
-            <div class="col-8">
-                <img class="rounded-circle" style="width: 50px;" th:src="*{message.sender.avatar}"/>
-                <span
-                        th:class="${message.sender.email==actual.email} ? 'text-info' : 'text-danger'"
-                        th:text="${message.sender.email}">
-                    </span>:&nbsp;
-                <span th:text="${message.content}"></span>
-                <span class="text-secondary" style="font-size: 9px;" th:text="${message.date}"></span>
+<!-- Barra de navegación y la barra lateral -->
+<div class="wrapper">
+    <!--/* Sidebar */-->
+    <aside id="sidebar" class="collapsed">
+        <div class="h-100 sidebar-content">
+            <div class="sidebar-logo">
+                <a class="publish-sidebar">
+                    <i class="fas fa-plus pe-2"></i>
+                    Postear
+                </a>
             </div>
+            <!--/* Sidebar Navigation */-->
+            <ul class="sidebar-nav">
+                <li class="sidebar-item">
+                    <a href="/home" class="sidebar-link">
+                        <i class="fa-solid fa-house"></i>
+                        <span class="align-inicio-sidebar">Inicio</span>
+                    </a>
+                    <a href="#" class="sidebar-link">
+                        <i class="fa-solid fa-message"></i>
+                        <span class="align-mensajes-sidebar">Mensajes</span>
+                    </a>
+                    <a th:href="'/profile/' + ${actual.username}" class="sidebar-link">
+                        <i class="fas fa-user pe-2"></i>
+                        <span class="align-perfil-sidebar">Tu perfil</span>
+                    </a>
+                <li class="sidebar-item">
+                    <a th:href="@{/logout}" class="sidebar-link">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <span class="align-logout-sidebar">Cerrar sesión</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <!-- Main Component -->
+    <div class="main">
+        <nav class="navbar navbar-expand px-3 border-bottom" id="navbar">
+            <!--/* Collapse sidebar */-->
+            <button class="btn" type="button" data-bs-theme="dark">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!--/* Text and items to show when sidebar is collapsed */-->
+            <a href="/home" class="navbar-brand-collapsed sidebar-logo" style="display: none;">Sounders</a>
+            <a href="/home" class="navbar-brand-collapsed sidebar-logo collapsed navbar-center" style="display: inline;"
+               id="sounders-navbar-center">Sounders</a>
+            <div class="navbar-items" style="display: none;">
+                <div class="navbar-group">
+                    <a href="/home">
+                        <i class="fa-solid fa-house"></i>
+                        <span class="align-inicio">Inicio</span>
+                    </a>
+                    <a href="#" class="align-msg-combo">
+                        <i class="fa-solid fa-message"></i>
+                        <span class="align-msg">Mensajes</span>
+                    </a>
+                    <a th:href="'/profile/' + ${actual.username}">
+                        <i class="fa-solid fa-user"></i>
+                        <span class="align-perfil">Tu perfil</span>
+                    </a>
+                </div>
+                <a class="publish">
+                    <i class="fas fa-plus pe-2"></i>
+                    Postear
+                </a>
+            </div>
+        </nav>
+        <!--/* Main content */-->
+        <div class="container" id="container">
+            <h1>Conversación con <span th:text="${receiver.username}"></span>
+            </h1>
+            <h6 class="border-bottom my-4"><a href="/">[Elegir otro destinatario]</a></h6>
+            <div class="row" style="max-height: 50vh; overflow-y:auto; overflow-x: hidden;" id="messages">
+                <div class="row border m-4" th:each="message:${messagesList}">
+                    <div class="col-8">
+                        <img class="rounded-circle" style="width: 50px;" th:src="*{message.sender.avatar}"/>
+                        <span
+                                th:class="${message.sender.email==actual.email} ? 'text-info' : 'text-danger'"
+                                th:text="${message.sender.username}">
+                    </span>:&nbsp;
+                        <span th:text="${message.content}"></span>
+                        <span class="text-secondary" style="font-size: 9px;" th:text="${message.date}"></span>
+                    </div>
+                </div>
+            </div>
+
+            <form action="" method="post" th:action="@{/send}" th:object="${message}">
+                <div id="idForm" class="row">
+                    <input type="hidden" name="sender" th:value="${actual.id}">
+                    <input type="hidden" name="receiver" th:value="${receiver.id}">
+
+                    <div class="col-11">
+                        <textarea th:field="*{content}" rows="3" placeholder="Escribe tu mensaje aquí y pulsa enviar"
+                                  style="width:100%;"></textarea>
+                    </div>
+                    <div class="col-1">
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+                </div>
+            </form>
+            <button class="btn btn-success" href="#">Refrescar</button>
         </div>
     </div>
-
-    <form action="" method="post" th:action="@{/send}" th:object="${message}">
-        <div id="idForm" class="row">
-            <input type="hidden" name="sender" th:value="${actual.id}">
-            <input type="hidden" name="receiver" th:value="${receiver.id}" >
-
-            <div class="col-11">
-                <textarea th:field="*{content}" rows="3" placeholder="Escribe tu mensaje aquí y pulsa enviar" style="width:100%;"></textarea>
-            </div>
-            <div class="col-1">
-                <button type="submit" class="btn btn-primary">Enviar</button>
-            </div>
-        </div>
-    </form>
-    <button class="btn btn-success" href="#">Refrescar</button>
-
 </div>
-<script>
-    var objDiv = document.getElementById("messages");
-    objDiv.scrollTop = objDiv.scrollHeight;
-</script>
+<!-- Scripts -->
+<script src="/js/chat.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
