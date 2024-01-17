@@ -224,21 +224,6 @@ a.sidebar-link {
     filter: drop-shadow(0 0 10px #ffffff);
 }
 
-.card {
-    margin-top: 50px;
-    margin-bottom: -45px;
-    border: none;
-    border-radius: 15px;
-    transition: all .2s ease-in-out;
-    background: #ffffff;
-}
-
-.card:hover {
-    transform: scale(1.025);
-    transition: transform .2s;
-    box-shadow: 0 4px 8px 0 rgba(8, 8, 8, 0.8);
-}
-
 .navbar-center {
     position: absolute;
     left: 40%;
@@ -454,7 +439,7 @@ p.card-text.username {
     align-items: center;
     position: absolute;
     top: 17px;
-    left: 355px;
+    left: 440px;
     transition: all .2s ease-in-out;
 }
 
@@ -514,4 +499,58 @@ p.card-text.username {
 .align-logout-sidebar {
     position: relative;
     margin-left: 6px;
+}
+
+/* Cards */
+
+.post-card {
+    width: 40%;
+    height: auto;
+    margin: 70px;
+    border: none;
+    border-radius: 15px;
+    transition: all .2s ease-in-out;
+    background: #ffffff;
+}
+
+.card:hover {
+    transform: scale(1.025);
+    transition: transform .2s;
+    box-shadow: 0 4px 8px 0 rgb(19, 178, 236);
+}
+
+/* Cards Comments-Form */
+
+.card-comments {
+    width: 40%;
+    height: auto;
+    margin-top: -40px;
+    border: none;
+    border-radius: 15px;
+    transition: all .2s ease-in-out;
+    background: #ffffff;
+}
+
+/* Cards Each-Comments */
+
+.comments-list-card {
+    width: 50%;
+    border: 1px solid #13b2ec;
+    border-radius: 15px;
+    transition: all .2s ease-in-out;
+    margin: 0 auto;
+}
+
+.comments-list-card .username {
+    color: grey;
+    font-size: 0.8em;
+    margin-top: -8px;
+    margin-left: 5px;
+}
+
+.comments-list-card .rounded-circle {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    margin-top: -10px;
 }

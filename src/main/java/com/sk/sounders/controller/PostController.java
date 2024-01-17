@@ -52,10 +52,23 @@ public class PostController {
     }
 
     @PostMapping("/comment/add")
-    public String saveComment(@ModelAttribute("newComment") Comment comment, @RequestParam long idPost) {
+    public String saveComment(@ModelAttribute("newComment") Comment comment, @RequestParam long idPost, Model model) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        UserDetails userDetails = null;
+        if (principal instanceof UserDetails) {
+            userDetails = (UserDetails) principal;
+        }
+        if (userDetails == null) {
+            return "error";
+        }
+        String currentUsername = userDetails.getUsername();
+        User commentAuthor = userService.findByEmail(currentUsername);
+        model.addAttribute("commentAuthor", commentAuthor);
+
         Post post = postService.findById(idPost);
         User postAuthor = post.getAuthor();
 
+        comment.setAuthor(commentAuthor);
         comment.setPost(post);
         comment.setDate(LocalDate.now());
         LocalTime hour = LocalTime.now();

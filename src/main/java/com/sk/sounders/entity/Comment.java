@@ -29,4 +29,7 @@ public class Comment {
     @ManyToOne
     private Post post;
 
+    @ManyToOne
+    private User author;
+
 }
