@@ -117,18 +117,21 @@
                     </div>
                 </div>
             </div>
+            <div class="user-info">
             <div class="banner" th:style="'background-image: url(' + ${user.banner} + ');'"></div>
-            <div class="profile-container">
-                <div class="profile-image">
-                    <img th:src="${user.avatar}" alt="Foto de perfil">
+
+                <div class="profile-container">
+                    <div class="profile-image">
+                        <img th:src="${user.avatar}" alt="Foto de perfil">
+                    </div>
+                    <div class="profile-info">
+                        <h2 class="name" th:text="${user.name}">Nombre del usuario</h2>
+                        <p class="username" th:text="'@' + ${user.username}">@username</p>
+                        <p class="bio" th:text="${user.bio}">Biografía del usuario</p>
+                    </div>
                 </div>
-                <div class="profile-info">
-                    <h2 class="name" th:text="${user.name}">Nombre del usuario</h2>
-                    <p class="username" th:text="'@' + ${user.username}">@username</p>
-                    <p class="bio" th:text="${user.bio}">Biografía del usuario</p>
-                </div>
-            </div>
             <hr>
+            </div>
             <!--/* Cards */-->
             <div class="container">
                 <div class="d-flex flex-column align-items-center">
@@ -142,7 +145,10 @@
                                 <p class="card-text ml-2 username" th:text="'@' + ${post.author.username}"></p>
                                 <div class="row">
                                     <div class="like-container">
-                                        <a th:href="@{'/like/' + ${post.id}}" class="btn border-0 pull-right like-button" style="float:right"><span th:text="${post.numLikes}"></span> <span th:text="${post.likeState} ? @{&#10084;&#65039;} : @{&#x1F90D;}"></span></a>
+                                        <a th:href="@{'/like/' + ${post.id}}"
+                                           class="btn border-0 pull-right like-button" style="float:right"><span
+                                                th:text="${post.numLikes}"></span> <span
+                                                th:text="${post.likeState} ? @{&#10084;&#65039;} : @{&#x1F90D;}"></span></a>
                                     </div>
                                 </div>
                             </div>

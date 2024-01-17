@@ -9,7 +9,7 @@
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
-    background-color: #ffffff;
+    background-image: url("../img/background_profile.png");
 }
 
 .main {
@@ -201,7 +201,7 @@ a.sidebar-link {
 }
 
 .container {
-    margin-top: 15px;
+    margin-top: 30px;
 }
 
 .card {
@@ -209,9 +209,8 @@ a.sidebar-link {
     border-radius: 15px;
     transition: all .2s ease-in-out;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    background: #f7f7fd;
+    background: #ffffff;
 }
-
 .card:hover {
     transform: scale(1.05);
 }
@@ -351,12 +350,11 @@ p.card-text.username {
 }
 
 hr {
-    margin: 20px auto 0;
-    width: 95%;
     border: none;
     border-top: 1px solid #3d3d3d;
     border-radius: 50px;
 }
+
 
 .like-container {
     display: flex;
@@ -519,4 +517,8 @@ hr {
 .align-logout-sidebar {
     position: relative;
     margin-left: 6px;
+}
+
+.user-info {
+    background-color: white;
 }

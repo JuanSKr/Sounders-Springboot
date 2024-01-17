@@ -118,21 +118,21 @@
                     </div>
                 </div>
             </div>
-            <div class="banner" th:style="'background-image: url(' + ${user.banner} + ');'"></div>
-            <div class="profile-container">
-                <div class="profile-image">
-                    <img th:src="${user.avatar}" alt="Foto de perfil">
+            <div class="user-info">
+                <div class="banner" th:style="'background-image: url(' + ${user.banner} + ');'"></div>
+
+                <div class="profile-container">
+                    <div class="profile-image">
+                        <img th:src="${user.avatar}" alt="Foto de perfil">
+                    </div>
+                    <div class="profile-info">
+                        <h2 class="name" th:text="${user.name}">Nombre del usuario</h2>
+                        <p class="username" th:text="'@' + ${user.username}">@username</p>
+                        <p class="bio" th:text="${user.bio}">Biografía del usuario</p>
+                    </div>
                 </div>
-                <div class="profile-info">
-                    <h2 class="name" th:text="${user.name}">Nombre del usuario</h2>
-                    <p class="username" th:text="'@' + ${user.username}">@username</p>
-                    <p class="bio" th:text="${user.bio}">Biografía del usuario</p>
-                </div>
-                <a class="edit-profile-btn" th:href="'/profile/update/' + ${user.username}">
-                    <i class="fas fa-pencil-alt"></i> Editar perfil
-                </a>
+                <hr>
             </div>
-            <hr>
             <!--/* Cards */-->
             <div class="container">
                 <div class="d-flex flex-column align-items-center">

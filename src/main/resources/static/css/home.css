@@ -9,7 +9,7 @@
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
-    background-image: url("../img/background.png");
+    background-image: url("../img/background_profile.png");
     background-size: inherit;
     background-repeat: revert;
 }
@@ -213,7 +213,7 @@ a.sidebar-link {
     border: none;
     border-radius: 15px;
     transition: all .2s ease-in-out;
-    background: #e5eaff;
+    background: #ffffff;
 }
 
 .card:hover {
