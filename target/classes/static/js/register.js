@@ -9,16 +9,17 @@ if (document.querySelector('.alert-info')) {
 
 /* Show/Toggle password */
 
-function togglePasswordVisibility(id) {
-    var passwordInput = document.getElementById(id);
-    var passwordIcon = document.querySelector('.' + id + '-icon');
-    if (passwordInput.type === 'password') {
-        passwordInput.type = 'text';
-        passwordIcon.classList.remove('fas', 'fa-eye');
-        passwordIcon.classList.add('fas', 'fa-eye-slash');
+function togglePasswordVisibility(fieldId) {
+    var passwordField = document.getElementById(fieldId);
+    var passwordIcon = passwordField.nextElementSibling;
+
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+        passwordIcon.classList.remove('fa-eye');
+        passwordIcon.classList.add('fa-eye-slash');
     } else {
-        passwordInput.type = 'password';
-        passwordIcon.classList.remove('fas', 'fa-eye-slash');
-        passwordIcon.classList.add('fas', 'fa-eye');
+        passwordField.type = "password";
+        passwordIcon.classList.remove('fa-eye-slash');
+        passwordIcon.classList.add('fa-eye');
     }
 }
