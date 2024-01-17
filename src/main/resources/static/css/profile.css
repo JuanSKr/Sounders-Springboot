@@ -210,6 +210,7 @@ a.sidebar-link {
 }
 
 .card {
+    margin-top:5px;
     border: none;
     border-radius: 15px;
     transition: all .2s ease-in-out;
