@@ -144,7 +144,7 @@
                                             <div th:if="${post.imagePath != null}">
                                                 <img th:src="${post.imagePath}" alt="Image" class="card-img-top mt-2">
                                             </div>
-                                            <p class="post-date" th:text="${post.date} + ' | ' + ${post.hour}"></p>
+                                            <p class="post-date" th:text="${post.hour} + ' | ' + ${post.date}"></p>
                                         </a>
                                     </div>
                                 </div>
