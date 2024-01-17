@@ -36,3 +36,17 @@ button.register:hover {
     transform: scale(1.05);
     transition: transform .2s;
 }
+
+/* Password container */
+
+.password-container {
+    position: relative;
+}
+
+.password-icon {
+    position: absolute;
+    top: 70%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
