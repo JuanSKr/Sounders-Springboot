@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="/css/register.css">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" th:fragment="header">
+<nav class="navbar navbar-expand-lg navbar-custom fixed-top" th:fragment="header">
     <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/}">Sounders</a>
+        <a class="navbar-brand navbar-brand-custom" th:href="@{/}">Sounders</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -38,7 +38,7 @@
             <form method="post" role="form" th:action="@{/register/save}" th:object="${user}">
 
                 <div class="form-group mb-3">
-                    <label class="form-label">Tu nombre</label>
+                    <label class="form-label">Nombre</label>
                     <input class="form-control"
                            id="firstName"
                            name="firstName"
@@ -51,7 +51,7 @@
                 </div>
 
                 <div class="form-group mb-3">
-                    <label class="form-label">Tu nombre de usuario</label>
+                    <label class="form-label">Nombre de usuario</label>
                     <input class="form-control"
                            id="username"
                            name="username"
@@ -63,11 +63,11 @@
                     </p>
                 </div>
                 <div class="form-group mb-3">
-                    <label class="form-label">Email</label>
+                    <label class="form-label">Correo electrónico</label>
                     <input class="form-control"
                            id="email"
                            name="email"
-                           placeholder="Introduce tu correo electrónico"
+                           placeholder="Introduce dirección tu correo electrónico"
                            th:field="*{email}"
                            type="email"/>
                     <p th:errors="*{email}" class="text-danger"
@@ -99,7 +99,7 @@
                 </div>
 
                 <div class="form-group mb-3">
-                    <button class="btn btn-primary" type="submit">Crear cuenta</button>
+                    <button class="btn register" type="submit">Crear cuenta</button>
                     <span>¿Ya tienes una cuenta? <a href="/" th:href="@{/login}">Iniciar sesión</a></span>
                 </div>
             </form>

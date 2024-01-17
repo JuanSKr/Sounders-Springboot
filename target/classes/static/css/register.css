@@ -1,0 +1,38 @@
+.navbar-custom {
+    background-color: #13B2ECFF;
+}
+
+.navbar-brand-custom {
+    color: #ffffff;
+    text-align: center;
+    font-size: 1.35rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.navbar-brand-custom:hover {
+    color: white;
+    transform: scale(1.12);
+    transition: transform .2s;
+}
+
+button.register {
+    background-color: #13B2ECFF;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button.register:hover {
+    background-color: #0689ea;
+    color: white;
+    filter: drop-shadow(0 0 10px #000000);
+    transform: scale(1.05);
+    transition: transform .2s;
+}

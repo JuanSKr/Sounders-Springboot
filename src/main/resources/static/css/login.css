@@ -38,8 +38,11 @@ button.login {
 }
 
 button.login:hover {
-    color: white;
     background-color: #0689ea;
+    color: white;
+    filter: drop-shadow(0 0 10px #000000);
+    transform: scale(1.05);
+    transition: transform .2s;
 }
 
 .alert-container {
@@ -100,4 +103,18 @@ button.login:hover {
     justify-content: center;
     width: 100%;
     margin: auto 0;
+}
+
+/* Password container */
+
+.password-container {
+    position: relative;
+}
+
+.password-icon {
+    position: absolute;
+    top: 70%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
 }
