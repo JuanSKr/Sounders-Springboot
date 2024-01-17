@@ -15,6 +15,7 @@ body {
 .main {
     height: auto;
     margin-top: 50px;
+    transition: all .2s ease-in-out;
 }
 
 h3 {
@@ -43,7 +44,7 @@ li {
 #sidebar {
     max-width: 264px;
     min-width: 264px;
-    transition: all 0.35s ease-in-out;
+    transition: all .2s ease-in-out;
     box-shadow: 0 0 35px 0 rgba(49, 57, 66, 0.5);
     z-index: 1111;
     background-color: #0099d7;
@@ -68,12 +69,13 @@ li {
     min-height: 100vh;
     width: 100%;
     overflow: hidden;
-    transition: all 0.35s ease-in-out;
+    transition: all .2s ease-in-out;
 }
 
 
 .sidebar-logo {
     padding: 1.15rem 1.5rem;
+    transition: all .2s ease-in-out;
 }
 
 .sidebar-logo:hover {
@@ -90,6 +92,7 @@ li {
 
 .sidebar-nav {
     padding: 0;
+    transition: all .2s ease-in-out;
 }
 
 .sidebar-nav .sidebar-link:hover {
@@ -146,7 +149,7 @@ a.sidebar-link {
 
 #navbar {
     position: fixed;
-    top: 0px;
+    top: 0;
     width: 100%;
     z-index: 9999;
     background-color: #13b2ec;
@@ -158,6 +161,7 @@ a.sidebar-link {
     font-size: 1rem;
     font-weight: 600;
     margin-right: 0.25rem;
+    transition: all .2s ease-in-out;
 }
 
 .navbar-items {
@@ -165,7 +169,7 @@ a.sidebar-link {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-
+    transition: all .2s ease-in-out;
 }
 
 
@@ -175,6 +179,7 @@ a.sidebar-link {
     gap: 0.25rem;
     flex-grow: 1;
     margin-right: 76.5px;
+    transition: all .2s ease-in-out;
 }
 
 .navbar-group a:hover {
@@ -185,6 +190,11 @@ a.sidebar-link {
 
 .navbar-items .publish {
     font-size: 1.25rem;
+    transition: all .2s ease-in-out;
+}
+
+.publish {
+    transition: all .2s ease-in-out;
 }
 
 .publish:hover {
@@ -197,6 +207,7 @@ a.sidebar-link {
     color: #e9ecef;
     font-size: 1.25rem;
     font-weight: 600;
+    transition: all .2s ease-in-out;
 }
 
 .navbar-brand-collapsed:hover {
@@ -385,11 +396,8 @@ hr {
 
 /* Post styles */
 
-.publish:hover {
-    transform: scale(1.07);
-    transition: transform .2s;
-    filter: drop-shadow(0 0 10px #ffffff);
-}
+
+
 
 
 #savePostButton {
@@ -448,6 +456,7 @@ hr {
     top: -20px;
     color: #13b2ec;
     font-size: 24px;
+    transition: all .2s ease-in-out;
 }
 
 .icon-image:hover {

@@ -76,6 +76,7 @@ li {
     transition: all 0.35s ease-in-out;
 }
 
+
 .sidebar-logo {
     padding: 1.15rem 1.5rem;
 }
@@ -150,10 +151,11 @@ a.sidebar-link {
 
 #navbar {
     position: fixed;
-    top: 0px;
+    top: 0;
     width: 100%;
     z-index: 9999;
     background-color: #13b2ec;
+    transition: all .2s ease-in-out;
 }
 
 .navbar-items a {
@@ -162,6 +164,7 @@ a.sidebar-link {
     font-size: 1rem;
     font-weight: 600;
     margin-right: 0.25rem;
+    transition: all .2s ease-in-out;
 }
 
 .navbar-items {
@@ -169,8 +172,9 @@ a.sidebar-link {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-
+    transition: all .2s ease-in-out;
 }
+
 
 .navbar-group {
     display: flex;
@@ -178,6 +182,7 @@ a.sidebar-link {
     gap: 0.25rem;
     flex-grow: 1;
     margin-right: 76.5px;
+    transition: all .2s ease-in-out;
 }
 
 .navbar-group a:hover {
@@ -186,16 +191,13 @@ a.sidebar-link {
     filter: drop-shadow(0 0 10px #ffffff);
 }
 
-.navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-}
-
 .navbar-items .publish {
     font-size: 1.25rem;
+    transition: all .2s ease-in-out;
 }
 
 .publish:hover {
-    transform: scale(1.15);
+    transform: scale(1.07);
     transition: transform .2s;
     filter: drop-shadow(0 0 10px #ffffff);
 }
@@ -204,6 +206,7 @@ a.sidebar-link {
     color: #e9ecef;
     font-size: 1.25rem;
     font-weight: 600;
+    transition: all .2s ease-in-out;
 }
 
 .navbar-brand-collapsed:hover {

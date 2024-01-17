@@ -15,6 +15,7 @@ body {
 .main {
     height: auto;
     margin-top: 50px;
+    transition: all .2s ease-in-out;
 }
 
 h3 {
@@ -146,10 +147,11 @@ a.sidebar-link {
 
 #navbar {
     position: fixed;
-    top: 0px;
+    top: 0;
     width: 100%;
     z-index: 9999;
     background-color: #13b2ec;
+    transition: all .2s ease-in-out;
 }
 
 .navbar-items a {
@@ -158,6 +160,7 @@ a.sidebar-link {
     font-size: 1rem;
     font-weight: 600;
     margin-right: 0.25rem;
+    transition: all .2s ease-in-out;
 }
 
 .navbar-items {
@@ -165,7 +168,7 @@ a.sidebar-link {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-
+    transition: all .2s ease-in-out;
 }
 
 
@@ -175,6 +178,7 @@ a.sidebar-link {
     gap: 0.25rem;
     flex-grow: 1;
     margin-right: 76.5px;
+    transition: all .2s ease-in-out;
 }
 
 .navbar-group a:hover {
@@ -185,6 +189,7 @@ a.sidebar-link {
 
 .navbar-items .publish {
     font-size: 1.25rem;
+    transition: all .2s ease-in-out;
 }
 
 .publish:hover {
@@ -197,6 +202,7 @@ a.sidebar-link {
     color: #e9ecef;
     font-size: 1.25rem;
     font-weight: 600;
+    transition: all .2s ease-in-out;
 }
 
 .navbar-brand-collapsed:hover {
