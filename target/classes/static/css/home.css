@@ -304,10 +304,6 @@ a.sidebar-link {
     color: white;
 }
 
-.navbar-toggler:hover {
-    filter: drop-shadow(0 0 10px #ffffff);
-}
-
 .sidebar-logo {
     font-size: 1.5rem;
 }

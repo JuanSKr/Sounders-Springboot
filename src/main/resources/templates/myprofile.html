@@ -130,6 +130,9 @@
                         <p class="username" th:text="'@' + ${user.username}">@username</p>
                         <p class="bio" th:text="${user.bio}">Biografía del usuario</p>
                     </div>
+                    <a class="edit-profile-btn" th:href="'/profile/update/' + ${user.username}">
+                        <i class="fas fa-pencil-alt"></i> Editar perfil
+                    </a>
                 </div>
                 <hr>
             </div>

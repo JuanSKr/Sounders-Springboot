@@ -79,6 +79,7 @@ li {
 .sidebar-logo:hover {
     transform: scale(1.05);
     transition: transform .2s;
+    filter: drop-shadow(0 0 10px #ffffff);
 }
 
 .sidebar-logo a {
@@ -94,6 +95,7 @@ li {
 .sidebar-nav .sidebar-link:hover {
     transform: scale(1.05);
     transition: transform .2s;
+    filter: drop-shadow(0 0 10px #ffffff);
 }
 
 .sidebar-header {
@@ -178,6 +180,7 @@ a.sidebar-link {
 .navbar-group a:hover {
     transform: scale(1.07);
     transition: transform .2s;
+    filter: drop-shadow(0 0 10px #ffffff);
 }
 
 .navbar-items .publish {
@@ -187,6 +190,7 @@ a.sidebar-link {
 .publish:hover {
     transform: scale(1.07);
     transition: transform .2s;
+    filter: drop-shadow(0 0 10px #ffffff);
 }
 
 .navbar-brand-collapsed {
@@ -198,6 +202,7 @@ a.sidebar-link {
 .navbar-brand-collapsed:hover {
     transform: scale(1.07);
     transition: transform .2s;
+    filter: drop-shadow(0 0 10px #ffffff);
 }
 
 .container {
@@ -319,5 +324,6 @@ button.submit {
 
 button.submit:hover {
     color: white;
-    background-color: #0689ea;
+    background-color: #0a89b7;
+    filter: drop-shadow(0 0 10px #13b2ec);
 }

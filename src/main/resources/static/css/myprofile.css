@@ -384,7 +384,7 @@ hr {
 .edit-profile-btn {
     position: absolute;
     right: 50px;
-    top: 50%;
+    top: 45%;
     transform: translateY(-50%);
     background-color: #13b2ec;
     color: #e9ecef;
@@ -397,6 +397,7 @@ hr {
 
 .edit-profile-btn:hover {
     background-color: #0a89b7;
+    filter: drop-shadow(0 0 10px #13b2ec);
 }
 
 /* Post styles */
