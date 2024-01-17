@@ -37,6 +37,11 @@ body {
     box-shadow: 0 0 10px 5px white;
 }
 
+img.logo {
+    width: 20vw;
+    height: auto;
+}
+
 img.logo:hover {
     filter: drop-shadow(0 0 10px white);
     transform: scale(1.05);
