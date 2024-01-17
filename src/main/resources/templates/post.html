@@ -78,6 +78,43 @@
         <!--/* Main content */-->
         <main class="flex-shrink-0">
             <div class="container">
+                <!--/* Post Modal */-->
+                <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="postModalLabel">
+                                    <img th:src="${user.avatar}" alt="avatar" class="modal-avatar">
+                                    Nuevo Post
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="postForm" th:action="@{/post/save}" th:object="${newPost}" method="post"
+                                      enctype="multipart/form-data">
+                                    <div class="mb-3">
+                                            <textarea class="form-control post-textarea" th:field="*{text}" rows="3"
+                                                      maxlength="355" id="postTextarea" placeholder="¿Tienes algo que contar? Puedes hacerlo aquí..." required></textarea>
+                                        <div id="characterCountContainer">
+                                            <span id="characterCount">0</span>/355
+                                        </div>
+                                        <label for="postImage" class="form-label">
+                                            <i class="fa-solid fa-image icon-image"></i>
+                                        </label>
+                                        <input type="file" class="form-control" id="postImage" name="image"
+                                               accept="image/*" style="display: none;">
+                                        <img id="imagePreview" src="#" alt="Image Preview"
+                                             style="display: none; width: 100px; height: 100px;">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" id="savePostButton">Postear
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="d-flex flex-column align-items-center">
                     <div class="card h-100 shadow post-card">
                         <div class="d-flex align-items-center mt-3">
@@ -111,12 +148,13 @@
                                     <label for="content" class="form-label">Escribe aquí tu comentario</label>
                                     <textarea class="form-control" id="content" name="content" rows="3"
                                               th:field="*{content}"
-                                              placeholder="¿Tienes algo que contar? Puedes hacerlo aquí..."
+                                              placeholder="Puedes escribirle un comentario al autor del post..."
                                               required></textarea>
                                 </div>
                                 <div class="mb-3">
-                                    <button type="submit" class="btn btn-primary">Enviar</button>
+                                    <button type="submit" class="btn submit">Enviar</button>
                                 </div>
+                                <hr>
                             </form>
                             <!-- Comments -->
                             <div th:each="comment:${comments}">

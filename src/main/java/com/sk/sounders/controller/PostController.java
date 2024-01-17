@@ -55,6 +55,7 @@ public class PostController {
         model.addAttribute("user", user);
         model.addAttribute("comments", commentService.findByPost(post));
         model.addAttribute("newComment", new Comment());
+        model.addAttribute("newPost", new Post());
         return "post";
     }
 
