@@ -4,6 +4,7 @@ import com.sk.sounders.entity.Comment;
 import com.sk.sounders.entity.Post;
 import com.sk.sounders.entity.User;
 import com.sk.sounders.service.CommentService;
+import com.sk.sounders.service.LikeService;
 import com.sk.sounders.service.impl.PostServiceImpl;
 import com.sk.sounders.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,9 @@ public class PostController {
     @Autowired
     CommentService commentService;
 
+    @Autowired
+    LikeService likeService;
+
 
     @GetMapping("/post/{username}/{id}")
     public String viewPost(@PathVariable String username, @PathVariable long id, Model model) {
@@ -44,6 +48,9 @@ public class PostController {
         }
         String currentUsername = userDetails.getUsername();
         User user = userService.findByEmail(currentUsername);
+
+        post.setLikeState(likeService.activePostAndUser(post, user));
+
         model.addAttribute("post", post);
         model.addAttribute("user", user);
         model.addAttribute("comments", commentService.findByPost(post));

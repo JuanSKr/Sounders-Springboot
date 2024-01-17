@@ -43,6 +43,7 @@ public class HomeController {
         }
         List<Post> postList = postService.findAllDesc();
 
+        // Obtener el usuario por contexto con Authentication
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
             String currentUserName = authentication.getName();
