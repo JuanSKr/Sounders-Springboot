@@ -215,16 +215,6 @@ a.sidebar-link {
     filter: drop-shadow(0 0 10px #ffffff);
 }
 
-.card {
-    margin-top: 50px;
-    margin-bottom: -30px;
-}
-
-.card:hover {
-    transform: scale(1.025);
-    transition: transform .2s;
-}
-
 .navbar-center {
     position: absolute;
     left: 40%;
@@ -419,3 +409,24 @@ button.btn-search:hover {
     transform: scale(1.02);
     transition: transform .2s;
 }
+
+.card {
+    width: 30%;
+    margin-top: 50px;
+    margin-bottom: -45px;
+    border: none;
+    border-radius: 15px;
+    transition: all .2s ease-in-out;
+    background: #ffffff;
+}
+
+.card:hover {
+    transform: scale(1.025);
+    transition: transform .2s;
+    box-shadow: 0 4px 8px 0 rgba(8, 8, 8, 0.8);
+}
+
+.username-text {
+    color: #3d3d3d;
+}
+
