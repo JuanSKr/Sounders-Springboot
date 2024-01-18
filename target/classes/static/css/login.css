@@ -3,7 +3,7 @@
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
-    background-image: url("../img/background.jpg");
+    background-image: url("../img/background_profile.png");
 }
 
 .navbar-custom {
@@ -25,6 +25,13 @@ body {
     transform: scale(1.12);
     transition: transform .2s;
     filter: drop-shadow(0 0 10px #ffffff);
+}
+
+.card {
+    margin-top: 30px;
+    border: none;
+    border-radius: 15px;
+    background: #ffffff;
 }
 
 button.login {
