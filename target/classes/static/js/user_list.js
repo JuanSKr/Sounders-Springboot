@@ -55,7 +55,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 document.addEventListener('DOMContentLoaded', (event) => {
-    // Tu código aquí
     document.getElementById('postTextarea').addEventListener('input', function () {
         document.getElementById('characterCount').textContent = this.value.length;
     });

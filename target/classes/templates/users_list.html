@@ -70,8 +70,9 @@
                     </a>
                 </div>
                 <div class="container-fluid">
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Buscar usuarios..." aria-label="Search">
+                    <form class="d-flex" role="search" action="/chat/search" method="get">
+                        <input class="form-control me-2" type="search" name="username" placeholder="Buscar usuarios..."
+                               aria-label="Search">
                         <button class="btn btn-search" type="submit">Buscar</button>
                     </form>
                 </div>
@@ -95,7 +96,9 @@
                               enctype="multipart/form-data">
                             <div class="mb-3">
                                             <textarea class="form-control post-textarea" th:field="*{text}" rows="3"
-                                                      maxlength="355" id="postTextarea" placeholder="¿Tienes algo que contar? Puedes hacerlo aquí..." required></textarea>
+                                                      maxlength="355" id="postTextarea"
+                                                      placeholder="¿Tienes algo que contar? Puedes hacerlo aquí..."
+                                                      required></textarea>
                                 <div id="characterCountContainer">
                                     <span id="characterCount">0</span>/355
                                 </div>
@@ -117,20 +120,20 @@
         <!--/* Main content */-->
         <div class="container">
             <h1>Mensajes directos</h1>
-            <h2 class="text-success">Haz clic en el usuario al que le quieres enviar un mensaje</h2>
-
             <div class="row">
-                <div class="col-2" th:each="user:${userList}">
-                    <div class="row">
-                        <a th:href="'/chat/' + ${user.username}">
-                            <img class="img-thumbnail rounded-circle" th:src="*{user.avatar}"/>
-                            <span th:text="${user.username}"></span>
-                        </a>
-                    </div>
+                <div th:if="${user != null}">
+                    <a th:href="'/chat/' + ${user.username}">
+                        <img class="img-thumbnail rounded-circle" th:src="${user.avatar}"/>
+                        <span th:text="${user.username}"></span>
+                    </a>
+                </div>
+                <div th:if="${user == null}">
+                    <span>Usuario no encontrado</span>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 <!-- Scripts -->
 <script src="/js/user_list.js"></script>

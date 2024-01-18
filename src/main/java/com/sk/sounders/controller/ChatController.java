@@ -35,6 +35,7 @@ public class ChatController {
         model.addAttribute("actual", actual);
         model.addAttribute("messageList", messageService.findByReceiver(actual));
         model.addAttribute("post", new Post());
+        model.addAttribute("user", null);
         return "users_list";
     }
 
@@ -65,6 +66,18 @@ public class ChatController {
         message.setReceiver(receiver);
         model.addAttribute("message", new Message());
         return "chat";
+    }
+
+    @GetMapping("/chat/search")
+    public String searchUsers(@RequestParam String username, Model model, Authentication authentication) {
+        User actual = userService.findByEmail(authentication.getName());
+        model.addAttribute("actual", actual);
+        User user = userService.findByUsername(username);
+        if (user != null) {
+            model.addAttribute("user", user);
+        }
+        model.addAttribute("post", new Post());
+        return "users_list";
     }
 
     @PostMapping("/send")
