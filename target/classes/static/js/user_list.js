@@ -36,27 +36,27 @@ document.querySelector('.publish').addEventListener('click', function () {
     postModal.show();
 });
 
-document.querySelector('.publish-sidebar').addEventListener('click', function () {
-    var postModal = new bootstrap.Modal(document.getElementById('postModal'));
-    postModal.show();
+document.addEventListener('DOMContentLoaded', (event) => {
+    document.getElementById('postImage').addEventListener('change', function (e) {
+        var file = e.target.files[0];
+        var reader = new FileReader();
+
+        reader.onloadend = function () {
+            document.getElementById('imagePreview').src = reader.result;
+            document.getElementById('imagePreview').style.display = 'block';
+        }
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            document.getElementById('imagePreview').src = "";
+        }
+    });
 });
 
-document.getElementById('postImage').addEventListener('change', function (e) {
-    var file = e.target.files[0];
-    var reader = new FileReader();
-
-    reader.onloadend = function () {
-        document.getElementById('imagePreview').src = reader.result;
-        document.getElementById('imagePreview').style.display = 'block';
-    }
-
-    if (file) {
-        reader.readAsDataURL(file);
-    } else {
-        document.getElementById('imagePreview').src = "";
-    }
-});
-
-document.getElementById('postTextarea').addEventListener('input', function () {
-    document.getElementById('characterCount').textContent = this.value.length;
+document.addEventListener('DOMContentLoaded', (event) => {
+    // Tu código aquí
+    document.getElementById('postTextarea').addEventListener('input', function () {
+        document.getElementById('characterCount').textContent = this.value.length;
+    });
 });
