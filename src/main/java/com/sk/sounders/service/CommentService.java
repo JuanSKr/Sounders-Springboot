@@ -26,6 +26,10 @@ public class CommentService {
         return commentRepository.findByPost(post);
     }
 
+    public ArrayList<Comment> findByPostOrderByIdDesc(Post post){
+        return commentRepository.findByPostOrderByIdDesc(post);
+    }
+
     public Comment save(Comment comment){
         commentRepository.save(comment);
         return comment;

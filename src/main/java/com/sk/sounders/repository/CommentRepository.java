@@ -15,6 +15,8 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
 
     public ArrayList<Comment> findByPost(Post post);
 
+    public ArrayList<Comment> findByPostOrderByIdDesc(Post post);
+
     public Comment save(Comment comment);
 
     public void delete(Comment comment);
