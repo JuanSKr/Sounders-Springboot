@@ -36,11 +36,6 @@ document.querySelector('.publish').addEventListener('click', function () {
     postModal.show();
 });
 
-document.querySelector('.publish-sidebar').addEventListener('click', function () {
-    var postModal = new bootstrap.Modal(document.getElementById('postModal'));
-    postModal.show();
-});
-
 document.getElementById('postImage').addEventListener('change', function (e) {
     var file = e.target.files[0];
     var reader = new FileReader();

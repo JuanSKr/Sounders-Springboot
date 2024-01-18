@@ -14,7 +14,7 @@
     <aside id="sidebar" class="collapsed">
         <div class="h-100 sidebar-content">
             <div class="sidebar-logo">
-                <a class="publish-sidebar">
+                <a class="publish">
                     <i class="fas fa-plus pe-2"></i>
                     Postear
                 </a>
@@ -69,10 +69,12 @@
                         <span class="align-perfil">Tu perfil</span>
                     </a>
                 </div>
-                <a class="publish">
-                    <i class="fas fa-plus pe-2"></i>
-                    Postear
-                </a>
+                <div class="container-fluid">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Buscar usuarios..." aria-label="Search">
+                        <button class="btn btn-search" type="submit">Buscar</button>
+                    </form>
+                </div>
             </div>
         </nav>
         <!--/* Post modal */-->

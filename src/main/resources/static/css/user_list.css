@@ -181,7 +181,7 @@ a.sidebar-link {
     justify-content: center;
     gap: 0.25rem;
     flex-grow: 1;
-    margin-right: 76.5px;
+    margin-right: -95.5px;
     transition: all .2s ease-in-out;
 }
 
@@ -395,4 +395,27 @@ a.sidebar-link {
     height: 30px;
     border-radius: 50%;
     object-fit: cover;
+}
+
+.container-fluid {
+    width: 20%;
+    margin: 0 auto;
+}
+
+button.btn-search {
+    background-color: #ffffff;
+    border: none;
+    color: grey;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button.btn-search:hover {
+    background-color: grey;
+    color: white;
+    transform: scale(1.02);
+    transition: transform .2s;
 }
