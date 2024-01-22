@@ -26,10 +26,10 @@ public class Comment {
     @Temporal(TemporalType.TIME)
     private LocalTime hour;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Post post;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private User author;
 
 }
