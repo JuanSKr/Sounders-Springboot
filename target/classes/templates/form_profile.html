@@ -24,20 +24,24 @@
             <!--/* Sidebar Navigation */-->
             <ul class="sidebar-nav">
                 <li class="sidebar-item">
-                    <a href="/home" class="sidebar-link" onclick="return confirm('¿Estás seguro de que quieres salir? Perderás todos los cambios.');">
+                    <a href="/home" class="sidebar-link"
+                       onclick="return confirm('¿Estás seguro de que quieres salir? Perderás todos los cambios.');">
                         <i class="fa-solid fa-house"></i>
                         <span class="align-inicio-sidebar">Inicio</span>
                     </a>
-                    <a href="/chat" class="sidebar-link" onclick="return confirm('¿Estás seguro de que quieres salir? Perderás todos los cambios.');">
+                    <a href="/chat" class="sidebar-link"
+                       onclick="return confirm('¿Estás seguro de que quieres salir? Perderás todos los cambios.');">
                         <i class="fa-solid fa-message"></i>
                         <span class="align-mensajes-sidebar">Mensajes</span>
                     </a>
-                    <a th:href="'/profile/' + ${user.username}" class="sidebar-link" onclick="return confirm('¿Estás seguro de que quieres salir? Perderás todos los cambios.');">
+                    <a th:href="'/profile/' + ${user.username}" class="sidebar-link"
+                       onclick="return confirm('¿Estás seguro de que quieres salir? Perderás todos los cambios.');">
                         <i class="fas fa-user pe-2"></i>
                         <span class="align-perfil-sidebar">Tu perfil</span>
                     </a>
                 <li class="sidebar-item">
-                    <a th:href="@{/logout}" class="sidebar-link" onclick="return confirm('¿Estás seguro de que quieres salir? Perderás todos los cambios.');">
+                    <a th:href="@{/logout}" class="sidebar-link"
+                       onclick="return confirm('¿Estás seguro de que quieres salir? Perderás todos los cambios.');">
                         <i class="fa-solid fa-right-from-bracket"></i>
                         <span class="align-logout-sidebar">Cerrar sesión</span>
                     </a>
@@ -58,22 +62,24 @@
                id="sounders-navbar-center">Sounders</a>
             <div class="navbar-items" style="display: none;">
                 <div class="navbar-group">
-                    <a href="/home" onclick="return confirm('¿Estás seguro de que quieres salir? Perderás todos los cambios.');">
+                    <a href="/home"
+                       onclick="return confirm('¿Estás seguro de que quieres salir? Perderás todos los cambios.');">
                         <i class="fa-solid fa-house"></i>
                         <span class="align-inicio">Inicio</span>
                     </a>
-                    <a href="/chat" class="align-msg-combo" onclick="return confirm('¿Estás seguro de que quieres salir? Perderás todos los cambios.');">
+                    <a href="/chat" class="align-msg-combo"
+                       onclick="return confirm('¿Estás seguro de que quieres salir? Perderás todos los cambios.');">
                         <i class="fa-solid fa-message"></i>
                         <span class="align-msg">Mensajes</span>
                     </a>
-                    <a th:href="'/profile/' + ${user.username}" onclick="return confirm('¿Estás seguro de que quieres salir? Perderás todos los cambios.');">
+                    <a th:href="'/profile/' + ${user.username}"
+                       onclick="return confirm('¿Estás seguro de que quieres salir? Perderás todos los cambios.');">
                         <i class="fa-solid fa-user"></i>
                         <span class="align-perfil">Tu perfil</span>
                     </a>
                 </div>
             </div>
         </nav>
-
         <!--/* Form */-->
         <div class="container-xl px-4 mt-4">
             <hr class="mt-0 mb-4">
@@ -90,7 +96,8 @@
                             <!-- Profile picture upload form-->
                             <form th:action="@{/profile/avatar}" method="post" enctype="multipart/form-data">
                                 <div class="mb-3">
-                                    <input type="file" class="form-control" id="avatarImage" name="avatar" accept="image/*" required>
+                                    <input type="file" class="form-control" id="avatarImage" name="avatar"
+                                           accept="image/*" required>
                                 </div>
                                 <button type="submit" class="btn submit">Actualizar avatar</button>
                             </form>
@@ -138,12 +145,29 @@
                             </form>
                         </div>
                     </div>
+                    <!-- Banner card-->
+                    <div class="card mb-4">
+                        <div class="card-header">Banner de perfil</div>
+                        <div class="card-body text-center">
+                            <!-- Banner image-->
+                            <img class="img-account-banner mb-2" th:src="${user.banner}" alt="">
+                            <!-- Banner help block-->
+                            <div class="small font-italic text-muted mb-4">JPG o PNG de máximo 10 MB</div>
+                            <!-- Banner upload form-->
+                            <form th:action="@{/profile/banner}"
+                                  method="post" enctype="multipart/form-data" th:object="${formUser}">
+                                <div class="mb-3">
+                                    <input type="file" class="form-control" id="bannerImage" name="banner" accept="image/*" required>
+                                </div>
+                                <button type="submit" class="btn submit">Actualizar banner</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 <script src="/js/form_profile.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"

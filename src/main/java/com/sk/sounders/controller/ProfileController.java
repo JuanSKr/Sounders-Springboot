@@ -165,7 +165,7 @@ public class ProfileController {
             System.err.println("No se ha encontrado el usuario");
         }
 
-        return "redirect:/profile";
+        return "redirect:/profile/" + user.getUsername();
     }
 
 }

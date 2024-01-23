@@ -327,3 +327,9 @@ button.submit:hover {
     background-color: #0a89b7;
     filter: drop-shadow(0 0 10px #13b2ec);
 }
+
+.img-account-banner {
+    width: 100%;
+    height: 15rem;
+    object-fit: cover;
+}
