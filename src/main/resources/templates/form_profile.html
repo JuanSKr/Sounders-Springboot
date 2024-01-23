@@ -152,7 +152,7 @@
                             <!-- Banner image-->
                             <img class="img-account-banner mb-2" th:src="${user.banner}" alt="">
                             <!-- Banner help block-->
-                            <div class="small font-italic text-muted mb-4">JPG o PNG de máximo 10 MB</div>
+                            <div class="small font-italic text-muted mb-4">JPG o PNG de máximo 10 MB (Tamaño sugerido: 1920x300px)</div>
                             <!-- Banner upload form-->
                             <form th:action="@{/profile/banner}"
                                   method="post" enctype="multipart/form-data" th:object="${formUser}">
