@@ -87,7 +87,7 @@ public class HomeController {
         }
 
         System.out.println("Post guardado");
-        return "redirect:/home";
+        return "redirect:/home";/**/
     }
 
     @DeleteMapping("/post/delete/{id}")

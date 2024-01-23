@@ -71,7 +71,7 @@
                 </div>
                 <div class="container-fluid">
                     <form class="d-flex" role="search" action="/chat/search" method="get">
-                        <input class="form-control me-2" type="search" name="username" placeholder="Buscar usuarios..."
+                        <input class="form-control me-2" type="search" name="username" placeholder="Buscar aquí..."
                                aria-label="Search">
                         <button class="btn btn-search" type="submit">Buscar</button>
                     </form>
@@ -122,13 +122,12 @@
             <h1>Mensajes directos</h1>
             <div class="row">
                 <div class="card h-100 shadow">
-                    <a th:href="'/chat/' + ${user.username}">
-                        <div th:if="${user != null}">
-
+                    <div th:if="${user != null}">
+                        <a th:href="'/chat/' + ${user.username}">
                             <img class="img-thumbnail rounded-circle" th:src="${user.avatar}"/>
                             <span th:text="${user.username}" class="username-text"></span>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </div>
                 <div th:if="${user == null}">
                     <span>Usuario no encontrado</span>
