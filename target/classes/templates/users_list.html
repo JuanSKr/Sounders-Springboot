@@ -122,12 +122,12 @@
             <h1>Mensajes directos</h1>
             <div class="row">
                 <div class="card h-100 shadow">
-                    <div th:if="${user != null}">
-                        <a th:href="'/chat/' + ${user.username}">
+                    <a th:href="'/chat/' + ${user.username}">
+                        <div th:if="${user != null}">
                             <img class="img-thumbnail rounded-circle" th:src="${user.avatar}"/>
                             <span th:text="${user.username}" class="username-text"></span>
-                        </a>
-                    </div>
+                        </div>
+                    </a>
                 </div>
                 <div th:if="${user == null}">
                     <span>Usuario no encontrado</span>
