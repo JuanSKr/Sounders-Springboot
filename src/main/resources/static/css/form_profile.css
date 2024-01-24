@@ -255,7 +255,7 @@ a.sidebar-link {
 /* Form */
 
 .img-account-profile {
-    height: 10rem;
+    max-width: 10rem;
 }
 .rounded-circle {
     border-radius: 50% !important;
