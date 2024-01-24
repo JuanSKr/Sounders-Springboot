@@ -20,6 +20,10 @@ body {
 
 .container {
     margin-top: 50px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 h3 {
@@ -223,14 +227,25 @@ a.sidebar-link {
 }
 
 .card {
-    margin-top: 50px;
-    margin-bottom: -30px;
-    transition: all .2s ease-in-out;
+    background-color: #f8f9fa;
+    border: none;
+    border-radius: 5px;
+    margin-top: -35px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .card:hover {
     transform: scale(1.025);
     transition: transform .2s;
+}
+
+.separation {
+    margin-right: 5px;
+}
+
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
 }
 
 .navbar-center {
@@ -315,4 +330,41 @@ a.sidebar-link {
 .align-logout-sidebar {
     position: relative;
     margin-left: 6px;
+}
+
+.btn-send {
+    background-color: #13B2ECFF;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-send:hover {
+    background-color: #0689ea;
+    color: white;
+    filter: drop-shadow(0 0 10px #252525);
+    transform: scale(1.02);
+    transition: transform .2s;
+}
+
+/* Scrollbar */
+
+#messages::-webkit-scrollbar {
+    width: 10px;
+}
+
+#messages::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+#messages::-webkit-scrollbar-thumb {
+    background: #13b2ec;
+}
+
+#messages::-webkit-scrollbar-thumb:hover {
+    background: #069fce;
 }
