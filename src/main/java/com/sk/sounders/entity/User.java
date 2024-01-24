@@ -45,12 +45,6 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
-    private Long followers = 0L;
-
-    @Column(nullable = false)
-    private Long followed = 0L;
-
     @OneToMany(mappedBy = "sender", fetch = FetchType.LAZY)
     List<Message> sentMessages;
 
