@@ -1,5 +1,6 @@
 package com.sk.sounders.storage;
 
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -33,7 +34,7 @@ public class FileSystemStorageService implements StorageService {
                 throw new StorageException("An error has been occurred while uploading this file: " + file.getOriginalFilename());
             }
             //Le he añadido la fecha y hora actual al archivo subido
-            nameFile=LocalDateTime.now().toString().replaceAll(":", "_") + ".png";
+            nameFile=LocalDateTime.now().toString().replaceAll(":", "_") + "." + FilenameUtils.getExtension(file.getOriginalFilename());
             // Check if the directory exists, if not, create it
             if (!Files.exists(this.rootLocation)) {
                 Files.createDirectories(this.rootLocation);
