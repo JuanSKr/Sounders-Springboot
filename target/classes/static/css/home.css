@@ -231,57 +231,6 @@ a.sidebar-link {
     left: 40%;
 }
 
-/*.animated-button {*/
-/*    background-color: #008CBA; !* Color inicial *!*/
-/*    border: none;*/
-/*    color: white;*/
-/*    padding: 15px 32px;*/
-/*    text-align: center;*/
-/*    text-decoration: none;*/
-/*    display: inline-block;*/
-/*    font-size: 16px;*/
-/*    margin: 4px 2px;*/
-/*    cursor: pointer;*/
-/*    animation: color-change 1s infinite;*/
-/*}*/
-
-/*Pruebas con keyframes*/
-/*@keyframes color-change {*/
-/*    0% {*/
-/*        background-color: #008CBA;*/
-/*    }*/
-/*    10% {*/
-/*        background-color: #4CAF50;*/
-/*    }*/
-/*    20% {*/
-/*        background-color: #008CBA;*/
-/*    }*/
-/*    30% {*/
-/*        background-color: #4CAF50;*/
-/*    }*/
-/*    40% {*/
-/*        background-color: #008CBA;*/
-/*    }*/
-/*    50% {*/
-/*        background-color: #4CAF50;*/
-/*    }*/
-/*    60% {*/
-/*        background-color: #008CBA;*/
-/*    }*/
-/*    70% {*/
-/*        background-color: #4CAF50;*/
-/*    }*/
-/*    80% {*/
-/*        background-color: #008CBA;*/
-/*    }*/
-/*    90% {*/
-/*        background-color: #4CAF50;*/
-/*    }*/
-/*    100% {*/
-/*        background-color: #008CBA;*/
-/*    }*/
-/*}*/
-
 .modal.fade .modal-dialog {
     transition: transform 0.3s ease-out;
     transform: translateY(-100%);
