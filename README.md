@@ -53,6 +53,4 @@ This project is a social media web application implemented using Java and JavaSc
 
 A special thanks to [PeriR3](https://github.com/PeriR3) for the outstanding web design contributions to Sounders. The visually appealing and user-friendly design elements greatly enhance the overall user experience of the social network platform.
 
-## License Information
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
