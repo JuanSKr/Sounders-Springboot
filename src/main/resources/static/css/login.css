@@ -48,7 +48,6 @@ button.login {
 button.login:hover {
     background-color: #0689ea;
     color: white;
-    filter: drop-shadow(0 0 10px #252525);
     transform: scale(1.02);
     transition: transform .2s;
 }

@@ -231,6 +231,7 @@ a.sidebar-link {
     left: 40%;
 }
 
+/*        background-color: #008CBA;*/
 .modal.fade .modal-dialog {
     transition: transform 0.3s ease-out;
     transform: translateY(-100%);

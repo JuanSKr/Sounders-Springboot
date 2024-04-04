@@ -13,11 +13,12 @@ body {
     border-radius: 25px;
     border: none;
     padding: 10px 20px;
-    transition: background-color 0.3s ease;
+    transition: background-color
+    0.3s ease;
 }
 
 .custom-btn:hover {
-    background-color: #13b2ec;
+    background-color: #4acaff;
     color: #ffffff;
     box-shadow: 0 0 10px 5px white;
 }
@@ -32,7 +33,7 @@ body {
 }
 
 .custom-btn-link:hover {
-    background-color: #13b2ec;
+    background-color: #4acaff;
     color: #ffffff;
     box-shadow: 0 0 10px 5px white;
 }
